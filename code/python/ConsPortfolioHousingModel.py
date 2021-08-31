@@ -1568,6 +1568,7 @@ init_portfolio_risky_housing["aXtraMax"] = 1000
 init_portfolio_risky_housing["aXtraCount"] = 1000
 init_portfolio_risky_housing["aXtraNestFac"] = 1
 
+del init_portfolio_risky_housing["cycles"]
 
 
 def portfolio_housing_params(
