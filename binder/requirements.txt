@@ -1,0 +1,7 @@
+matplotlib
+numpy
+scipy
+
+numba
+
+git+git://github.com/econ-ark/hark@master
