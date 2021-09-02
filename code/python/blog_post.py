@@ -6,9 +6,9 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.11.2
+#       jupytext_version: 1.11.5
 #   kernelspec:
-#     display_name: Python 3
+#     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
 # ---
@@ -127,7 +127,7 @@ solution = agent.solution
 #
 # According to the model, retired households who own their homes and expect to sell them by next period have a higher risky share than retired households who rent, and their risky share increases with house size, holding liquid wealth constant.
 
-# %% pycharm={"name": "#%%\n"} tags=[]
+# %% pycharm={"name": "#%%\n"} tags=[] jupyter={"source_hidden": true}
 M = np.linspace(0.0, 100, 100)
 for h in np.linspace(2.0, 10.0, 3):
     C = solution[-2].ShareFuncHse(M, h * np.ones_like(M))
