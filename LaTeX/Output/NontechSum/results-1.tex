@@ -1,0 +1,28 @@
+
+  \section{Results}
+
+  \subsection{Homeownership increases intensive margin of stock market participation}
+
+  We examine here the behavior of retired households on the cusp of the liquidation of the value of their house.  As usual, we are assuming that the household anticipates some form of guaranteed pension income ('Social Security'), but expects to finance any other consumption out of the returns on their assets.
+
+  The proportion of liquid assets invested in the stock market is known as the risky portfolio share, or \textbf{risky share} for short.
+
+  \cite{Carroll2020} reviewed the logic of the model without housing. For a person with no housing wealth and little liquid wealth, the first dollar of investment in the stock market poses very little risk, so the model implies that the proportion of any additional wealth that will be invested in the stock market is 100 percent.  But as wealth gets very large, the consumer becomes reluctant to put all of it in the stock market, because that would be putting more and more of their consumption at risk\footnote{See \cite{Carroll2020} for further discussion of this point.}.
+
+  \renewcommand{\figName}{shareFuncByHouse}
+  \renewcommand{\figFile}{\figName} %  and on filename
+  \input{\FigDir/\figName} % Read in the tex to generate the figure
+
+
+Figure~\ref{fig:shareFuncByHouse} shows how the picture is modified for consumers who, in addition to their liquid assets, own homes of various sizes.
+
+According to the model, retired households who own their homes and expect to sell them by next period have a higher risky share than retired households who rent, and their risky share increases with house size, holding liquid wealth constant.
+
+Clearly, the bigger the house size, the wealthier the agents are in terms of net worth. In the standard portfolio choice model, wealthier households actually reduce their risky share to reduce risk in next period's consumption. In the presence of housing, however, households still reduce their risk exposure as liquid wealth increases, but at a lower rate.
+
+A better comparison is to add the expected value of the house to liquid wealth. In this way, we compare an agent with $w$ net worth with all liquid wealth and no home, with an agent with $w$ net worth, some of which is liquid wealth $m$, and the rest is the illiquid expected house valuation $\Ex[Q]h$,  such that $w = m + \Ex[Q]h$, where $Q$ denotes house prices and $h$ represents the size of the agent's house\footnote{In this particular case, the household has fully paid their mortgage and home equity is the full home value}. As we see in figure~\ref{fig:shareFuncByNetWealth}, the increase in the risky portfolio share is more significant when considering home equity as part of net worth. Holding net wealth constant, households whose wealth is tied up in an illiquid asset have more risk appetite the larger the proportion of home equity to net wealth is.
+
+\renewcommand{\figName}{shareFuncByNetWealth}
+\renewcommand{\figFile}{\figName}
+\input{\FigDir/\figName} % Read in the tex to generate the figure
+

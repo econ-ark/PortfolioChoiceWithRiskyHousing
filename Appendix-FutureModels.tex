@@ -1,0 +1,278 @@
+% -*- mode: LaTeX; TeX-PDF-mode: t; -*-
+\input{./econtexRoot}\documentclass[PortfolioChoiceWithRiskyHousing]{subfiles}
+\input{./econtexRoot}\input{\LaTeXInputs/econtex_onlyinsubfile}
+\onlyinsubfile{\externaldocument{PortfolioChoiceWithRiskyHousing}} % Get xrefs -- esp to appendix -- from main file; only works properly if main file has already been compiled;
+
+\begin{document}
+
+\section{The Portfolio Choice Problem for Rental Households}
+
+Households that do not own and instead rent their homes have to decide how much to consume, how much to spend on rent, and how much to save. Their normalized problem can be stated as:
+
+\begin{equation}
+	\begin{split}
+		\wFunc_{t}(\mRat_{t}) & = \max_{\{\aRat_{t}, \hRat_{t}, \riskyshare_{t}\}} \utilFunc(\cRat_{t}, \hRat_{t}) + \DiscFac \Ex_{t} \left[ \PGro_{t+1}^{1-\CRRA} \wFunc_{t+1}(\mRat_{t+1}) \right] \\
+		& \text{s.t.} \\
+		\aRat_{t} & = \mRat_{t} - \cRat_{t} - \hRat_{t} \\
+		\Rport_{t+1}(\riskyshare_{t}) & = \Rfree + (\Risky_{t+1} - \Rfree)\riskyshare_{t} \\
+		\mRat_{t+1} & = \aRat_{t}\Rport_{t+1}(\riskyshare_{t})/\PGro_{t+1} + \tShkEmp_{t+1}
+	\end{split}
+\end{equation}
+
+Consider the problem of a consumer that has $\xRat_{t}$ to spend on consumption and housing. Their problem is
+
+\begin{equation}
+	\begin{split}
+		\utilFunc(\xRat) & = \max_{\{\cRat, h\}} \utilFunc(\cRat, h) \\
+		& \text{s.t.} \\
+		\xRat & = \cRat + h
+	\end{split}
+\end{equation}
+
+%The first order condition with respect to $\cRat$ implies
+%
+%\begin{equation}
+%	\utilFunc^{\cRat}(\cRat, h) = \utilFunc^{h}(\cRat, h) 
+%\end{equation}
+
+Given the functional form of utility we are using (CRRA with paramter $\CRRA$), the well known solution to this simple problem is $\cRat_{*} = (1-\alpha)\xRat$ and $\hRat_{*} = \alpha \xRat$. Restating the problem in terms of $\xRat$, we obtain:
+
+\begin{equation}
+	\utilFunc(\xRat) = \utilFunc(\cRat_{*}, \hRat_{*}) = \frac{(\cRat_{*}^{1-\alpha}\hRat_{*}^{\alpha})^{1-\CRRA}}{1-\CRRA} = \xFer \frac{\xRat^{1-\CRRA}}{1-\CRRA}
+\end{equation}
+
+where $\xFer = \left( (1-\alpha)^{1-\alpha}\alpha^{\alpha} \right)^{1-\CRRA}$. Because both consumption and housing are non-durable in the case of a rental household, the consumer can first decide how much to spend on both goods ($\xRat_{t}$) and then decide how much to spend on each of the goods without changing the problem. A further step to simplify the problem is to use iterated expectations to split up the problem into subperiods. We can define
+
+\begin{equation}
+	\begin{split}
+		\wOpt_{t}(\bRat_{t+1}) & = \Ex_{t}\left[ \PGro_{t+1}^{1-\CRRA} \wFunc_{t+1}(\mRat_{t+1}) \right] \\
+		& \text{where} \\
+		\mRat_{t+1} & = \bRat_{t+1}/\PGro_{t+1} + \tShkEmp_{t+1}
+	\end{split}
+\end{equation}
+
+Now, we can rewrite our original problem as
+
+\begin{equation}
+	\begin{split}
+		\wFunc_{t}(\mRat_{t}) & = \max_{\{\aRat_{t}, \riskyshare_{t}\}} \utilFunc(\xRat_{t}) + \DiscFac \Ex_{t} \left[ \wOpt_{t}(\bRat_{t+1}) \right] \\
+		& \text{s.t.} \\
+		\aRat_{t} & = \mRat_{t} - \xRat_{t} \\
+		\Rport_{t+1}(\riskyshare_{t}) & = \Rfree + (\Risky_{t+1} - \Rfree)\riskyshare_{t} \\
+		\bRat_{t+1} & = \aRat_{t}\Rport_{t+1}(\riskyshare_{t})
+	\end{split}
+\end{equation}
+
+which embeds the simple subproblem and our defined iterated expectation.
+
+We can rewrite the problem as
+
+\begin{equation}
+	\wFunc_{t}(\mRat_{t}) = \max_{\{\aRat_{t}, \riskyshare_{t}\}} \utilFunc(\mRat_{t} - \aRat_{t}) + \DiscFac \Ex_{t} \left[ \wOpt_{t}\left( \aRat_{t}(\Rfree + (\Risky_{t+1} - \Rfree)\riskyshare_{t}) \right) \right] \\
+\end{equation}
+
+First order condition with respect to $\aRat$ provides the Euler equation
+
+\begin{equation}
+	\utilFunc'(\xRat_{t}) = \DiscFac \Ex_{t} \left[ \wOpt_{t}'(\bRat_{t+1})\Rport_{t+1}(\riskyshare_{t}) \right]
+\end{equation}
+
+and the first order condition with respect to $\riskyshare_{t}$ is
+
+\begin{equation}
+	\DiscFac \Ex_{t} \left[ \wOpt_{t}'(\bRat_{t+1})\aRat_{t}(\Risky_{t+1}-\Rfree) \right] = 0
+\end{equation}
+
+The envelope condition is given by
+
+\begin{equation}
+	\wFunc_{t}'(\mRat_{t}) = \utilFunc'(\xRat_{t})
+\end{equation}
+
+And finally,
+
+\begin{equation}
+	\wOpt_{t}'(\bRat_{t+1}) = \Ex_{t} \left[ \PGro_{t+1}^{1-\CRRA} \wFunc_{t+1}'(\mRat_{t+1})/\PGro_{t+1} \right] = \Ex_{t} \left[ \PGro_{t+1}^{-\CRRA} \wFunc_{t+1}'(\mRat_{t+1}) \right]
+\end{equation}
+
+\section{The portfolio problem of a homeowner with no mortgage}
+
+A homeowner with no mortgage debt is allowed to invest more on their house to increase its size (or they can let it depreciate). In doing so, they choose home investment, consumption, and savings. Their problem is summarized as follows:
+
+\begin{equation}
+	\begin{split}
+		\vFunc_{t}(\mRat_{t}, \hRat_{t-1}) = \max_{\aRat_{t}, \riskyshare_{t}, \iRat_{t}} \utilFunc(\cRat_{t}, \hRat_{t}) & + \DiscFac \Ex_{t} \left[ \PGro_{t+1}^{1-\CRRA} \left( (1-\timeRate) \vFunc_{t+1}(\mRat_{t+1}, \hRat_{t+1}) + \timeRate \wFunc_{t+1}(\mRat_{t+1}^{\wFunc}) \right) \right] \\
+		&\text{s.t.} \\
+		\hRat_{t} & = (1-\depr)\hRat_{t-1} +  \iRat_{t}/\Qrisky_0 \\
+		\hRat_{t+1} & = \hRat_{t}/\PGro_{t+1} \\
+		\aRat_{t} & = \mRat_{t} - \cRat_{t} - \iRat_{t} \\
+		\Rport_{t+1}(\riskyshare_{t}) & = \Rfree + (\Risky_{t+1} - \Rfree)\riskyshare_{t} \\
+		\mRat_{t+1} & = \aRat_{t}\Rport_{t+1}(\riskyshare_{t})/\PGro_{t+1} + \tShkEmp_{t+1} \\
+		\mRat_{t+1}^{\wFunc} & = \mRat_{t+1} + \Qrisky_{t+1}\hRat_{t+1}
+	\end{split}
+\end{equation}
+
+%OR
+%
+%\begin{equation}
+%	\begin{split}
+%		\vFunc_{t}(\mRat_{t}, \hRat_{t}) = \max_{\aRat_{t}, \riskyshare_{t}, \iRat_{t}} \utilFunc(\cRat_{t}, \hRat_{t}) & + \DiscFac \Ex_{t} \left[ \PGro_{t+1}^{1-\CRRA} \left( (1-\timeRate) \vFunc_{t+1}(\mRat_{t+1}, \hRat_{t+1}) + \timeRate \wFunc_{t+1}(\mRat_{t+1}^{\wFunc}) \right) \right] \\
+%		&\text{s.t.} \\
+%		\hRat_{t+1} & = ((1-\depr)\hRat_{t-1} + \Qrisky_0 \iRat_{t})/\PGro_{t+1} \\
+%		\aRat_{t} & = \mRat_{t} - \cRat_{t} - \iRat_{t} \\
+%		\Rport_{t+1}(\riskyshare_{t}) & = \Rfree + (\Risky_{t+1} - \Rfree)\riskyshare_{t} \\
+%		\mRat_{t+1} & = \aRat_{t}\Rport_{t+1}(\riskyshare_{t})/\PGro_{t+1} + \tShkEmp_{t+1} \\
+%		\mRat_{t+1}^{\wFunc} & = \mRat_{t+1} + \Qrisky_{t+1}\hRat_{t+1}
+%	\end{split}
+%\end{equation}
+
+To facilitate the solution method, we can split the above problem into different subperiods.
+
+In the first subperiod, the household arrives with cash on hand and their previous housing size. They then pick their current size by investing $\iRat_{t}$ where housing costs are $\Qrisky_0$. After investing, they are left with net cash on hand after housing costs, and a new housing size.
+
+\begin{equation}
+	\begin{split}
+		\vFunc_{t}(\mRat_{t}, \hRat_{t-1}) & = \max_{\iRat_{t}} \vOpt_{t}(\nRat_{t}, \hRat_{t}) \\
+		& \text{s.t.} \\
+		\nRat_{t} & = \mRat_{t} - \iRat_{t} \\
+		\hRat_{t} & = (1-\depr)\hRat_{t-1} + \iRat_{t}/\Qrisky_0
+	\end{split}
+\end{equation}
+
+In the second subperiod, the household arrives with net cash on hand and their current housing size. This subperiod is a standard portfolio choice problem, indexed by their house size. The agent must then choose a level of savings $\aRat_{t}$ and the proportion of their savings that will go into the risky asset $\riskyshare_{t}$ versus the safe asset $(1-\riskyshare_{t})$.
+
+\begin{equation}
+	\begin{split}
+		\vOpt_{t}(\nRat_{t}, \hRat_{t}) & = \max_{\{\aRat_{t}, \riskyshare_{t}\}} \utilFunc(\cRat_{t}, \hRat_{t}) + \DiscFac \Ex_{t}\left[ \vOptAlt_{t}(\bRat_{t+1}, \hRat_{t}) \right] \\
+		\aRat_{t} & = \nRat_{t} - \cRat_{t} \\
+		\Rport_{t+1}(\riskyshare_{t}) & = \Rfree + (\Risky_{t+1} - \Rfree)\riskyshare_{t} \\
+		\bRat_{t+1} & = \aRat_{t}\Rport_{t+1}(\riskyshare_{t})
+	\end{split}
+\end{equation}
+
+Finally in the last subperiod, the household's uncertainty is realized. Simultaneously, they observe their permanent and transitory income shocks, whether they will become renters in the next period (function $\wFunc_{t+1}$ with probability $\timeRate$), and if they do become renters, the liquidation price of their house per unit of housing.
+
+\begin{equation}
+	\begin{split}
+		\vOptAlt_{t}(\bRat_{t+1}, \hRat_{t}) & = \Ex_{t} \left[ \PGro_{t+1}^{1-\CRRA} \left( (1-\timeRate) \vFunc_{t+1}(\mRat_{t+1}, \hRat_{t+1}) + \timeRate \wFunc_{t+1}(\mRat_{t+1}^{\wFunc}) \right) \right] \\
+		& \text{where} \\
+		\hRat_{t+1} & = \hRat_{t}/\PGro_{t+1} \\
+		\mRat_{t+1} & = \bRat_{t+1}/\PGro_{t+1} + \tShkEmp_{t+1} \\
+		\mRat_{t+1}^{\wFunc} & = \mRat_{t+1} + \hRat_{t+1} \Qrisky_{t+1}
+	\end{split}
+\end{equation}
+
+\subsection{First order conditions: Choosing home investment}
+
+The problem is
+
+\begin{equation}
+	\vFunc_{t}(\mRat_{t}, \hRat_{t-1}) = \max_{\iRat_{t}} \vOpt_{t}(\mRat_{t} - \iRat_{t}, (1-\depr)\hRat_{t-1} + \iRat_{t}/\Qrisky_0)
+\end{equation}
+
+The first order condition with respect to $\iRat_{t}$ is
+
+\begin{equation}
+	\vOpt_{t}^{\nRat}(\nRat_{t}, \hRat_{t}) =  \vOpt_{t}^{\hRat}(\nRat_{t}, \hRat_{t})/\Qrisky_0
+\end{equation}
+
+which equalizes the marginal benefit of additional net cash-on-hand (cash-on-hand net of home investment) with the marginal cost of a larger house. The envelope conditions are
+
+\begin{equation}
+	\begin{split}
+		\vFunc_{t}^{\mRat}(\mRat_{t}, \hRat_{t-1}) & = \vOpt_{t}^{\nRat}(\nRat_{t}, \hRat_{t}) \\
+		\vFunc_{t}^{\hRat}(\mRat_{t}, \hRat_{t-1}) & = \vOpt_{t}^{\hRat}(\nRat_{t}, \hRat_{t})(1-\depr)
+	\end{split}
+\end{equation}
+
+\subsection{First order conditions: Choosing consumption and portfolio investment}
+
+Once again, let's reduce the problem to 1 line.
+
+\begin{equation}
+	\vOpt_{t}(\nRat_{t}, \hRat_{t}) = \max_{\{\aRat_{t}, \riskyshare_{t}\}} \utilFunc(\nRat_{t} - \aRat_{t}, \hRat_{t}) + \DiscFac \Ex_{t}\left[ \vOptAlt_{t}(\aRat_{t}(\Rfree + (\Risky_{t+1} - \Rfree)\riskyshare_{t}), \hRat_{t}) \right]
+\end{equation}
+
+Notice that $\hRat_{t}$ passes through this problem unaltered. Indeed, in this subproblem, the house size indexes the portfolio choice (and may affect marginal utility) but does not need further addressing beyond a simple portfolio choice model.
+
+The first order condition with respect to $\aRat_{t}$ is
+
+\begin{equation}
+	\utilFunc^{\cRat}(\cRat_{t}, \hRat_{t})  = \DiscFac \Ex_{t} \left[ \vOptAlt_{t}^{\bRat}(\bRat_{t+1}, \hRat_{t})\Rport_{t+1}(\riskyshare_{t}) \right]
+\end{equation}
+
+The first order condition with respect to $\riskyshare_{t}$ is
+
+\begin{equation}
+	\DiscFac \Ex_{t}\left[ \vOptAlt_{t}^{\bRat}(\bRat_{t+1}, \hRat_{t})\aRat_{t}(\Risky_{t+1}-\Rfree) \right] = 0
+\end{equation}
+
+Finally, the envelope conditions are
+
+\begin{equation}
+	\begin{split}
+		\vOpt_{t}^{\nRat}(\nRat_{t}, \hRat_{t})  &  = \utilFunc^{\cRat}(\cRat_{t}, \hRat_{t}) \\
+		\vOpt_{t}^{\hRat}(\nRat_{t}, \hRat_{t}) & = \utilFunc^{\hRat}(\cRat_{t}, \hRat_{t}) + \DiscFac \Ex_{t} \left[ \vOptAlt_{t}^{\hRat}(\bRat_{t+1}, \hRat_{t}) \right]
+	\end{split}
+\end{equation}
+
+The second envelope condition is due to the nature of the $\hRat_{t}$ pass-through.
+
+\subsection{Envelope conditions: Uncertainty is realized}
+
+The last subperiod is harder to re-write in one line, but because there is no maximization it is straight forward to calculate the derivatives.
+
+\begin{equation}
+	\begin{split}
+		\vOptAlt_{t}^{\bRat}(\bRat_{t+1}, \hRat_{t}) & = \Ex_{t} \left[ \PGro_{t+1}^{-\CRRA} \left( (1-\timeRate)\vFunc_{t+1}^{\mRat}(\mRat_{t+1}, \hRat_{t+1}) + \timeRate \wFunc_{t+1}^{\mRat}(\mRat_{t+1}^{\wFunc}) \right) \right] \\
+		\vOptAlt_{t}^{\hRat}(\bRat_{t+1}, \hRat_{t} ) & = \Ex_{t} \left[ \PGro_{t+1}^{-\CRRA} \left( (1-\timeRate)\vFunc_{t+1}^{\hRat}(\mRat_{t+1}, \hRat_{t+1}) + \timeRate \wFunc_{t+1}^{\mRat}(\mRat_{t+1}^{\wFunc})\Qrisky_{t+1} \right) \right]
+	\end{split}
+\end{equation}
+
+\section{Solving the homeowner with mortgage problem}
+
+\begin{equation}
+	\begin{split}
+		\vFunc_{t}(\mRat_{t}, \hRat_{t}, \dRat_{t-1}) & = \max_{\aRat_{t}, \riskyshare_{t}, \iRat_{t}} \utilFunc(\cRat_{t}, \hRat_{t}) + \DiscFac \Ex_{t} \left[ \PGro_{t+1}^{1-\CRRA} \vFunc_{t+1}(\mRat_{t+1}, \hRat_{t+1}, \dRat_{t+1}) \right] \\
+		&\text{s.t.} \\
+		\dRat_{t} & = \dRat_{t-1} + (1-\depr)\hRat_{t} - \iRat_{t} \\
+		\aRat_{t} & = \mRat_{t} - \cRat_{t} - \iRat_{t} \\
+		\Rport_{t+1}(\riskyshare_{t}) & = \Rfree + (\Risky_{t+1} - \Rfree)\riskyshare_{t} \\
+		\mRat_{t+1} & = \aRat_{t}\Rport_{t+1}(\riskyshare_{t})/\PGro_{t+1} + \tShkEmp_{t+1} \\
+		\hRat_{t+1} & = \hRat_{t}/\PGro_{t+1} \\
+		\mRat_{t+1}^{\wFunc} & = \mRat_{t+1} + \Qrisky_{t+1}\hRat_{t+1}
+	\end{split}
+\end{equation}
+
+Can also be split up into subparts
+
+\begin{equation}
+	\begin{split}
+		\vFunc_{t}(\mRat_{t}, \hRat_{t}, \dRat_{t-1}) & = \max_{\iRat_{t}} \vOpt_{t}(\nRat_{t}, \hRat_{t}, \dRat_{t}) \\
+		\nRat_{t} & = \mRat_{t} - \iRat_{t} \\
+		\dRat_{t} & = \dRat_{t-1} + (1-\depr)\hRat_{t} - \iRat_{t}
+	\end{split}
+\end{equation}
+
+\begin{equation}
+	\begin{split}
+		\vOpt_{t}(\nRat_{t}, \hRat_{t}, \dRat_{t}) & = \max_{\{\aRat_{t}, \riskyshare_{t}\}} \utilFunc(\cRat_{t}, \hRat_{t}) + \DiscFac \Ex_{t}\left[ \vOptAlt_{t}(\bRat_{t+1}, \hRat_{t}, \dRat_{t}) \right] \\
+		\aRat_{t} & = \nRat_{t} - \cRat_{t} \\
+		\Rport_{t+1}(\riskyshare_{t}) & = \Rfree + (\Risky_{t+1} - \Rfree)\riskyshare_{t} \\
+		\bRat_{t+1} & = \aRat_{t}\Rport_{t+1}(\riskyshare_{t})
+	\end{split}
+\end{equation}
+
+\begin{equation}
+	\begin{split}
+		\vOptAlt_{t}(\bRat_{t+1}, \hRat_{t}, \dRat_{t}) & = \Ex_{t} \left[ \PGro_{t+1}^{1-\CRRA} \vFunc_{t+1}(\mRat_{t+1}, \hRat_{t+1}, \dRat_{t+1}) \right] \\
+		& \text{where} \\
+		\hRat_{t+1} & = \hRat_{t}/\PGro_{t+1} \\
+		\dRat_{t+1} & = \dRat_{t}\Rfree_{D}/\PGro_{t+1} \\
+		\mRat_{t+1} & = \bRat_{t+1}/\PGro_{t+1} + \tShkEmp_{t+1} \\
+		\mRat_{t+1}^{\wFunc} & = \mRat_{t+1} + \hRat_{t+1} \Qrisky_{t+1}
+	\end{split}
+\end{equation}
+
+\end{document}
+\endinput

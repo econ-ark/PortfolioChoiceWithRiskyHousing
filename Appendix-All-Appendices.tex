@@ -1,0 +1,24 @@
+% -*- mode: LaTeX; TeX-PDF-mode: t; -*-
+\input{./econtexRoot}\documentclass[PortfolioChoiceWithRiskyHousing]{subfiles}
+\input{./econtexRoot}
+\externaldocument{PortfolioChoiceWithRiskyHousing} % Get xrefs -- esp to appendix -- from main file; only works properly if main file has already been compiled;
+
+\begin{document}
+
+\renewcommand{\onlyinsubfile}[1]{}\renewcommand{\notinsubfile}[1]{#1}
+
+\hypertarget{Appendices}{}
+\appendix \centerline{\LARGE Appendices}\vspace{0.2in}
+
+\subfile{Appendix-SummerPaper}
+\subfile{Appendix-FutureModels}
+
+\clearpage\vfill\eject
+
+\normalsize
+
+\pagebreak\bibliography{\econtexRoot/\texname,economics}
+
+\end{document}
+\endinput
+

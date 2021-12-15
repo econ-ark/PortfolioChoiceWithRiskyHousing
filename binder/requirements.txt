@@ -1,7 +1,9 @@
 matplotlib
 numpy
 scipy
+pandas
 
+ipython
 numba
 
 git+git://github.com/econ-ark/hark@master

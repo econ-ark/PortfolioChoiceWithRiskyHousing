@@ -1,0 +1,22 @@
+\input{./econtexRoot} % Set paths for root and various resources
+\documentclass[titlepage]{\econtex}
+\providecommand{\texname}{PortfolioChoiceWithRiskyHousing}% Keyname for the paper
+\usepackage{\LaTeXInputs/\texname}% Styling for whole paper (and subfiles)
+\linespread{1.25}
+\begin{document}
+
+% Redefine commands from sty file to signal compilation from master
+\renewcommand{\onlyinsubfile}[1]{}\renewcommand{\notinsubfile}[1]{#1}
+
+\subfile{PortfolioChoiceWithRiskyHousing-NoAppendix} % Main body of paper
+
+\hypertarget{Appendices}{} % Allows link to [url-of-paper]#Appendices
+\appendix \centerline{\LARGE Appendices}\vspace{0.2in}
+
+% Include appendices below
+
+\subfile{Appendix-SummerPaper}
+\subfile{Appendix-FutureModels}
+
+\input{\LaTeXInputs/bibliography_blend}\end{document}\endinput
+

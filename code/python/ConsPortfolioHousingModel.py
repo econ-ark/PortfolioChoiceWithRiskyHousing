@@ -19,7 +19,6 @@ from HARK.ConsumptionSaving.ConsPortfolioModel import (
     PortfolioSolution,
     PortfolioConsumerType,
     solveConsPortfolio,
-    init_portfolio,
 )
 from HARK.distribution import (
     Lognormal,
@@ -39,6 +38,8 @@ from HARK.interpolation import (
 )
 from numba import njit, prange
 from scipy.optimize import minimize_scalar
+
+from Calibration.params_CGM import dict_portfolio
 
 
 class PortfolioRiskyHousingSolution(MetricObject):
@@ -1517,7 +1518,7 @@ def life_cycle_by_years(lc_dict, years):
 
 
 # init_portfolio_housing = life_cycle_by_years(dict_portfolio, 5)
-init_portfolio_housing = init_portfolio.copy()
+init_portfolio_housing = dict_portfolio.copy()
 
 T_cycle = init_portfolio_housing["T_cycle"]
 T_retire = init_portfolio_housing["T_retire"]
@@ -1538,7 +1539,7 @@ init_portfolio_housing["FixRiskyStd"] = False
 init_portfolio_housing["WlthNrmAvg"] = np.linspace(1.0, 20.0, 14)
 init_portfolio_housing["RntHseShare"] = 0.3
 
-init_portfolio_risky_housing = init_portfolio.copy()
+init_portfolio_risky_housing = dict_portfolio.copy()
 init_portfolio_risky_housing["LivPrb"] = [1.0] * T_cycle
 # Standard deviation of log transitory income shocks
 init_portfolio_risky_housing["TranShkStd"] = [0.0] * T_cycle

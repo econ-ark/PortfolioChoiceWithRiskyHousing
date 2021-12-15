@@ -1,0 +1,312 @@
+\documentclass[PortfolioChoiceWithRiskyHousing]{subfiles}
+% \input{./econtexRoot} % Set paths for root and various resources
+% \documentclass[titlepage]{\econtex}
+% \providecommand{\texname}{PortfolioChoiceWithRiskyHousing}% Keyname for the paper
+% \usepackage{\LaTeXInputs/\texname}% Styling for whole paper (and subfiles)
+% \linespread{1.25}
+
+% WARNING: AuCTeX local variables only get reset when file is loaded
+% and differ between this file and PortfolioChoiceWithRiskyHousing.tex
+% so must re-load whichever file you want to compile with C-x C-v
+
+% WARNING: Different AucTeX execution depending on whether
+% 0. Being compiled as standalone document
+% * Compile main once
+% * Then compile this one
+% * Keep compiling until nothing changes
+% 0. Being compiled as subfile of main document
+% * Just compile main document repeatedly
+
+\input{./econtexRoot}
+\input{\LaTeXInputs/econtex_onlyinsubfile}
+\onlyinsubfile{\externaldocument{PortfolioChoiceWithRiskyHousing}} % Get xrefs -- esp to appendix -- from main file; only works properly if main file has already been compiled;
+
+\setlength{\parskip}{1em}
+\linespread{1.25}
+\begin{document}
+
+% Attempted to make all lines used for Web version contain {Web} (or version with only single curly brace at end) so can be removed with sed
+\providecommand{\versn}{pdf} % Version; like, web or pdf or journal submission
+\ifthenelse{\boolean{Web}}{ % {Web}
+  \renewcommand{\versn}{Web} % Too hard to figure out passing -output-directory through make4ht through htlatex, so web version is compiled with junk files in main directory
+  \renewcommand{\rootFromOut}{.} % {Web}
+}{} % {Web}
+
+% Tiny info header at top to track git commit
+% %\hfill{\tiny \jobname~\versn~\today~{at} \DTMcurrenttime, \input{\ResourcesDir/.git-source-commit}~~\input{\ResourcesDir/.git-public-commit}}
+
+\title{Portfolio Choice with Risky Housing}
+
+\author{
+  {\small Christopher Carroll\authNum} \\ {\small JHU}
+  \and
+  {\small Alan Lujan\authNum} \\ {\small OSU}
+  \and
+  {\small Mateo Vel\'asquez-Giraldo\authNum} \\ {\small JHU}
+}
+
+\keywords{Life-cycle, Portfolio Choice, Housing, Mortgage, Financial Risk}
+
+\jelclass{ \par
+  \href{https://econ-ark.org}{\includegraphics{\ResourcesDir/PoweredByEconARK}}
+}
+
+\renewcommand{\forcedate}{December 15, 2021}\date{\forcedate}
+
+\maketitle
+\hypertarget{abstract}{}
+\begin{abstract}
+  This paper develops a state-of-the-art computational model of optimal choices for household spending, investing, and home buying, taking into account the complex interactions between those and related choices such as mortgage characteristics. Our model can be used to evaluate the extent to which consumers' choices are optimal and to suggest strategies for improving their wellbeing depending on their individual risk aversion and other circumstances. This is the first open source toolkit that enables easy reproduction of results of this kind and one of few resources available anywhere including in the private sector that can analyze decisions this complex.  
+\end{abstract}
+
+% Various resources
+\hypertarget{links}{}
+
+% \begin{footnotesize}
+%   \parbox{0.9\textwidth}{
+%   \begin{center}
+%     \begin{tabbing}
+%       \texttt{Dashboard:~} \= \= \texttt{\url{https://econ-ark.org/materials/PortfolioChoiceWithRiskyHousing?dashboard}} \\
+%       \texttt{~~~REMARK:~} \> \> \texttt{\url{https://econ-ark.org/materials/PortfolioChoiceWithRiskyHousing}} \\ % Owner is defined in Resources/owner.tex
+%       \texttt{~~~~~html:~} \> \> \texttt{\href{https://\owner.github.io/PortfolioChoiceWithRiskyHousing/}{https://\owner.github.io/PortfolioChoiceWithRiskyHousing/}} \\ % Owner is defined in Resources/owner.tex
+%       \texttt{~~~~~~PDF:~} \> \> \texttt{\href{https://\owner.github.io/PortfolioChoiceWithRiskyHousing/PortfolioChoiceWithRiskyHousing.pdf}{https://\owner.github.io/PortfolioChoiceWithRiskyHousing/PortfolioChoiceWithRiskyHousing.pdf}} \\ % Owner is defined in Resources/owner.tex
+%       \texttt{~~~Slides:~} \> \> \texttt{\href{https://\owner.github.io/PortfolioChoiceWithRiskyHousing/PortfolioChoiceWithRiskyHousing-Slides.pdf}{https://\owner.github.io/PortfolioChoiceWithRiskyHousing/PortfolioChoiceWithRiskyHousing-Slides.pdf}} \\
+%       \texttt{~Appendix:~} \> \> \texttt{\href{https://\owner.github.io/PortfolioChoiceWithRiskyHousing\#Appendices}{https://\owner.github.io/PortfolioChoiceWithRiskyHousing\#Appendices}} \\
+%       \texttt{~~~GitHub:~} \> \> \texttt{\href{https://github.com/\owner/PortfolioChoiceWithRiskyHousing}{https://github.com/\owner/PortfolioChoiceWithRiskyHousing}} \\
+%     \end{tabbing}
+%   \end{center}
+%   The \href{https://econ-ark.org/materials/PortfolioChoiceWithRiskyHousing?dashboard}{dashboard} lets users see consequences of alternative parameters in an interactive framework.} % end parbox{\textwidth}
+% \end{footnotesize}
+
+\begin{authorsinfo}
+  \name{Contact: \href{mailto:ccarroll@jhu.edu}{\texttt{ccarroll@jhu.edu}}, Department of Economics, 590 Wyman Hall, Johns Hopkins University, Baltimore, MD 21218, \url{https://www.econ2.jhu.edu/people/ccarroll}, and National Bureau of Economic Research.} \\
+  \name{Contact: \href{mailto:lujan.14@osu.edu}{\texttt{lujan.14@osu.edu}}, Department of Economics, 410 Arps Hall, The Ohio State University, Columbus, OH 43220, \url{https://economics.osu.edu}.} \\
+  \name{Contact: \href{mailto:mvelasq2@jhu.edu}{\texttt{mvelasq2@jhu.edu}}, Department of Economics, 590 Wyman Hall, Johns Hopkins University, Baltimore, MD 21218, \url{https://www.econ2.jhu.edu}.}
+\end{authorsinfo}
+
+\newcommand{\thankstext}{
+  The paper's results \href{https://\owner.github.io/nbreproduce}{can be automatically reproduced} using the \href{https://econ-ark/HARK}{Econ-ARK/HARK} toolkit, which can be cited per our references (\cite{carroll_et_al-proc-scipy-2018}); for reference to the toolkit itself see \href{https://econ-ark.org/acknowledging/}{Acknowleding Econ-ARK}. Thanks to the \href{https://consumerfinance.gov}{Consumer Financial Protection Bureau} for funding the original creation of the \href{https://econ-ark.org}{Econ-ARK} toolkit; and to the \href{https://sloan.org}{Sloan Foundation} for funding Econ-ARK's \href{https://sloan.org/grant-detail/8071}{extensive further development} that brought it to the point where it could be used for this project. The toolkit can be cited with its digital object identifier, \href{https://doi.org/10.5281/zenodo.1001067}{10.5281/zenodo.1001067}, as is done in the paper's own references as \cite{carroll_et_al-proc-scipy-2018}. Here go additional thanks.}
+
+\ifthenelse{\boolean{Web}}{}{
+  \begin{minipage}{0.9\textwidth}
+    \tiny \thankstext
+  \end{minipage}
+} % {Web}
+{\titlepagefinish}
+
+\begin{verbatimwrite}{\LaTeXOutput/NontechSum/intro-start}
+  \section{Introduction}
+
+  Economists have long sought to use models of mathematically optimal behavior to try to understand saving and investment decisions over a household's life-cycle\footnote{See \cite{Gomes2020a} for a survey of portfolio choice over the life-cycle.}. If there were no uncertainty (about, say, investment returns), calculating optimal choices would not be  hard.  For example, consumers would want to invest their whole financial portfolio in whatever asset they knew (in advance) would yield the highest rate of return.
+
+  But in the real world, assets that -- on average -- yield higher returns (like stocks), also are much riskier than low-return safe assets (like bank deposits).  Aversion to risk is a perfectly rational motivation, so how much to invest in risky versus safe assets is far from obvious.  Furthermore, there are many other risks (to  job,  health, to house prices, and more) that should further temper any rational person's appetite for risky investment.
+
+  As noted in \cite{Carroll2020}\footnote{This blog post replicates results from \cite{Cocco2005}.}, calculating truly optimal behavior in a realistically uncertain world is such a difficult challenge that only recently has it become feasible to do with a reasonably high degree of realism.  Rational choice models like the one we examined there must account for many important features of reality, including different types of uncertainty (labor income risk, mortality risk, and stock market risk), and should allow for reasonable choices of risk aversion, impatience, and other preferences.  They need properly to account for for the path of income over the life cycle and into retirement, effects of aging and mortality, interest rates and economic growth, and myriad other factors.
+
+  All of this is so difficult that professional financial advisors do not attempt it, relying instead on rules of thumb and intuition to guide their clients.
+  Indeed, despite the current excitement about the wonders of artificial intelligence, even  online ``robo-advisors'' do not incorporate the degree of realism described above.  Serious mathematical optimization efforts have been restricted to the pages of top academic economics journals -- and the associated computer code used to solve the models in those papers has been so impenetrable as to be unusable.
+
+\end{verbatimwrite}
+\input{\LaTeXOutput/NontechSum/intro-start}
+
+\cite{Carroll2020} described the first phase of our work sponsored by TFI in building a public, easy-to-use, open-source software toolkit of the computer code that can solve these kinds of problems.  We showed that our free tools are able easily and quickly to reproduce the results that have been published in the academic literature.
+
+However, as noted in \cite{Carroll2020}, those models of optimal decisionmaking imply that, given the robust rate of return that risky assets ('stocks') have earned in the past, most consumers should invest \textit{all} of their financial wealth in stocks over most of their lifetimes.
+
+\begin{verbatimwrite}{\LaTeXOutput/NontechSum/intro-rest}
+
+  A tempting interpretation of the discrepancy between the models' predictions and people's actual choices is that most people are just making a mistake in not investing more in stocks. Another possibility, though, is that the models are still missing some vitally important (and rational) factor that weighs on people's actual decisions; in this case, people might be making rational decisions and the models might be wrong.
+
+  There's an obvious candidate for the missing factor.  For most households homeownership is the biggest financial decision in their lives.  Homeownership \textit{should} matter for consumers' choices about how willing they should rationally be to expose themselves to risky financial assets, for at least two reasons.  First, homeownership exposes consumers to housing market price risk, which should have the effect of reducing their appetite for being exposed to other kinds of risk.  Second, homeownership is associated with certain payment obligations (not just mortgages, but property taxes, maintenance costs, and so on), which reduces the flexibility they may have in adjusting their spending in response to income fluctuations.
+
+  These points may seem obvious, but there is a good reason they have not been incorporated in previous analyses of households' optimal choice:  Taking account of these complexities greatly increases the computational difficulty of calculating  optimal decisions.  This technical report describes results obtained using the latest tools to be added to the \href{https://econ-ark.org/}{Econ-ARK} toolkit; with these tools, it should be much easier for economists, financial planners, and others to understand the appropriate role of homeownership in modifying investors' optimal saving and financial choices.
+
+\end{verbatimwrite}
+\input{\LaTeXOutput/NontechSum/intro-rest}
+
+
+\begin{verbatimwrite}{\LaTeXOutput/NontechSum/lit-review}
+
+  \section{Literature Review}
+
+  Beginning with \cite{Merton1969} and \cite{Samuelson1969}, there is an extensive literature on portfolio choice over the life-cycle. \cite{Cocco2005} develop a model of portfolio choice under incomplete markets and with labor income risk \footnote{Other life-cycle portfolio choice models are \cite{gomes2005optimal} and \cite{yao2005optimal}}. Although they are successful in solving a realistically calibrated life-cycle portfolio choice model, their results imply that most households, and in particular young households with low liquid wealth should invest \textit{all} of their assets in the stock market. In reality, however, people choose a degree of stock market participation and risky share of assets much lower than what the model proposes would be optimal even for a person with very high risk aversion\footnote{See \cite{Carroll2020}.}. This gap between observed and actual stock market participation is known as the stock market participation puzzle, and it remains an open question that is not explained by state-of-the-art quantitative life-cycle models.
+
+  One possible explanation for the stock market participation puzzle could be the absence of additional forms of asset holding and risk exposure that households face. In particular, housing has dual properties: Both as an asset and as a source of consumption services . Housing, however, is different from other assets in that it is illiquid and durable, providing both future expected wealth (house value of liquidation) as well as shelter as a consumption service. \cite{Chetty2017} empirically quantify the effect of housing on portfolio choice. Looking at the Survey of Income and Program Participation (SIPP) panel from 1990 to 2008, the authors establish the importance of property value and home equity (value minus mortgage debt) on stock market participation. Importantly, they find that a \$10,000 increase in mortgage debt (holding home equity constant) causes the risky portfolio share to decrease by 0.6 percentage points or \$275, which amounts to 3.9\% of mean stockholdings in their data. Importantly for our purposes, they establish the need to distinguish the effects of home equity and mortgage debt in order to quantify the effect of housing on portfolios.
+
+  This project builds a quantitative model of housing and portfolio choice that can be used to interpret the empirical findings \cite{Chetty2017} in a rich framework that includes liquid wealth, illiquid housing (size and value), and mortgage debt, in order to capture the effects of home equity and mortgage debt on portfolio choice. While other recent work has attempted to shed light on this topic, this model is the first of its kind to explicitly track home value and mortgage debt separately, allowing them each to evolve with the decisionmaker's choices and with economic shocks (say, to house prices). The 2-period model \cite{Chetty2017} develop misses the life-cycle properties of housing choice and income risk. Additionally, although their empirical findings reveal the importance of distinguishing home equity and mortgage debt, their model does not allow these variables to be chosen. \cite{Cocco2004rfs} and \cite{yao2005optimal} do allow choice of house size but do not distinguish between home equity and mortgage debt, instead only keeping track of net wealth as the total value of assets minus liabilities.
+
+\end{verbatimwrite}
+\input{\LaTeXOutput/NontechSum/lit-review}
+
+
+\subsection{The House-Size Problem}
+
+When modeling housing decisions, different assumptions can be made about the
+``sizes'' of houses that are available for people's use. The ``size'' of
+a house is used to represent a scale of the different levels of utility that
+different houses yield, so a ``big'' house is simply a house that yields more
+utility than a ``small'' house. This section explores how the literature has
+dealt with the questions
+\begin{itemize}
+\item What kind of houses can people buy? Is there a finite number of types or a continuum of sizes?
+\item Can people change the size of their house without moving to a different house?
+  are these changes continuous or lumpy? Are they decisions or are they
+  mechanically tied to other life-cycle characteristics like permanent income?
+\item Do houses depreciate over time? Can this depreciation be offset?
+\end{itemize}
+
+In \cite{Cocco2004rfs} houses come in a continuum of sizes $[\HRat_{min},\infty)$ and once purchased, the houses' sizes can not be changed. Agents can move to a different house of a whatever size they want every period, but must pay a transaction cost proportional to their current house's price to do so. The total cost of moving to a size
+$\HRat_{t}$ house from a size $\HRat_{t-1}$ house is $\PLev_{t} \HRat_{t} - (1 - \lambda) \PLev_{t} \HRat_{t-1}.$ In this model, houses depreciate and agents must (exogenously) pay a cost $\depr \PLev_{t} \HRat_{t-1}$ each period to offset depreciation.
+
+For \cite{Campbell2003}, house sizes are exogenously set at the start of the agents' lives and remain fixed for throughout their duration.  The only ``moving'' that exists in the model is an exogenous event that can happen with a given probability in any period that forces the agent to sell his house, liquidate his mortgage and exit the model.There is no depreciation or associated costs.
+
+\cite{Brandsaas2021} develops a model where agents can rent or own their houses. Houses come in three fixed sizes; two for owners $\{\HRat_{small},\HRat_{large}\}$ and one for renters $\HRat_{rent}$. House sizes do not change, but agents can decide to move from one house size to another in any given period. Moving into a house entails a moving-cost (additional to the house's purchase) that is proportional to the new house's market value. Houses depreciate at a rate $\depr$. To offset this, the owner must (exogenously)
+pay $\depr \PLev_{t} \HRat_{t}$.
+
+In \cite{Paz2021}, agents can rent or own their houses. Houses come in three sizes: two for owning and one for renting \citep[as in][]{Brandsaas2021}, and there is no depreciation. Agents can switch homes at any time but this entails a monetary cost that is proportional to the value of the new home. Agents also experience exogenous moving via a Calvo adjustment probability that forces homeowners to sell their house. Thereafter, households are forced to spend that period in a rented house.
+
+\begin{verbatimwrite}{\LaTeXOutput/NontechSum/theory}
+
+  \section{Theoretical Framework}
+
+  Perhaps the biggest financial decision in a household's life is buying a house. Houses come in different sizes (and therefore costs), but they are generally an expensive asset whose value is at least a few times the household's yearly income. Young households usually cannot buy their houses outright, as they start with little to no assets and take time to accumulate enough resources. They therefore usually rely on mortgages to purchase their houses. These young and leveraged households might thus be sensitive to stock market risk, causing them to reduce their stock market participation.
+
+  During the repayment period, households' market resources (or liquid assets) are reduced by at least the fixed mortgage payment. This has two effects on risky asset choice: 1) It reduces 'market resources' (current income, plus current non-housing wealth) today, making households relatively less wealthy, and 2) It reduces market resources in following periods for any given level of current savings, making households more risk averse due to the precautionary motive. The fixed nature of mortgage payments has another important effect: since the household must be sure to have sufficient resources in the next period to pay their mortgage and the cost of house maintenance, they might want to save more of their resources in a safe account rather than in the risky stock market.
+
+  Houses are also subject to price fluctuations that depend on local housing market conditions as well as broader national trends, such as recessions and expansions. The uncertain sale price of your house, then, constitutes additional uncertainty in future net worth and could thus have significant implications for portfolio decisions. One way to think about this is to realize that the owner of a house has an implicit holding of a risky asset, which should motivate them to want to reduce their exposure to additional risk in another risky asset, the stock market.
+
+\end{verbatimwrite}
+\input{\LaTeXOutput/NontechSum/theory}
+
+\section{Methodology}
+
+The new model in our toolkit, which we call \texttt{ConsPortfolioHousingModel}, is an extension of the model we described in \cite{Carroll2020}, \texttt{ConsPortfolioModel}, with the added features of homeownership such as mortgage payments, house maintenance costs, and housing market price risk\footnote{The mathematical description of the model can be found on the appendix.}.
+
+\subsection{Young Households}
+
+The first stage of the model consists of young households making a decision to buy a house of fixed size. Importantly, young households have little to no assets and have recently joined the labor market, which means their income is also relatively small. In order to finance a home, then, young households must choose a house of a particular value and a corresponding mortgage size. Lenders are assumed to impose some microprudential conditions such as loan-to-income ratios to ensure that mortgages are repayable.
+
+\subsection{Mortgage payments}
+
+Once households choose a house and mortgage, they commit to fixed-rate payments for the rest of their working life, which is about 30 years. During this time, households have an implicit holding of a risky asset in their homes (because of their uncertain resale values), which may lead them to reduce their exposure to other risky assets, such as the stock market.
+
+\subsection{Retired homeowners}
+
+Once they reach retirement, households in our model have paid of their mortgage and have accumulated savings, making them significantly wealthier (where wealth here refers to their home equity and liquid assets) than young households. During this period, households experience a risk of house liquidation due to the possibility of being forced to move out due to poor health or old age. If they are forced to sell, they do so at their local housing market prices; the value of the house gets transformed into liquid wealth.
+
+\subsection{Retired renters}
+
+Retired renters have none of the complexities that come with owning a home, and thus behave like standard \texttt{ConsPortfolioModel} households. Instead of choosing only consumption, however, these households choose a level of total expenditures to spend on both consumption and rental housing. After becoming renters, households remain renters for the rest of their lives.
+
+\begin{verbatimwrite}{\LaTeXOutput/NontechSum/results-1}
+
+  \section{Results}
+
+  \subsection{Homeownership increases intensive margin of stock market participation}
+
+  We examine here the behavior of retired households on the cusp of the liquidation of the value of their house.  As usual, we are assuming that the household anticipates some form of guaranteed pension income ('Social Security'), but expects to finance any other consumption out of the returns on their assets.
+
+  The proportion of liquid assets invested in the stock market is known as the risky portfolio share, or \textbf{risky share} for short.
+
+  \cite{Carroll2020} reviewed the logic of the model without housing. For a person with no housing wealth and little liquid wealth, the first dollar of investment in the stock market poses very little risk, so the model implies that the proportion of any additional wealth that will be invested in the stock market is 100 percent.  But as wealth gets very large, the consumer becomes reluctant to put all of it in the stock market, because that would be putting more and more of their consumption at risk\footnote{See \cite{Carroll2020} for further discussion of this point.}.
+
+  \renewcommand{\figName}{shareFuncByHouse}
+  \renewcommand{\figFile}{\figName} %  and on filename
+  \input{\FigDir/\figName} % Read in the tex to generate the figure
+
+
+Figure~\ref{fig:shareFuncByHouse} shows how the picture is modified for consumers who, in addition to their liquid assets, own homes of various sizes.
+
+According to the model, retired households who own their homes and expect to sell them by next period have a higher risky share than retired households who rent, and their risky share increases with house size, holding liquid wealth constant.
+
+Clearly, the bigger the house size, the wealthier the agents are in terms of net worth. In the standard portfolio choice model, wealthier households actually reduce their risky share to reduce risk in next period's consumption. In the presence of housing, however, households still reduce their risk exposure as liquid wealth increases, but at a lower rate.
+
+A better comparison is to add the expected value of the house to liquid wealth. In this way, we compare an agent with $w$ net worth with all liquid wealth and no home, with an agent with $w$ net worth, some of which is liquid wealth $m$, and the rest is the illiquid expected house valuation $\Ex[Q]h$,  such that $w = m + \Ex[Q]h$, where $Q$ denotes house prices and $h$ represents the size of the agent's house\footnote{In this particular case, the household has fully paid their mortgage and home equity is the full home value}. As we see in figure~\ref{fig:shareFuncByNetWealth}, the increase in the risky portfolio share is more significant when considering home equity as part of net worth. Holding net wealth constant, households whose wealth is tied up in an illiquid asset have more risk appetite the larger the proportion of home equity to net wealth is.
+
+\renewcommand{\figName}{shareFuncByNetWealth}
+\renewcommand{\figFile}{\figName}
+\input{\FigDir/\figName} % Read in the tex to generate the figure
+
+\end{verbatimwrite}
+\input{\LaTeXOutput/NontechSum/results-1}
+
+Additionally, an interesting observation is that according to the model retired households who are about to sell their homes are willing to risk at least the full home equity (expected value of their homes $\Ex[Q]h$) for certain when they have low liquidity. In other words, their risky share is equal to 1 at least up to the point where their liquid wealth is equal to their home equity. If we shift their liquid wealth leftward by the amount of their expected house valuation, we see in figure~\ref{fig:shareFuncByEquity} that their risky share starts dropping at about the same point as it would if they rented a house instead. We can conclude that having a house shifts the risky share curve rightward by an amount equal to the home equity, but this is not the only effect. A larger house also reduces the rate at which the risky share decreases.
+
+\renewcommand{\figName}{shareFuncByEquity}
+\renewcommand{\figFile}{\figName}
+\input{\FigDir/\figName} % Read in the tex to generate the figure
+
+\begin{verbatimwrite}{\LaTeXOutput/NontechSum/results-2}
+
+  \subsection{Increasing house price risk decreases risky share}
+  
+  % \figName allows generic definition of hypertargets based on title of figure
+  \renewcommand{\figName}{shareFuncByRisk}
+  \renewcommand{\figFile}{\figName}
+  \input{\FigDir/\figName} % Read in the tex to generate the figure
+
+  The volatility of the housing market can have strong implications for the portfolio decisions of households who own their houses. A higher standard deviation in house prices implies a larger implicit holding of a risky asset (the house), regardless of house size. For this reason, households would optimally choose to avoid risk in other risky assets. As we see in  figure~\ref{fig:shareFuncByRisk} for 2 households who have a house of equal size, the risky share of a household in a more volatile market is lower than that of a household in a less volatile market, except at low levels of market resources. Households that experience high price volatility in the housing market reduce their exposure to risk elsewhere, leading to lower risky portfolio shares.
+
+\end{verbatimwrite}
+\input{\LaTeXOutput/NontechSum/results-2}
+
+\subsection{Larger houses increase households' absolute risk taking}
+
+\renewcommand{\figName}{liquidAssetsByHouse}
+\renewcommand{\figFile}{\figName}
+\input{\FigDir/\figName} % Read in the tex to generate the figure
+
+As mentioned before, a house represents an implicit holding in a risky market that is otherwise uncorrelated with the stock market. A larger house, however, provides a higher expected value of house liquidation which also means a higher expected future liquid wealth. Households with more valuable homes, then, have a higher absolute risk tolerance because their future housing value constitutes a buffer stock of wealth; thus they invest more resources in the risky asset market than they would if they had smaller homes. In figure~\ref{fig:liquidAssetsByHouse} we see that for an initial level of liquid assets, households of different house sizes invest the same amount of total assets in the stock market; this is the region where their risky share is 100\%. Past this region, we see that households with a bigger house (and thus more home equity) are willing to invest a greater share of their liquid assets than peers with the same amount of liquid assets but less home equity. This indicates that home equity increases the level of risk appetite for households.
+
+\begin{verbatimwrite}{\LaTeXOutput/NontechSum/results-3}
+
+  \subsection{House size crowds out investment}
+
+  However, when comparing households on a total wealth basis, i.e.\ their liquid assets plus expected house liquidation, we can see that house size crowds out investment for households with low liquid wealth. In figure~\ref{fig:liquidAssetsByEquity}, we can consider a household whose house size is equal to 5 (5 times their yearly net income) and liquid assets are 0, so their total expected wealth is 5. As this household becomes wealthier, they invest all of their liquid assets in the stock market (such that their risky share is 100 percent), up to the point where they start rebalancing their portfolio between the risky and the safe asset. In this region, they are constrained from investing in the stock market by their low liquid wealth, as they surely would like to invest more in the market. This point becomes clearer by comparing the household to an equally wealthy peer with a smaller house.  At the point where the household with house size of 5 has liquid wealth of 1 (1 times their yearly net income), they are investing less into the stock market in absolute terms than an equally wealthy household whose house size is equal to 2 and liquid assets are equal to 4. The total expected wealth of both these households is 6, but the household with the larger house is investing fewer assets in the stock market than the household with the smaller house. As their total wealth increases, however, both households are unconstrained by their house size and end up investing about the same amount into the stock market in absolute terms.
+
+  \providecommand{\figName}{}
+  \renewcommand{\figName}{liquidAssetsByEquity}
+  \providecommand{\figFile}{}
+  \renewcommand{\figFile}{\figName}
+  \input{\FigDir/\figName} % Read in the tex to generate the figure
+
+\end{verbatimwrite}
+\input{\LaTeXOutput/NontechSum/results-3}
+
+\subsection{Optimal Portfolio Choice over the Lifecycle}
+
+A result that is consistent with \texttt{ConsPortfolioModel} is that younger households have a higher risky share of assets than older households, when comparing households of equal house size and no mortgage debt. Similarly, older households consume more than younger households, as their consumption horizon gets shorter and the likelihood that they receive a windfall of wealth from their house liquidation increases.
+
+\renewcommand{\figName}{shareFuncByRetirement}
+\renewcommand{\figFile}{\figName}
+\input{\FigDir/\figName} % Read in the tex to generate the figure
+
+\renewcommand{\figName}{cFuncByRetirement}
+\renewcommand{\figFile}{\figName}
+\input{\FigDir/\figName} % Read in the tex to generate the figure
+
+\begin{verbatimwrite}{\LaTeXOutput/NontechSum/conclusion}
+
+  \section{Conclusions}
+
+  Most people who need advice about how to invest in financial markets are also homeowners. But until now, even the most sophisticated and realistic analyses of how people should optimally invest in financial markets have not accounted for the (undeniably important) ramifications of homeownership for their financial choices.
+
+  That's because constructing a model that correctly tracks all the potential interactions between homeownership, financial risk, and other kinds of risk is remarkably difficult. This report describes a free, publicly available open-source software tool that does these complex calculations.  Sponsorship by the Think Forward Initiative has allowed us to add this tool to the free, open-source, \href{https://econ-ark.org}{Econ-ARK} toolkit, thus making it available to financial institutions, financial planners, robo-advisors, academics, and anyone else who might be interested in a rigorous analysis of these questions.
+
+  Despite their combinatorial complexity, the answers that come from the model make intuitive sense. A first conclusion is that greater uncertainty about future house prices should make you less willing to invest in the stock market.  In other words, a homeowner who lives in a place with wild house-price swings will find it best to have less exposure to other kinds of risk (like stock market risk) than someone with circumstances that are otherwise similar, but who lives in a place where house prices are more stable.
+
+  Another conclusion might seem to push in the other direction, but really does not: Among homeowners whose mortgage is paid off, for a given level of \textit{nonhousing} net worth (say, \$200K of financial assets net of mortgage debt), a person whose house is more valuable should invest more in risky financial asset.  The reason is simple:  For a given amount of liquid assets, the person with a bigger house is richer, and a richer person will want to have more money (in absolute terms) invested in the stock market).
+
+  The final point is that the existence of homeownership does not reverse one of the more surprising implications of the baseline model without homeownership:  The richer you are, the lower is the optimal share of your portfolio in risky assets.  This implication of the model does not match the available data well.  The conclusion is easy to reverse by introducing a bequest motive in which bequests are a luxury good; but how exactly such a motive should be constructed is by no means a settled question, either among financial planners or among academic researchers.  It is a topic we hope to address in future releases of our toolkit.
+
+\end{verbatimwrite}
+\input{\LaTeXOutput/NontechSum/conclusion}
+
+\clearpage\vfill\eject
+
+% \onlyinsubfile{\input{\LaTeXInputs/bibliography_blend}}
+% \onlyinsubfile{\bibliography{\econtexRoot/PortfolioChoiceWithRiskyHousing}}
+\input{\LaTeXInputs/bibliography_blend}
+\end{document}
+\endinput
+

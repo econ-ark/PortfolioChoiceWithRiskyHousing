@@ -1,0 +1,182 @@
+---
+title: "Distribution of Income, Wealth, and Mortgage during Retirement in SCF"
+author: "Alan Lujan"
+date: "6/15/2021"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r include=FALSE}
+library(ggplot2)
+library(ggthemes)
+library(haven)
+library(tidyverse)
+
+SCF <- read_dta("scf_nb.dta")
+SCF$agecl <- as.numeric(SCF$Age_grp)
+SCF <- as_factor(SCF)
+```
+
+### Joint Density of log Permanent Income and log Normalized Wealth
+
+```{r}
+p <- ggplot(
+  SCF %>%
+    filter(agecl %in% seq(9, 12)),
+  aes(x = lnPermIncome, y = lnNrmWealth)
+) +
+  geom_density_2d() +
+  facet_grid(Age_grp ~ Educ) +
+  theme_bw()
+print(p)
+```
+
+\newpage 
+
+### Distribution of log Normalized Wealth
+
+```{r}
+p <- ggplot(
+  SCF %>%
+    filter(agecl %in% seq(9, 12)),
+  aes(x = lnNrmWealth, weight = wgt)
+) +
+  geom_density() +
+  facet_grid(Age_grp ~ Educ) +
+  theme_bw()
+print(p)
+```
+
+\newpage
+
+### Distribution of log Permanent Income
+
+```{r}
+p <- ggplot(
+  SCF %>%
+    filter(agecl %in% seq(9, 12)),
+  aes(x = lnPermIncome, weight = wgt)
+) +
+  geom_density() +
+  facet_grid(Age_grp ~ Educ) +
+  theme_bw()
+print(p)
+```
+
+\newpage
+
+### Distribution of log Normalized Mortgage
+
+```{r}
+p <- ggplot(
+  SCF %>%
+    filter(agecl %in% seq(9, 12)),
+  aes(x = lnNrmMortgage, weight = wgt)
+) +
+  geom_density() +
+  facet_grid(Age_grp ~ Educ) +
+  theme_bw()
+print(p)
+```
+
+\newpage
+
+### Mean log Normalized Wealth by age and education
+
+```{r}
+p <- ggplot(
+  SCF,
+  aes(y = lnNrmWealth, x = age, weight = wgt, group = Educ, color = Educ)
+) +
+  geom_smooth() +
+  theme_bw()
+print(p)
+```
+
+\newpage
+
+### Mean Normalized Wealth by age and education
+
+```{r}
+p <- ggplot(
+  SCF,
+  aes(y = NrmWealth, x = age, weight = wgt, group = Educ, color = Educ)
+) +
+  geom_smooth() +
+  theme_bw()
+print(p)
+```
+
+\newpage
+
+### Mean log Permanent Income by age and education 
+
+```{r}
+p <- ggplot(
+  SCF,
+  aes(y = lnPermIncome, x = age, weight = wgt, group = Educ, color = Educ)
+) +
+  geom_smooth() +
+  theme_bw()
+print(p)
+```
+
+\newpage
+
+### Mean log Normalized Mortgage by age and education 
+
+```{r}
+p <- ggplot(
+  SCF,
+  aes(y = lnNrmMortgage, x = age, weight = wgt, group = Educ, color = Educ)
+) +
+  geom_smooth() +
+  theme_bw()
+print(p)
+```
+
+\newpage
+
+### Mean log Normalized Wealth by age and homeownership class
+
+```{r}
+p <- ggplot(
+  SCF,
+  aes(y = lnNrmWealth, x = age, weight = wgt, group = hmort, color = hmort)
+) +
+  geom_smooth() +
+  theme_bw()
+print(p)
+```
+
+\newpage
+
+### Mean log Normalized Wealth by age, homeownership class, and education
+
+```{r}
+p <- ggplot(
+  SCF,
+  aes(y = lnNrmWealth, x = age, weight = wgt, group = hmort, color = hmort)
+) +
+  geom_smooth() +
+  facet_wrap(~Educ) +
+  theme_bw()
+print(p)
+```
+
+\newpage
+
+### Mean log Permanent Income by age, homeownership class, and education
+
+```{r}
+p <- ggplot(
+  SCF,
+  aes(y = lnPermIncome, x = age, weight = wgt, group = hmort, color = hmort)
+) +
+  geom_smooth() +
+  facet_wrap(~Educ) +
+  theme_bw()
+print(p)
+```
