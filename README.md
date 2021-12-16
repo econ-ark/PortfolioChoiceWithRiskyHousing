@@ -2,15 +2,16 @@
 
 --------------------------------------------
 
-Link to TFI Technical Report [(Word)](Word-Docs/NEW-technical-report-template-Nov-2021.docx)
+Link to TFI Technical Report (without mathematical appendices): 
+    - [(Word)](https://github.com/econ-ark/PortfolioChoiceWithRiskyHousing/blob/master/Word-Docs/PortfolioChoiceWithRiskyHousing-NoAppendix.docx)
 
-Link to TFI Non-Technical Report [(Word)](Word-Docs/NontechSum.docx) [(Pdf)](NontechSum/NontechSum.pdf)
+Links to TFI Non-Technical Report:
+    - [(Word)](https://github.com/econ-ark/PortfolioChoiceWithRiskyHousing/blob/master/Word-Docs/NontechSum.docx) 
+	- [(PDF)](https://github.com/econ-ark/PortfolioChoiceWithRiskyHousing/blob/master/LaTeX/Output/NontechSum.pdf)
+	
+Link to Full Paper (with appendices): 
+    - [(PDF)](https://github.com/econ-ark/PortfolioChoiceWithRiskyHousing/blob/master/LaTeX/Output/PortfolioChoiceWithRiskyHousing.pdf)
 
-Link to Full Paper [(Word)](Word-Docs/PortfolioChoiceWithRiskyHousing.docx) [(Pdf)](PortfolioChoiceWithRiskyHousing.pdf)
-
-Link to No Appendix Paper [(Word)](Word-Docs/PortfolioChoiceWithRiskyHousing-NoAppendix.docx) [(Pdf)](PortfolioChoiceWithRiskyHousing-NoAppendix.pdf)
-
-Link to Appendices [(Word)](Word-Docs/All-Appendices.docx) [(Pdf)](Appendices/All-Appendices.pdf)
 
 -------------------------------------------
 
