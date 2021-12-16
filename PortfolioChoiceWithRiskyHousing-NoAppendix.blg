@@ -1,0 +1,147 @@
+This is BibTeX, Version 0.99d (TeX Live 2020)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: PortfolioChoiceWithRiskyHousing-NoAppendix.aux
+The style file: ./Resources/texmf-local/bibtex/bst/econtex.bst
+Database file #1: ./Add-Refs.bib
+Database file #2: ./PortfolioChoiceWithRiskyHousing.bib
+Repeated entry---line 184 of file ./PortfolioChoiceWithRiskyHousing.bib
+ : @article{Brandsaas2021
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 342 of file ./PortfolioChoiceWithRiskyHousing.bib
+ : @article{Campbell2003
+ :                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 392 of file ./PortfolioChoiceWithRiskyHousing.bib
+ : @article{Carroll2020
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 467 of file ./PortfolioChoiceWithRiskyHousing.bib
+ : @article{Chetty2017
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 512 of file ./PortfolioChoiceWithRiskyHousing.bib
+ : @article{Cocco2004rfs
+ :                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 528 of file ./PortfolioChoiceWithRiskyHousing.bib
+ : @article{Cocco2005
+ :                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 772 of file ./PortfolioChoiceWithRiskyHousing.bib
+ : @article{Gomes2020a
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 803 of file ./PortfolioChoiceWithRiskyHousing.bib
+ : @article{gomes2005optimal
+ :                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1229 of file ./PortfolioChoiceWithRiskyHousing.bib
+ : @article{Merton1969
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1323 of file ./PortfolioChoiceWithRiskyHousing.bib
+ : @article{Paz2021
+ :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1381 of file ./PortfolioChoiceWithRiskyHousing.bib
+ : @article{Samuelson1969
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1562 of file ./PortfolioChoiceWithRiskyHousing.bib
+ : @article{yao2005optimal
+ :                        ,
+I'm skipping whatever remains of this entry
+Database file #3: economics.bib
+Repeated entry---line 199 of file economics.bib
+ : @article{Brandsaas2021
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 357 of file economics.bib
+ : @article{Campbell2003
+ :                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 407 of file economics.bib
+ : @article{Carroll2020
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 482 of file economics.bib
+ : @article{Chetty2017
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 527 of file economics.bib
+ : @article{Cocco2004rfs
+ :                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 543 of file economics.bib
+ : @article{Cocco2005
+ :                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 787 of file economics.bib
+ : @article{Gomes2020a
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 818 of file economics.bib
+ : @article{gomes2005optimal
+ :                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1244 of file economics.bib
+ : @article{Merton1969
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1338 of file economics.bib
+ : @article{Paz2021
+ :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1396 of file economics.bib
+ : @article{Samuelson1969
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1577 of file economics.bib
+ : @article{yao2005optimal
+ :                        ,
+I'm skipping whatever remains of this entry
+Warning--there's a number but no volume in Carroll2020
+Done.
+You've used 13 entries,
+            2309 wiz_defined-function locations,
+            675 strings with 7139 characters,
+and the built_in function-call counts, 6482 in all, are:
+= -- 650
+> -- 331
+< -- 2
++ -- 103
+- -- 100
+* -- 585
+:= -- 1224
+add.period$ -- 14
+call.type$ -- 13
+change.case$ -- 76
+chr.to.int$ -- 13
+cite$ -- 14
+duplicate$ -- 237
+empty$ -- 420
+format.name$ -- 106
+if$ -- 1266
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 13
+newline$ -- 46
+num.names$ -- 79
+pop$ -- 60
+preamble$ -- 2
+purify$ -- 76
+quote$ -- 0
+skip$ -- 217
+stack$ -- 0
+substring$ -- 395
+swap$ -- 53
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 143
+warning$ -- 1
+while$ -- 77
+width$ -- 0
+write$ -- 162
+(There were 24 error messages)
