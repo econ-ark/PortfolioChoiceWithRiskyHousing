@@ -1,0 +1,2526 @@
+<!DOCTYPE html> 
+<html lang="en" xml:lang="en" > 
+<head>
+  <title>Portfolio Choice with Risky Housing</title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="PortfolioChoiceWithRiskyHousing.css" /> 
+<meta name="src" content="PortfolioChoiceWithRiskyHousing.tex"> 
+</head><body 
+>
+  <div class="maketitle">
+<h2 class="titleHead">Portfolio Choice with Risky Housing</h2>
+<div class="date" >December 15, 2021</div>
+<span 
+class="ecrm-0600"> </span>
+      <div class="author" >  <span 
+class="ecrm-1095">Christopher Carroll</span><sup class="textsuperscript"><span 
+class="ecrm-0600">1</span></sup>
+<br />        <span 
+class="ecrm-1095">JHU </span><br class="and" /><span 
+class="ecrm-1095">Alan Lujan</span><sup class="textsuperscript"><span 
+class="ecrm-0600">2</span></sup>
+<br /> <span 
+class="ecrm-1095">OSU </span><br class="and" /><span 
+class="ecrm-1095">Mateo Vel</span><span 
+class="ecrm-1095">á</span><span 
+class="ecrm-1095">squez-Giraldo</span><sup class="textsuperscript"><span 
+class="ecrm-0600">3</span></sup>
+<br />              <span 
+class="ecrm-1095">JHU </span></div>
+<br />
+</div><a 
+ id="abstract"></a> <div 
+class="abstract" 
+>
+<!--l. 59--><p class="noindent" > <br 
+class="newline" />_____________________________________________________________________________________
+<!--l. 59--><p class="noindent" ><span 
+class="ecbx-1200">Abstract</span><br 
+class="newline" />   <span 
+class="ecrm-1095">This paper develops a state-of-the-art computational model of optimal choices for household</span>
+<span 
+class="ecrm-1095">spending, investing, and home buying, taking into account the complex interactions between those</span>
+<span 
+class="ecrm-1095">and related choices such as mortgage characteristics. Our model can be used to evaluate the extent to</span>
+<span 
+class="ecrm-1095">which consumers’ choices are optimal and to suggest strategies for improving their wellbeing</span>
+<span 
+class="ecrm-1095">depending on their individual risk aversion and other circumstances. This is the ﬁrst open source</span>
+<span 
+class="ecrm-1095">toolkit that enables easy reproduction of results of this kind and one of few resources</span>
+<span 
+class="ecrm-1095">available anywhere including in the private sector that can analyze decisions this complex.</span>
+<br 
+class="newline" />
+        <div class="quote">
+                     <dl class="list2"><dt class="list">
+<span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> Keywords</span><span 
+class="ecbx-1200"> </span></dt><dd 
+class="list">
+                                                                                     
+                                                                                     
+              <!--l. 61--><p class="noindent" >Life-cycle,  Portfolio  Choice,  Housing,  Mortgage,  Financial
+              Risk
+              </dd><dt class="list">
+<span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> </span><span 
+class="ecbx-1200"> JEL codes</span><span 
+class="ecbx-1200"> </span></dt><dd 
+class="list">
+              <!--l. 61--><p class="noindent" >
+              <!--l. 61--><p class="noindent" ><a 
+href="https://econ-ark.org" > <img 
+src="./Resources/PoweredByEconARK.png" alt="pict"  
+ width="105.39374pt" > </a></dd></dl>
+      </div>
+</div>
+<!--l. 64--><p class="indent" >  <a 
+ id="links"></a>
+<!--l. 86--><p class="indent" >  <span class="footnote-mark"><sup class="textsuperscript"></sup></span>
+<!--l. 96--><p class="indent" >
+      <sup class="textsuperscript"></sup>
+<!--l. 83--><p class="indent" >  <sup class="textsuperscript"><span 
+class="ecrm-0600">1</span></sup><span 
+class="ecrm-1000">Contact: </span><a 
+href="mailto:ccarroll@jhu.edu" ><span 
+class="ectt-1000">ccarroll@jhu.edu</span></a><span 
+class="ecrm-1000">, Department of Economics, 590 Wyman Hall, Johns Hopkins University,</span>
+<span 
+class="ecrm-1000">Baltimore, MD 21218, </span><a 
+href="https://www.econ2.jhu.edu/people/ccarroll" class="url" ><span 
+class="ectt-1000">https://www.econ2.jhu.edu/people/ccarroll</span></a><span 
+class="ecrm-1000">, and National Bureau of Economic</span>
+<span 
+class="ecrm-1000">Research.</span><span 
+class="ecrm-1000"> </span><span 
+class="ecrm-1000"> </span><span 
+class="ecrm-1000"> </span><span 
+class="ecrm-1000">   </span><sup class="textsuperscript"><span 
+class="ecrm-0600">2</span></sup><span 
+class="ecrm-1000">Contact: </span><a 
+href="mailto:lujan.14@osu.edu" ><span 
+class="ectt-1000">lujan.14@osu.edu</span></a><span 
+class="ecrm-1000">, Department of Economics, 410 Arps Hall, The Ohio State</span>
+<span 
+class="ecrm-1000">University, Columbus, OH 43220, </span><a 
+href="https://economics.osu.edu" class="url" ><span 
+class="ectt-1000">https://economics.osu.edu</span></a><span 
+class="ecrm-1000">.</span><span 
+class="ecrm-1000"> </span><span 
+class="ecrm-1000"> </span><span 
+class="ecrm-1000"> </span><span 
+class="ecrm-1000">   </span><sup class="textsuperscript"><span 
+class="ecrm-0600">3</span></sup><span 
+class="ecrm-1000">Contact: </span><a 
+href="mailto:mvelasq2@jhu.edu" ><span 
+class="ectt-1000">mvelasq2@jhu.edu</span></a><span 
+class="ecrm-1000">,</span>
+<span 
+class="ecrm-1000">Department of Economics, 590 Wyman Hall, Johns Hopkins University, Baltimore, MD 21218,</span>
+<a 
+href="https://www.econ2.jhu.edu" class="url" ><span 
+class="ectt-1000">https://www.econ2.jhu.edu</span></a><span 
+class="ecrm-1000">.</span><span 
+class="ecrm-1000"> </span><span 
+class="ecrm-1000"> </span><span 
+class="ecrm-1000"> </span><span 
+class="ecrm-1000"> </span>
+                                                                                     
+                                                                                     
+  <h3 class="sectionHead"><span class="titlemark">1  </span> <a 
+ id="x1-10001"></a>Introduction</h3>
+<!--l. 3--><p class="noindent" >Economists have long sought to use models of mathematically optimal behavior
+to try to understand saving and investment decisions over a household’s
+life-cycle<span class="footnote-mark"><a 
+href="PortfolioChoiceWithRiskyHousing2.html#fn1x0"><sup class="textsuperscript">1</sup></a></span><a 
+ id="x1-1001f1"></a>  .
+If there were no uncertainty (about, say, investment returns), calculating optimal choices
+would not be hard. For example, consumers would want to invest their whole ﬁnancial
+portfolio in whatever asset they knew (in advance) would yield the highest rate of
+return.
+<!--l. 5--><p class="indent" >  But in the real world, assets that – on average – yield higher returns (like stocks), also are
+much riskier than low-return safe assets (like bank deposits). Aversion to risk is a
+perfectly rational motivation, so how much to invest in risky versus safe assets is far
+from obvious. Furthermore, there are many other risks (to job, health, to house
+prices, and more) that should further temper any rational person’s appetite for risky
+investment.
+<!--l. 7--><p class="indent" >  As noted in <a 
+href="#XCarroll2020">Carroll</a> (<a 
+href="#XCarroll2020">2020</a>)<span class="footnote-mark"><a 
+href="PortfolioChoiceWithRiskyHousing3.html#fn2x0"><sup class="textsuperscript">2</sup></a></span><a 
+ id="x1-1002f2"></a>  ,
+calculating truly optimal behavior in a realistically uncertain world is such a diﬃcult challenge
+that only recently has it become feasible to do with a reasonably high degree of realism.
+Rational choice models like the one we examined there must account for many important
+features of reality, including diﬀerent types of uncertainty (labor income risk, mortality risk,
+and stock market risk), and should allow for reasonable choices of risk aversion, impatience,
+and other preferences. They need properly to account for for the path of income over the life
+cycle and into retirement, eﬀects of aging and mortality, interest rates and economic growth,
+and myriad other factors.
+                                                                                     
+                                                                                     
+<!--l. 9--><p class="indent" >  All of this is so diﬃcult that professional ﬁnancial advisors do not attempt it, relying
+instead on rules of thumb and intuition to guide their clients. Indeed, despite the current
+excitement about the wonders of artiﬁcial intelligence, even online “robo-advisors” do not
+incorporate the degree of realism described above. Serious mathematical optimization eﬀorts
+have been restricted to the pages of top academic economics journals – and the associated
+computer code used to solve the models in those papers has been so impenetrable as to be
+unusable.
+<!--l. 113--><p class="indent" >  <a 
+href="#XCarroll2020">Carroll</a> (<a 
+href="#XCarroll2020">2020</a>) described the ﬁrst phase of our work sponsored by TFI in building a public,
+easy-to-use, open-source software toolkit of the computer code that can solve these kinds of
+problems. We showed that our free tools are able easily and quickly to reproduce the results
+that have been published in the academic literature.
+<!--l. 115--><p class="indent" >  However, as noted in <a 
+href="#XCarroll2020">Carroll</a> (<a 
+href="#XCarroll2020">2020</a>), those models of optimal decisionmaking imply that,
+given the robust rate of return that risky assets (’stocks’) have earned in the past, most
+consumers should invest <span 
+class="ecti-1200">all </span>of their ﬁnancial wealth in stocks over most of their
+lifetimes.
+<!--l. 2--><p class="indent" >  A tempting interpretation of the discrepancy between the models’ predictions and people’s
+actual choices is that most people are just making a mistake in not investing more
+in stocks. Another possibility, though, is that the models are still missing some
+vitally important (and rational) factor that weighs on people’s actual decisions;
+in this case, people might be making rational decisions and the models might be
+wrong.
+<!--l. 4--><p class="indent" >  There’s an obvious candidate for the missing factor. For most households homeownership is
+the biggest ﬁnancial decision in their lives. Homeownership <span 
+class="ecti-1200">should </span>matter for consumers’
+choices about how willing they should rationally be to expose themselves to risky ﬁnancial
+assets, for at least two reasons. First, homeownership exposes consumers to housing market
+price risk, which should have the eﬀect of reducing their appetite for being exposed
+to other kinds of risk. Second, homeownership is associated with certain payment
+obligations (not just mortgages, but property taxes, maintenance costs, and so on), which
+reduces the ﬂexibility they may have in adjusting their spending in response to income
+ﬂuctuations.
+<!--l. 6--><p class="indent" >  These points may seem obvious, but there is a good reason they have not been incorporated
+in previous analyses of households’ optimal choice: Taking account of these complexities
+                                                                                     
+                                                                                     
+greatly increases the computational diﬃculty of calculating optimal decisions. This technical
+report describes results obtained using the latest tools to be added to the <a 
+href="https://econ-ark.org/" >Econ-ARK</a> toolkit;
+with these tools, it should be much easier for economists, ﬁnancial planners, and others to
+understand the appropriate role of homeownership in modifying investors’ optimal saving and
+ﬁnancial choices.
+  <h3 class="sectionHead"><span class="titlemark">2  </span> <a 
+ id="x1-20002"></a>Literature Review</h3>
+<!--l. 4--><p class="noindent" >Beginning with <a 
+href="#XMerton1969">Merton</a> (<a 
+href="#XMerton1969">1969</a>) and <a 
+href="#XSamuelson1969">Samuelson</a> (<a 
+href="#XSamuelson1969">1969</a>), there is an extensive literature on
+portfolio choice over the life-cycle. <a 
+href="#XCocco2005">Cocco, Gomes, and Maenhout</a> (<a 
+href="#XCocco2005">2005</a>) develop a
+model of portfolio choice under incomplete markets and with labor income risk
+<span class="footnote-mark"><a 
+href="PortfolioChoiceWithRiskyHousing4.html#fn3x0"><sup class="textsuperscript">3</sup></a></span><a 
+ id="x1-2001f3"></a> .
+Although they are successful in solving a realistically calibrated life-cycle portfolio choice
+model, their results imply that most households, and in particular young households with low
+liquid wealth should invest <span 
+class="ecti-1200">all </span>of their assets in the stock market. In reality, however, people
+choose a degree of stock market participation and risky share of assets much lower than
+what the model proposes would be optimal even for a person with very high risk
+aversion<span class="footnote-mark"><a 
+href="PortfolioChoiceWithRiskyHousing5.html#fn4x0"><sup class="textsuperscript">4</sup></a></span><a 
+ id="x1-2002f4"></a>  .
+This gap between observed and actual stock market participation is known as the stock
+market participation puzzle, and it remains an open question that is not explained by
+state-of-the-art quantitative life-cycle models.
+<!--l. 6--><p class="indent" >  One possible explanation for the stock market participation puzzle could be the absence of
+                                                                                     
+                                                                                     
+additional forms of asset holding and risk exposure that households face. In particular,
+housing has dual properties: Both as an asset and as a source of consumption services .
+Housing, however, is diﬀerent from other assets in that it is illiquid and durable,
+providing both future expected wealth (house value of liquidation) as well as shelter
+as a consumption service. <a 
+href="#XChetty2017">CHETTY, SÁNDOR, and SZEIDL</a> (<a 
+href="#XChetty2017">2017</a>) empirically
+quantify the eﬀect of housing on portfolio choice. Looking at the Survey of Income and
+Program Participation (SIPP) panel from 1990 to 2008, the authors establish the
+importance of property value and home equity (value minus mortgage debt) on stock
+market participation. Importantly, they ﬁnd that a $10,000 increase in mortgage debt
+(holding home equity constant) causes the risky portfolio share to decrease by 0.6
+percentage points or $275, which amounts to 3.9% of mean stockholdings in their
+data. Importantly for our purposes, they establish the need to distinguish the eﬀects
+of home equity and mortgage debt in order to quantify the eﬀect of housing on
+portfolios.
+<!--l. 8--><p class="indent" >  This project builds a quantitative model of housing and portfolio choice that can be used to
+interpret the empirical ﬁndings <a 
+href="#XChetty2017">CHETTY, SÁNDOR, and SZEIDL</a> (<a 
+href="#XChetty2017">2017</a>) in a rich
+framework that includes liquid wealth, illiquid housing (size and value), and mortgage debt, in
+order to capture the eﬀects of home equity and mortgage debt on portfolio choice. While other
+recent work has attempted to shed light on this topic, this model is the ﬁrst of its kind to
+explicitly track home value and mortgage debt separately, allowing them each to evolve with
+the decisionmaker’s choices and with economic shocks (say, to house prices). The 2-period
+model <a 
+href="#XChetty2017">CHETTY, SÁNDOR, and SZEIDL</a> (<a 
+href="#XChetty2017">2017</a>) develop misses the life-cycle properties of
+housing choice and income risk. Additionally, although their empirical ﬁndings reveal the
+importance of distinguishing home equity and mortgage debt, their model does not
+allow these variables to be chosen. <a 
+href="#XCocco2004rfs">Cocco</a> (<a 
+href="#XCocco2004rfs">2005</a>) and <a 
+href="#Xyao2005optimal">Yao and Zhang</a> (<a 
+href="#Xyao2005optimal">2005</a>) do
+allow choice of house size but do not distinguish between home equity and mortgage
+debt, instead only keeping track of net wealth as the total value of assets minus
+liabilities.
+  <h4 class="subsectionHead"><span class="titlemark">2.1  </span> <a 
+ id="x1-30002.1"></a>The House-Size Problem</h4>
+<!--l. 145--><p class="noindent" >When modeling housing decisions, diﬀerent assumptions can be made about the “sizes” of
+                                                                                     
+                                                                                     
+houses that are available for people’s use. The “size” of a house is used to represent a scale of
+the diﬀerent levels of utility that diﬀerent houses yield, so a “big” house is simply a house that
+yields more utility than a “small” house. This section explores how the literature has dealt
+with the questions
+      <ul class="itemize1">
+      <li class="itemize">What  kind  of  houses  can  people  buy?  Is  there  a  ﬁnite  number  of  types  or  a
+      continuum of sizes?
+      </li>
+      <li class="itemize">Can people change the size of their house without moving to a diﬀerent house? are
+      these changes continuous or lumpy? Are they decisions or are they mechanically
+      tied to other life-cycle characteristics like permanent income?
+      </li>
+      <li class="itemize">Do houses depreciate over time? Can this depreciation be oﬀset?</li></ul>
+<!--l. 159--><p class="indent" >  In <a 
+href="#XCocco2004rfs">Cocco</a> (<a 
+href="#XCocco2004rfs">2005</a>) houses come in a continuum of sizes <img 
+src="PortfolioChoiceWithRiskyHousing0x.svg" alt="[H    ,∞ )
+   min  " class="math";align="absmiddle"> and once purchased, the
+houses’ sizes can not be changed. Agents can move to a diﬀerent house of a whatever size they
+want every period, but must pay a transaction cost proportional to their current house’s price
+to do so. The total cost of moving to a size <img 
+src="PortfolioChoiceWithRiskyHousing1x.svg" alt="Ht  " class="math";align="absmiddle"> house from a size <img 
+src="PortfolioChoiceWithRiskyHousing2x.svg" alt="Ht −1   " class="math";align="absmiddle"> house is
+<img 
+src="PortfolioChoiceWithRiskyHousing3x.svg" alt="P H  −  (1 − λ )P H  .
+  t t           t  t−1  " class="math";align="absmiddle"> In this model, houses depreciate and agents must (exogenously) pay a
+cost <img 
+src="PortfolioChoiceWithRiskyHousing4x.svg" alt="δPtHt −1   " class="math";align="absmiddle"> each period to oﬀset depreciation.
+<!--l. 162--><p class="indent" >  For <a 
+href="#XCampbell2003">Campbell and Cocco</a> (<a 
+href="#XCampbell2003">2003</a>), house sizes are exogenously set at the start of the agents’
+lives and remain ﬁxed for throughout their duration. The only “moving” that exists in the
+model is an exogenous event that can happen with a given probability in any period that
+forces the agent to sell his house, liquidate his mortgage and exit the model.There is no
+depreciation or associated costs.
+<!--l. 164--><p class="indent" >  <a 
+href="#XBrandsaas2021">Brandsaas</a> (<a 
+href="#XBrandsaas2021">2018</a>) develops a model where agents can rent or own their houses. Houses come
+in three ﬁxed sizes; two for owners <img 
+src="PortfolioChoiceWithRiskyHousing5x.svg" alt="{H      ,H    }
+   small  large " class="math";align="absmiddle"> and one for renters <img 
+src="PortfolioChoiceWithRiskyHousing6x.svg" alt="H
+  rent  " class="math";align="absmiddle">. House sizes do
+not change, but agents can decide to move from one house size to another in any given period.
+Moving into a house entails a moving-cost (additional to the house’s purchase) that is
+proportional to the new house’s market value. Houses depreciate at a rate <img 
+src="PortfolioChoiceWithRiskyHousing7x.svg" alt="δ  " class="math";align="absmiddle">. To oﬀset this,
+the owner must (exogenously) pay <img 
+src="PortfolioChoiceWithRiskyHousing8x.svg" alt="δPtHt  " class="math";align="absmiddle">.
+                                                                                     
+                                                                                     
+<!--l. 167--><p class="indent" >  In <a 
+href="#XPaz2021">Paz-Pardo</a> (<a 
+href="#XPaz2021">2021</a>), agents can rent or own their houses. Houses come in three sizes: two
+for owning and one for renting (as in <a 
+href="#XBrandsaas2021">Brandsaas</a>, <a 
+href="#XBrandsaas2021">2018</a>), and there is no depreciation. Agents
+can switch homes at any time but this entails a monetary cost that is proportional to the
+value of the new home. Agents also experience exogenous moving via a Calvo adjustment
+probability that forces homeowners to sell their house. Thereafter, households are forced to
+spend that period in a rented house.
+<!--l. 2--><p class="noindent" >
+  <h3 class="sectionHead"><span class="titlemark">3  </span> <a 
+ id="x1-40003"></a>Theoretical Framework</h3>
+<!--l. 4--><p class="noindent" >Perhaps the biggest ﬁnancial decision in a household’s life is buying a house. Houses come in
+diﬀerent sizes (and therefore costs), but they are generally an expensive asset whose value is at
+least a few times the household’s yearly income. Young households usually cannot buy their
+houses outright, as they start with little to no assets and take time to accumulate enough
+resources. They therefore usually rely on mortgages to purchase their houses. These young and
+leveraged households might thus be sensitive to stock market risk, causing them to reduce
+their stock market participation.
+<!--l. 6--><p class="indent" >  During the repayment period, households’ market resources (or liquid assets) are reduced by
+at least the ﬁxed mortgage payment. This has two eﬀects on risky asset choice: 1) It reduces
+’market resources’ (current income, plus current non-housing wealth) today, making
+households relatively less wealthy, and 2) It reduces market resources in following
+periods for any given level of current savings, making households more risk averse due
+to the precautionary motive. The ﬁxed nature of mortgage payments has another
+important eﬀect: since the household must be sure to have suﬃcient resources in the
+next period to pay their mortgage and the cost of house maintenance, they might
+want to save more of their resources in a safe account rather than in the risky stock
+market.
+<!--l. 8--><p class="indent" >  Houses are also subject to price ﬂuctuations that depend on local housing market conditions
+as well as broader national trends, such as recessions and expansions. The uncertain sale price
+                                                                                     
+                                                                                     
+of your house, then, constitutes additional uncertainty in future net worth and could thus have
+signiﬁcant implications for portfolio decisions. One way to think about this is to realize that
+the owner of a house has an implicit holding of a risky asset, which should motivate them to
+want to reduce their exposure to additional risk in another risky asset, the stock
+market.
+<!--l. 182--><p class="noindent" >
+  <h3 class="sectionHead"><span class="titlemark">4  </span> <a 
+ id="x1-50004"></a>Methodology</h3>
+<!--l. 184--><p class="noindent" >The new model in our toolkit, which we call <span 
+class="ectt-1200">ConsPortfolioHousingModel</span>, is an extension of
+the model we described in <a 
+href="#XCarroll2020">Carroll</a> (<a 
+href="#XCarroll2020">2020</a>), <span 
+class="ectt-1200">ConsPortfolioModel</span>, with the added features of
+homeownership such as mortgage payments, house maintenance costs, and housing market price
+risk<span class="footnote-mark"><a 
+href="PortfolioChoiceWithRiskyHousing6.html#fn5x0"><sup class="textsuperscript">5</sup></a></span><a 
+ id="x1-5001f5"></a>  .
+  <h4 class="subsectionHead"><span class="titlemark">4.1  </span> <a 
+ id="x1-60004.1"></a>Young Households</h4>
+<!--l. 188--><p class="noindent" >The ﬁrst stage of the model consists of young households making a decision to buy
+a house of ﬁxed size. Importantly, young households have little to no assets and
+have recently joined the labor market, which means their income is also relatively
+small. In order to ﬁnance a home, then, young households must choose a house of a
+particular value and a corresponding mortgage size. Lenders are assumed to impose some
+microprudential conditions such as loan-to-income ratios to ensure that mortgages are
+repayable.
+                                                                                     
+                                                                                     
+<!--l. 190--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">4.2  </span> <a 
+ id="x1-70004.2"></a>Mortgage payments</h4>
+<!--l. 192--><p class="noindent" >Once households choose a house and mortgage, they commit to ﬁxed-rate payments for the
+rest of their working life, which is about 30 years. During this time, households have an
+implicit holding of a risky asset in their homes (because of their uncertain resale values),
+which may lead them to reduce their exposure to other risky assets, such as the stock
+market.
+<!--l. 194--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">4.3  </span> <a 
+ id="x1-80004.3"></a>Retired homeowners</h4>
+<!--l. 196--><p class="noindent" >Once they reach retirement, households in our model have paid of their mortgage and have
+accumulated savings, making them signiﬁcantly wealthier (where wealth here refers to their
+home equity and liquid assets) than young households. During this period, households
+experience a risk of house liquidation due to the possibility of being forced to move
+out due to poor health or old age. If they are forced to sell, they do so at their
+local housing market prices; the value of the house gets transformed into liquid
+wealth.
+<!--l. 198--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">4.4  </span> <a 
+ id="x1-90004.4"></a>Retired renters</h4>
+                                                                                     
+                                                                                     
+<!--l. 200--><p class="noindent" >Retired renters have none of the complexities that come with owning a home, and thus behave
+like standard <span 
+class="ectt-1200">ConsPortfolioModel </span>households. Instead of choosing only consumption,
+however, these households choose a level of total expenditures to spend on both consumption
+and rental housing. After becoming renters, households remain renters for the rest of their
+lives.
+<!--l. 2--><p class="noindent" >
+  <h3 class="sectionHead"><span class="titlemark">5  </span> <a 
+ id="x1-100005"></a>Results</h3>
+<!--l. 4--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">5.1  </span> <a 
+ id="x1-110005.1"></a>Homeownership increases intensive margin of stock market participation</h4>
+<!--l. 6--><p class="noindent" >We examine here the behavior of retired households on the cusp of the liquidation of the value
+of their house. As usual, we are assuming that the household anticipates some form of
+guaranteed pension income (’Social Security’), but expects to ﬁnance any other consumption
+out of the returns on their assets.
+<!--l. 8--><p class="indent" >  The proportion of liquid assets invested in the stock market is known as the risky portfolio
+share, or <span 
+class="ecbx-1200">risky share </span>for short.
+<!--l. 10--><p class="indent" >  <a 
+href="#XCarroll2020">Carroll</a> (<a 
+href="#XCarroll2020">2020</a>) reviewed the logic of the model without housing. For a person
+with no housing wealth and little liquid wealth, the ﬁrst dollar of investment in the
+stock market poses very little risk, so the model implies that the proportion of any
+additional wealth that will be invested in the stock market is 100 percent. But as
+wealth gets very large, the consumer becomes reluctant to put all of it in the stock
+market, because that would be putting more and more of their consumption at
+                                                                                     
+                                                                                     
+risk<span class="footnote-mark"><a 
+href="PortfolioChoiceWithRiskyHousing7.html#fn6x0"><sup class="textsuperscript">6</sup></a></span><a 
+ id="x1-11001f6"></a>  .
+  <div class="figure" 
+>
+                                                                                     
+                                                                                     
+<a 
+ id="x1-110021"></a>
+                                                                                     
+                                                                                     
+<!--l. 3--><p class="noindent" > <img 
+src="./LaTeX/Inputs/Figures/shareFuncByHouse.png" alt="pict"  
+ width="361.34999pt" >
+<figcaption class="caption" ><span class="id">Figure 1:</span><span  
+class="content">House size increases risky portfolio share</span></figcaption><!--tex4ht:label?: x1-110021 -->
+                                                                                     
+                                                                                     
+  </div>
+<!--l. 17--><p class="indent" >  Figure <a 
+href="#x1-110021">1<!--tex4ht:ref: fig:shareFuncByHouse --></a> shows how the picture is modiﬁed for consumers who, in addition to their liquid
+assets, own homes of various sizes.
+<!--l. 19--><p class="indent" >  According to the model, retired households who own their homes and expect to sell them by
+next period have a higher risky share than retired households who rent, and their risky share
+increases with house size, holding liquid wealth constant.
+<!--l. 21--><p class="indent" >  Clearly, the bigger the house size, the wealthier the agents are in terms of net worth. In the
+standard portfolio choice model, wealthier households actually reduce their risky share
+to reduce risk in next period’s consumption. In the presence of housing, however,
+households still reduce their risk exposure as liquid wealth increases, but at a lower
+rate.
+<!--l. 23--><p class="indent" >  A better comparison is to add the expected value of the house to liquid wealth.
+In this way, we compare an agent with <img 
+src="PortfolioChoiceWithRiskyHousing9x.svg" alt="w  " class="math";align="absmiddle"> net worth with all liquid wealth
+and no home, with an agent with <img 
+src="PortfolioChoiceWithRiskyHousing10x.svg" alt="w  " class="math";align="absmiddle"> net worth, some of which is liquid wealth
+<img 
+src="PortfolioChoiceWithRiskyHousing11x.svg" alt="m  " class="math";align="absmiddle">, and the rest is the illiquid expected house valuation <img 
+src="PortfolioChoiceWithRiskyHousing12x.svg" alt="𝔼[Q ]h  " class="math";align="absmiddle">, such that
+<img 
+src="PortfolioChoiceWithRiskyHousing13x.svg" alt="w  = m +  𝔼[Q ]h  " class="math";align="absmiddle">, where <img 
+src="PortfolioChoiceWithRiskyHousing14x.svg" alt="Q  " class="math";align="absmiddle"> denotes house prices and <img 
+src="PortfolioChoiceWithRiskyHousing15x.svg" alt="h  " class="math";align="absmiddle"> represents the size of the agent’s
+house<span class="footnote-mark"><a 
+href="PortfolioChoiceWithRiskyHousing8.html#fn7x0"><sup class="textsuperscript">7</sup></a></span><a 
+ id="x1-11003f7"></a>  .
+As we see in ﬁgure <a 
+href="#x1-110042">2<!--tex4ht:ref: fig:shareFuncByNetWealth --></a>, the increase in the risky portfolio share is more signiﬁcant when
+considering home equity as part of net worth. Holding net wealth constant, households whose
+wealth is tied up in an illiquid asset have more risk appetite the larger the proportion of home
+equity to net wealth is.
+  <div class="figure" 
+>
+                                                                                     
+                                                                                     
+<a 
+ id="x1-110042"></a>
+                                                                                     
+                                                                                     
+<!--l. 3--><p class="noindent" > <img 
+src="./LaTeX/Inputs/Figures/shareFuncByNetWealth.png" alt="pict"  
+ width="361.34999pt" >
+<figcaption class="caption" ><span class="id">Figure 2:</span><span  
+class="content">Risky Share conditional on net worth</span></figcaption><!--tex4ht:label?: x1-110042 -->
+                                                                                     
+                                                                                     
+  </div>
+<!--l. 234--><p class="indent" >  Additionally, an interesting observation is that according to the model retired households
+who are about to sell their homes are willing to risk at least the full home equity (expected
+value of their homes <img 
+src="PortfolioChoiceWithRiskyHousing16x.svg" alt="𝔼 [Q ]h  " class="math";align="absmiddle">) for certain when they have low liquidity. In other words, their
+risky share is equal to 1 at least up to the point where their liquid wealth is equal to their
+home equity. If we shift their liquid wealth leftward by the amount of their expected house
+valuation, we see in ﬁgure <a 
+href="#x1-110053">3<!--tex4ht:ref: fig:shareFuncByEquity --></a> that their risky share starts dropping at about the same point as
+it would if they rented a house instead. We can conclude that having a house shifts the
+risky share curve rightward by an amount equal to the home equity, but this is
+not the only eﬀect. A larger house also reduces the rate at which the risky share
+decreases.
+  <div class="figure" 
+>
+                                                                                     
+                                                                                     
+<a 
+ id="x1-110053"></a>
+                                                                                     
+                                                                                     
+<!--l. 3--><p class="noindent" > <img 
+src="./LaTeX/Inputs/Figures/shareFuncByEquity.png" alt="pict"  
+ width="361.34999pt" >
+<figcaption class="caption" ><span class="id">Figure 3:</span><span  
+class="content">Risky share conditional on liquid assets net of home equity</span></figcaption><!--tex4ht:label?: x1-110053 -->
+                                                                                     
+                                                                                     
+  </div>
+  <h4 class="subsectionHead"><span class="titlemark">5.2  </span> <a 
+ id="x1-120005.2"></a>Increasing house price risk decreases risky share</h4>
+  <div class="figure" 
+>
+                                                                                     
+                                                                                     
+<a 
+ id="x1-120014"></a>
+                                                                                     
+                                                                                     
+<!--l. 3--><p class="noindent" > <img 
+src="./LaTeX/Inputs/Figures/shareFuncByRisk.png" alt="pict"  
+ width="361.34999pt" >
+<figcaption class="caption" ><span class="id">Figure 4:</span><span  
+class="content">Increasing house price risk decreases risky share</span></figcaption><!--tex4ht:label?: x1-120014 -->
+                                                                                     
+                                                                                     
+  </div>
+<!--l. 9--><p class="indent" >  The volatility of the housing market can have strong implications for the portfolio decisions
+of households who own their houses. A higher standard deviation in house prices implies a
+larger implicit holding of a risky asset (the house), regardless of house size. For this reason,
+households would optimally choose to avoid risk in other risky assets. As we see in ﬁgure <a 
+href="#x1-120014">4<!--tex4ht:ref: fig:shareFuncByRisk --></a> for
+2 households who have a house of equal size, the risky share of a household in a more volatile
+market is lower than that of a household in a less volatile market, except at low
+levels of market resources. Households that experience high price volatility in the
+housing market reduce their exposure to risk elsewhere, leading to lower risky portfolio
+shares.
+  <h4 class="subsectionHead"><span class="titlemark">5.3  </span> <a 
+ id="x1-130005.3"></a>Larger houses increase households’ absolute risk taking</h4>
+  <div class="figure" 
+>
+                                                                                     
+                                                                                     
+<a 
+ id="x1-130015"></a>
+                                                                                     
+                                                                                     
+<!--l. 3--><p class="noindent" > <img 
+src="./LaTeX/Inputs/Figures/liquidAssetsByHouse.png" alt="pict"  
+ width="361.34999pt" >
+<figcaption class="caption" ><span class="id">Figure 5:</span><span  
+class="content">House size increases household’s absolute risk taking</span></figcaption><!--tex4ht:label?: x1-130015 -->
+                                                                                     
+                                                                                     
+  </div>
+<!--l. 260--><p class="indent" >  As mentioned before, a house represents an implicit holding in a risky market that is
+otherwise uncorrelated with the stock market. A larger house, however, provides a higher
+expected value of house liquidation which also means a higher expected future liquid wealth.
+Households with more valuable homes, then, have a higher absolute risk tolerance because
+their future housing value constitutes a buﬀer stock of wealth; thus they invest more
+resources in the risky asset market than they would if they had smaller homes.
+In ﬁgure <a 
+href="#x1-130015">5<!--tex4ht:ref: fig:liquidAssetsByHouse --></a> we see that for an initial level of liquid assets, households of diﬀerent
+house sizes invest the same amount of total assets in the stock market; this is the
+region where their risky share is 100%. Past this region, we see that households
+with a bigger house (and thus more home equity) are willing to invest a greater
+share of their liquid assets than peers with the same amount of liquid assets but less
+home equity. This indicates that home equity increases the level of risk appetite for
+households.
+  <h4 class="subsectionHead"><span class="titlemark">5.4  </span> <a 
+ id="x1-140005.4"></a>House size crowds out investment</h4>
+<!--l. 4--><p class="noindent" >However, when comparing households on a total wealth basis, i.e. their liquid assets plus
+expected house liquidation, we can see that house size crowds out investment for households
+with low liquid wealth. In ﬁgure <a 
+href="#x1-140016">6<!--tex4ht:ref: fig:liquidAssetsByEquity --></a>, we can consider a household whose house size is
+equal to 5 (5 times their yearly net income) and liquid assets are 0, so their total
+expected wealth is 5. As this household becomes wealthier, they invest all of their
+liquid assets in the stock market (such that their risky share is 100 percent), up to
+the point where they start rebalancing their portfolio between the risky and the
+safe asset. In this region, they are constrained from investing in the stock market
+by their low liquid wealth, as they surely would like to invest more in the market.
+This point becomes clearer by comparing the household to an equally wealthy peer
+with a smaller house. At the point where the household with house size of 5 has
+liquid wealth of 1 (1 times their yearly net income), they are investing less into the
+stock market in absolute terms than an equally wealthy household whose house size
+is equal to 2 and liquid assets are equal to 4. The total expected wealth of both
+these households is 6, but the household with the larger house is investing fewer
+                                                                                     
+                                                                                     
+assets in the stock market than the household with the smaller house. As their total
+wealth increases, however, both households are unconstrained by their house size
+and end up investing about the same amount into the stock market in absolute
+terms.
+  <div class="figure" 
+>
+                                                                                     
+                                                                                     
+<a 
+ id="x1-140016"></a>
+                                                                                     
+                                                                                     
+<!--l. 3--><p class="noindent" > <img 
+src="./LaTeX/Inputs/Figures/liquidAssetsByEquity.png" alt="pict"  
+ width="361.34999pt" >
+<figcaption class="caption" ><span class="id">Figure 6:</span><span  
+class="content">House size crowds out investment</span></figcaption><!--tex4ht:label?: x1-140016 -->
+                                                                                     
+                                                                                     
+  </div>
+  <h4 class="subsectionHead"><span class="titlemark">5.5  </span> <a 
+ id="x1-150005.5"></a>Optimal Portfolio Choice over the Lifecycle</h4>
+<!--l. 279--><p class="noindent" >A result that is consistent with <span 
+class="ectt-1200">ConsPortfolioModel </span>is that younger households have a higher
+risky share of assets than older households, when comparing households of equal house size
+and no mortgage debt. Similarly, older households consume more than younger households, as
+their consumption horizon gets shorter and the likelihood that they receive a windfall of
+wealth from their house liquidation increases.
+  <div class="figure" 
+>
+                                                                                     
+                                                                                     
+<a 
+ id="x1-150017"></a>
+                                                                                     
+                                                                                     
+<!--l. 3--><p class="noindent" > <img 
+src="./LaTeX/Inputs/Figures/shareFuncByRetirement.png" alt="pict"  
+ width="361.34999pt" >
+<figcaption class="caption" ><span class="id">Figure 7:</span><span  
+class="content">Risky Portfolio Share during Retirement</span></figcaption><!--tex4ht:label?: x1-150017 -->
+                                                                                     
+                                                                                     
+  </div>
+  <div class="figure" 
+>
+                                                                                     
+                                                                                     
+<a 
+ id="x1-150028"></a>
+                                                                                     
+                                                                                     
+<!--l. 3--><p class="noindent" > <img 
+src="./LaTeX/Inputs/Figures/cFuncByRetirement.png" alt="pict"  
+ width="361.34999pt" >
+<figcaption class="caption" ><span class="id">Figure 8:</span><span  
+class="content">Consumption during retirement</span></figcaption><!--tex4ht:label?: x1-150028 -->
+                                                                                     
+                                                                                     
+  </div>
+  <h3 class="sectionHead"><span class="titlemark">6  </span> <a 
+ id="x1-160006"></a>Conclusions</h3>
+<!--l. 4--><p class="noindent" >Most people who need advice about how to invest in ﬁnancial markets are also homeowners.
+But until now, even the most sophisticated and realistic analyses of how people should
+optimally invest in ﬁnancial markets have not accounted for the (undeniably important)
+ramiﬁcations of homeownership for their ﬁnancial choices.
+<!--l. 6--><p class="indent" >  That’s because constructing a model that correctly tracks all the potential interactions
+between homeownership, ﬁnancial risk, and other kinds of risk is remarkably diﬃcult. This
+report describes a free, publicly available open-source software tool that does these complex
+calculations. Sponsorship by the Think Forward Initiative has allowed us to add this tool to
+the free, open-source, <a 
+href="https://econ-ark.org" >Econ-ARK</a> toolkit, thus making it available to ﬁnancial institutions,
+ﬁnancial planners, robo-advisors, academics, and anyone else who might be interested in a
+rigorous analysis of these questions.
+<!--l. 8--><p class="indent" >  Despite their combinatorial complexity, the answers that come from the model make
+intuitive sense. A ﬁrst conclusion is that greater uncertainty about future house prices should
+make you less willing to invest in the stock market. In other words, a homeowner who
+lives in a place with wild house-price swings will ﬁnd it best to have less exposure
+to other kinds of risk (like stock market risk) than someone with circumstances
+that are otherwise similar, but who lives in a place where house prices are more
+stable.
+<!--l. 10--><p class="indent" >  Another conclusion might seem to push in the other direction, but really does not:
+Among homeowners whose mortgage is paid oﬀ, for a given level of <span 
+class="ecti-1200">nonhousing </span>net
+worth (say, $200K of ﬁnancial assets net of mortgage debt), a person whose house is
+more valuable should invest more in risky ﬁnancial asset. The reason is simple: For
+a given amount of liquid assets, the person with a bigger house is richer, and a
+richer person will want to have more money (in absolute terms) invested in the stock
+market).
+<!--l. 12--><p class="indent" >  The ﬁnal point is that the existence of homeownership does not reverse one of the more
+                                                                                     
+                                                                                     
+surprising implications of the baseline model without homeownership: The richer you are, the
+lower is the optimal share of your portfolio in risky assets. This implication of the model does
+not match the available data well. The conclusion is easy to reverse by introducing a bequest
+motive in which bequests are a luxury good; but how exactly such a motive should be
+constructed is by no means a settled question, either among ﬁnancial planners or
+among academic researchers. It is a topic we hope to address in future releases of our
+toolkit.
+                                                                                     
+                                                                                     
+<!--l. 13--><p class="noindent" ><a 
+ id="Appendices"></a>
+  <div  
+class="centerline">                                             <span 
+class="ecrm-2074">Appendices</span>                            </div>
+  <h3 class="sectionHead"><span class="titlemark">A  </span> <a 
+ id="x1-17000A"></a>The base model</h3>
+<!--l. 86--><p class="noindent" >At date 0, the household ﬁnances the purchase of a house with a mortgage loan. Given
+cash-on-hand at date 0 <img 
+src="PortfolioChoiceWithRiskyHousing17x.svg" alt="M0   " class="math";align="absmiddle">, which may come from previous savings or bequests, the
+household simultaneously chooses a house size (among a set of discrete house sizes)
+and a mortgage loan that meets the down-payment or Loan-to-Value requirement
+<img 
+src="PortfolioChoiceWithRiskyHousing18x.svg" alt="D   ≤ (1 − d)Q  H
+  1            0 1   " class="math";align="absmiddle">, where <img 
+src="PortfolioChoiceWithRiskyHousing19x.svg" alt="d  " class="math";align="absmiddle"> is the proportional down-payment, <img 
+src="PortfolioChoiceWithRiskyHousing20x.svg" alt="Q
+ 0   " class="math";align="absmiddle"> is the unit-price of
+housing, and <img 
+src="PortfolioChoiceWithRiskyHousing21x.svg" alt="H1   " class="math";align="absmiddle"> is the chosen house size. An additional mortgage origination requirement
+observed in the literature is the Loan-to-Income ratio <img 
+src="PortfolioChoiceWithRiskyHousing22x.svg" alt="D   ≤ λP
+  1      1   " class="math";align="absmiddle">, which reﬂects initial
+mortgage aﬀordability (<a 
+href="#XccMortgageDefault2013">Campbell and Cocco</a> (<a 
+href="#XccMortgageDefault2013">2015</a>)). Coincidentally, the household leaves
+some cash-on-hand <img 
+src="PortfolioChoiceWithRiskyHousing23x.svg" alt="M
+  1   " class="math";align="absmiddle"> to start next period with some liquidity.
+  <table 
+class="equation"><tr><td><a 
+ id="x1-17001r1"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing24x.svg" alt="V0 (M0,  P1) = Dm1a,xH1𝔼t [V1 (M1, H1,D1, P1 )]
+
+              s.t.
+
+      Q0H1+   M1  = M0  + D1
+        H   ∈ ℍ =  {h ,⋅⋅⋅,h }
+          1          1      n
+        D1 ≤  (1 − d)Q0H1      (LTV  )
+
+        D1 ≤  λP1     (LTI )
+" class="math-display" ></center></td><td class="equation-label">(1)</td></tr></table>
+<!--l. 97--><p class="nopar" >
+                                                                                     
+                                                                                     
+<!--l. 99--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">A.1  </span> <a 
+ id="x1-18000A.1"></a>Fixed-Rate Mortgage payments</h4>
+<!--l. 101--><p class="noindent" >When a household chooses a house size and mortgage loan, they also commit to a ﬁxed
+payment amount and a loan duration of, for example, 30 years. To calculate the ﬁxed rate
+mortgage payment (<img 
+src="PortfolioChoiceWithRiskyHousing25x.svg" alt="FRMt  " class="math";align="absmiddle">), we can start with the amount owed at the beginning of each
+period <img 
+src="PortfolioChoiceWithRiskyHousing26x.svg" alt="Dt  " class="math";align="absmiddle"> and subtract a ﬁxed payment, which is then multiplied by a ﬁxed mortgage
+interest rate <img 
+src="PortfolioChoiceWithRiskyHousing27x.svg" alt="RD  " class="math";align="absmiddle">. The limiting condition that ensures repayment at time <img 
+src="PortfolioChoiceWithRiskyHousing28x.svg" alt="T  " class="math";align="absmiddle"> is <img 
+src="PortfolioChoiceWithRiskyHousing29x.svg" alt="DT  = 0  " class="math";align="absmiddle">,
+which leads to <img 
+src="PortfolioChoiceWithRiskyHousing30x.svg" alt="FRMt  " class="math";align="absmiddle"> as shown below:
+  <table 
+class="equation"><tr><td><a 
+ id="x1-18001r2"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing31x.svg" alt="   D
+    t
+Dt+1  =  (Dt − FRMt  )RD  = DtRD  − FRMtRD
+
+Dt+2  =  (Dt+1 − FRMt  )RD  = (DtRD  − FRMtRD    − FRMt  )RD
+             2           2
+      =  DtR D − FRMtR   D − FRMtRD
+    ..
+    .
+
+  DT  =  (DT −1 − FRMt  )RD  =  (DT − 2RD −  FRMtRD   − FRMt  )RD
+      =  DtRT − t− FRMt  (RT −t+ RT −t−1 + ⋅⋅⋅ + RD ) = DtRT −t−  FRMt (S )
+             D             D       D                        D
+" class="math-display" ></center></td><td class="equation-label">(2)</td></tr></table>
+<!--l. 113--><p class="nopar" >
+<!--l. 115--><p class="indent" >  where <img 
+src="PortfolioChoiceWithRiskyHousing32x.svg" alt="     RD(RTD−t−1)
+S =    RD −1   " class="math";align="absmiddle">. Setting <img 
+src="PortfolioChoiceWithRiskyHousing33x.svg" alt="DT  = 0  " class="math";align="absmiddle"> as a repayment requirement, the ﬁxed rate
+mortgage payment is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-18002r3"></a>
+                                                                                     
+                                                                                     
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing34x.svg" alt="             RT −t−1(RD −  1)
+FRMt (Dt ) = --D--T−-t-------Dt
+                R D   − 1
+" class="math-display" ></center></td><td class="equation-label">(3)</td></tr></table>
+<!--l. 119--><p class="nopar" >
+<!--l. 121--><p class="indent" >  The household is allowed to pay more than its required mortgage payment, which in this
+model leads to a decrease in the future minimum required payment <img 
+src="PortfolioChoiceWithRiskyHousing35x.svg" alt="FRM
+     t  " class="math";align="absmiddle"> to maintain
+the mortgage duration. If the household continually pays more than the minimum
+payment, <img 
+src="PortfolioChoiceWithRiskyHousing36x.svg" alt="FRM
+     t  " class="math";align="absmiddle"> becomes <img 
+src="PortfolioChoiceWithRiskyHousing37x.svg" alt="0  " class="math";align="absmiddle"> when the mortgage debt is fully paid oﬀ. This ﬂexibility
+allows for the ﬁxed rate mortgage payment to depend only on current mortgage debt
+<img 
+src="PortfolioChoiceWithRiskyHousing38x.svg" alt="D
+  t  " class="math";align="absmiddle"> and time to mortgage maturity, which is tracked by the age of the household
+<img 
+src="PortfolioChoiceWithRiskyHousing39x.svg" alt="t  " class="math";align="absmiddle">.
+<!--l. 123--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">A.2  </span> <a 
+ id="x1-19000A.2"></a>The Investor’s problem in the presence of housing risk</h4>
+<!--l. 125--><p class="noindent" >
+  <h5 class="subsubsectionHead"><span class="titlemark">A.2.1  </span> <a 
+ id="x1-20000A.2.1"></a>Investing before Retirement</h5>
+<!--l. 127--><p class="noindent" >A working household begins period <img 
+src="PortfolioChoiceWithRiskyHousing40x.svg" alt="30 ≤  t ≤ 60  " class="math";align="absmiddle"> with cash-on-hand <img 
+src="PortfolioChoiceWithRiskyHousing41x.svg" alt="Mt  " class="math";align="absmiddle">, housing size <img 
+src="PortfolioChoiceWithRiskyHousing42x.svg" alt="Ht  " class="math";align="absmiddle">,
+mortgage debt <img 
+src="PortfolioChoiceWithRiskyHousing43x.svg" alt="Dt  " class="math";align="absmiddle">, and permanent income <img 
+src="PortfolioChoiceWithRiskyHousing44x.svg" alt="Pt  " class="math";align="absmiddle">. It must then choose a level of consumption
+<img 
+src="PortfolioChoiceWithRiskyHousing45x.svg" alt="Ct  " class="math";align="absmiddle">, mortgage payment <img 
+src="PortfolioChoiceWithRiskyHousing46x.svg" alt="It  " class="math";align="absmiddle">, and savings <img 
+src="PortfolioChoiceWithRiskyHousing47x.svg" alt="At  " class="math";align="absmiddle"> of which a fraction <img 
+src="PortfolioChoiceWithRiskyHousing48x.svg" alt="ςt  " class="math";align="absmiddle"> is invested into a risky
+asset and the rest into a safe asset.
+<!--l. 129--><p class="indent" >  The mortgage payment must be at least the ﬁxed rate mortgage payment <img 
+src="PortfolioChoiceWithRiskyHousing49x.svg" alt="FRMt  (Dt)  " class="math";align="absmiddle"> in
+order to ensure payoﬀ within an expected maturity of <img 
+src="PortfolioChoiceWithRiskyHousing50x.svg" alt="J = 30  " class="math";align="absmiddle"> years.
+<!--l. 131--><p class="indent" >  Although the model does not allow for explicit choices over housing adjustments, the
+household must nevertheless pay maintenance and upkeep costs due to housing depreciation at
+a cost of <img 
+src="PortfolioChoiceWithRiskyHousing51x.svg" alt="δQ0Ht  " class="math";align="absmiddle">. Additionally, the household must also exogenously expand or contract their
+housing size given a life-cycle path of housing size <img 
+src="PortfolioChoiceWithRiskyHousing52x.svg" alt=" H
+Γt+1   " class="math";align="absmiddle">. This parameter is intended to
+                                                                                     
+                                                                                     
+represent the observed path of the housing size component of portfolio compositions over the
+life-cycle.
+  <table 
+class="equation"><tr><td><a 
+ id="x1-20001r4"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing53x.svg" alt="Vt (Mt, Ht, Dt,Pt ) = mAatx,It,ςtu(Ct,Ht ) + β 𝔼t[Vt+1(Mt+1, Ht+1, Dt+1,Pt+1)]
+
+                     s.t.
+
+               At =  Mt − Ct − It
+               At ≥  0
+
+                It ≥ FRMt  + [Ht+1 − (1 − δ)Ht]Q0
+
+             Pt+1 =  Γ t+1Pt
+
+             Yt+1 =  𝜃t+1Pt+1
+            M     =  Y   + A  (ςR    + (1 − ς )R)
+               t+1     t+1     t t  t+1        t
+             Ht+1 =  Γ Ht+1Ht
+
+             Dt+1 =  RD (Dt − It)
+" class="math-display" ></center></td><td class="equation-label">(4)</td></tr></table>
+<!--l. 146--><p class="nopar" >
+<!--l. 148--><p class="noindent" >
+  <h5 class="subsubsectionHead"><span class="titlemark">A.2.2  </span> <a 
+ id="x1-21000A.2.2"></a>Investing after Retirement</h5>
+<!--l. 150--><p class="noindent" >Households deterministically retire at age <img 
+src="PortfolioChoiceWithRiskyHousing54x.svg" alt="t = 60  " class="math";align="absmiddle">, and begin to experience exogenous risk of
+housing liquidation. By this time, the household has ﬁnished paying their mortgage debt, and
+so we lose the <img 
+src="PortfolioChoiceWithRiskyHousing55x.svg" alt="Dt  " class="math";align="absmiddle"> state variable. If the household is exogenously forced to liquidate
+their house, they receive their home equity at the beginning of next period and
+become renters until death. The problem of a household which faces housing risk
+                                                                                     
+                                                                                     
+is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-21001r5"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing56x.svg" alt="VHt (Mt, Ht, Pt) =  max  u (Ct,Ht) + βst 𝔼t[VHt+1(Mt+1, Ht+1,Pt+1)]
+                  Ct,At,ςt
+                  +  β(1 − st)𝔼t[VR  (M R  ,Pt+1)]
+                                  t+1   t+1
+                  s.t.
+
+            At =  Mt −  Ct − It,     At ≥ 0
+
+             It ≥ [Ht+1 − (1 − δ)Ht]Q0
+           Pt+1 = Γ t+1Pt
+
+           Yt+1 = 𝜃t+1Pt+1
+
+          Mt+1 =  Yt+1 + At(ςtRt+1  + (1 − ςt)R)
+            R
+          M t+1 = Mt+1 +  Qt+1Ht+1
+          H    =  Γ H H
+            t+1    t+1  t
+" class="math-display" ></center></td><td class="equation-label">(5)</td></tr></table>
+<!--l. 165--><p class="nopar" >
+<!--l. 167--><p class="indent" >  The renter’s problem then becomes a simple portfolio problem where the household
+additionally pays for rental housing.
+  <table 
+class="equation"><tr><td><a 
+ id="x1-21002r6"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing57x.svg" alt="VR (M  ,P ) =   max    u (C  ,HR ) + β 𝔼 [VR   (M    ,P   )]
+  t   t  t    Ct,HRt ,At,ςt   t   t       t  t+1   t+1   t+1
+
+              s.t.
+                          R         R
+        At =  Mt − Ct − H t ,  Ct,H t ,At ≥ 0
+      M    =  Y   +  A (ςR    +  (1 − ς )R)
+        t+1     t+1    t  t t+1        t
+      Pt+1 =  Γ t+1Pt
+
+       Yt+1 =  𝜃t+1Pt+1
+" class="math-display" ></center></td><td class="equation-label">(6)</td></tr></table>
+<!--l. 178--><p class="nopar" >
+<!--l. 180--><p class="noindent" >
+  <h3 class="sectionHead"><span class="titlemark">B  </span> <a 
+ id="x1-22000B"></a>Normalization</h3>
+<!--l. 182--><p class="noindent" >A useful strategy to facilitate ﬁnding the solution of these types of problems is normalization
+by permanent income. Throughout this section we assume
+  <table 
+class="equation"><tr><td><a 
+ id="x1-22001r7"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing58x.svg" alt="             1−α  α 1−ρ
+u(C,H ) = (C----H--)---
+              1 − ρ
+" class="math-display" ></center></td><td class="equation-label">(7)</td></tr></table>
+<!--l. 186--><p class="nopar" >
+<!--l. 188--><p class="indent" >  which is a Cobb-Douglas function nested inside a CRRA utility function. The model
+parameter <img 
+src="PortfolioChoiceWithRiskyHousing59x.svg" alt="α  " class="math";align="absmiddle"> determines the relative preference between non-durable consumption and
+                                                                                     
+                                                                                     
+housing size. In a simple rental housing problem, it also determines directly the rental housing
+share of total expenditures, as we’ll see below.
+<!--l. 190--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">B.1  </span> <a 
+ id="x1-23000B.1"></a>Rental Housing in the Utility</h4>
+<!--l. 192--><p class="noindent" >A renter pays for rental housing every period until death. Rental housing enters the utility as
+a non-durable expenditure and, like consumption, it has no impact on the continuation
+value. Using the utility function described above, and representing non-durable
+total expenditures as <img 
+src="PortfolioChoiceWithRiskyHousing60x.svg" alt="X =  C + H  " class="math";align="absmiddle">, utility maximization implies that <img 
+src="PortfolioChoiceWithRiskyHousing61x.svg" alt="H-   -α--
+C =  1− α  " class="math";align="absmiddle">,
+<img 
+src="PortfolioChoiceWithRiskyHousing62x.svg" alt="C  = (1 − α)X  " class="math";align="absmiddle">, and <img 
+src="PortfolioChoiceWithRiskyHousing63x.svg" alt="H  = αX  " class="math";align="absmiddle">. Substituting these results into the utility function, it
+becomes:
+  <table 
+class="equation"><tr><td><a 
+ id="x1-23001r8"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing64x.svg" alt="           ((1 − α)1−αα αX )1− ρ     X1 −ρ
+u(C, H ) = --------------------=  ˜A ------
+                  1 − ρ             1 − ρ
+" class="math-display" ></center></td><td class="equation-label">(8)</td></tr></table>
+<!--l. 196--><p class="nopar" >
+<!--l. 198--><p class="indent" >  Thus, we can represent the problem of total expenditures between consumption and rental
+housing as <img 
+src="PortfolioChoiceWithRiskyHousing65x.svg" alt="            ˜
+u (C, H ) = Au (X )  " class="math";align="absmiddle">, where <img 
+src="PortfolioChoiceWithRiskyHousing66x.svg" alt="u(⋅)  " class="math";align="absmiddle"> is a CRRA utility function with <img 
+src="PortfolioChoiceWithRiskyHousing67x.svg" alt="ρ  " class="math";align="absmiddle">
+coeﬃcient.
+<!--l. 200--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">B.2  </span> <a 
+ id="x1-24000B.2"></a>The Retired Renter’s last period of life</h4>
+                                                                                     
+                                                                                     
+<!--l. 202--><p class="noindent" >In the last period of life, a renter has no need to save and thus has to decide to
+spend all of his cash-on-hand (<img 
+src="PortfolioChoiceWithRiskyHousing68x.svg" alt="M
+  T  " class="math";align="absmiddle">) between non-durable consumption and rental
+housing.
+  <table 
+class="equation"><tr><td><a 
+ id="x1-24001r9"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing69x.svg" alt="VRT(MT ,PT ) =  max  u(CT ,HRT )
+               CT ,HRT
+
+               s.t.
+        MT  =  CT +  Ht
+" class="math-display" ></center></td><td class="equation-label">(9)</td></tr></table>
+<!--l. 210--><p class="nopar" >
+<!--l. 212--><p class="indent" >  Again, utility maximization implies that <img 
+src="PortfolioChoiceWithRiskyHousing70x.svg" alt="C = (1 − α )M  " class="math";align="absmiddle"> and <img 
+src="PortfolioChoiceWithRiskyHousing71x.svg" alt="H  = αM  " class="math";align="absmiddle">. Substituting into
+the previous equation we obtain:
+  <table 
+class="equation"><tr><td><a 
+ id="x1-24002r10"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing72x.svg" alt="  R              M T1− ρ
+V T(MT  ,PT) = A˜------
+                 1 − ρ
+" class="math-display" ></center></td><td class="equation-label">(10)</td></tr></table>
+<!--l. 216--><p class="nopar" >
+                                                                                     
+                                                                                     
+<!--l. 218--><p class="indent" >  where <img 
+src="PortfolioChoiceWithRiskyHousing73x.svg" alt="             1− α α 1−ρ
+A˜=  ((1 − α )   α )  " class="math";align="absmiddle">. We can now normalize by permanent income <img 
+src="PortfolioChoiceWithRiskyHousing74x.svg" alt="Pt  " class="math";align="absmiddle"> such that
+lowercase variables are <img 
+src="PortfolioChoiceWithRiskyHousing75x.svg" alt="x  = X  ∕P
+  t    t  t  " class="math";align="absmiddle">. Substituting <img 
+src="PortfolioChoiceWithRiskyHousing76x.svg" alt="P  = P    Γ
+ T     T−1  T  " class="math";align="absmiddle">, the expression
+becomes
+  <table 
+class="equation"><tr><td><a 
+ id="x1-24003r11"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing77x.svg" alt="                       1−ρ                1−ρ
+ R              1−ρ˜ m-T---    1−ρ 1−ρ ˜m-T---
+VT (Mt,PT ) = PT   A 1 − ρ = PT −1ΓT  A 1 − ρ
+" class="math-display" ></center></td><td class="equation-label">(11)</td></tr></table>
+<!--l. 222--><p class="nopar" >
+<!--l. 224--><p class="indent" >  If we deﬁne a normalized equation as <img 
+src="PortfolioChoiceWithRiskyHousing78x.svg" alt="vR(m  ) = m1−T-ρ
+ T   T     1−ρ  " class="math";align="absmiddle"> then the original problem can be
+rewritten as
+  <table 
+class="equation"><tr><td><a 
+ id="x1-24004r12"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing79x.svg" alt="  R              1− ρ 1−ρ ˜ R
+V T(MT ,PT ) = PT− 1ΓT  Av T(mT )
+" class="math-display" ></center></td><td class="equation-label">(12)</td></tr></table>
+<!--l. 228--><p class="nopar" >
+                                                                                     
+                                                                                     
+<!--l. 230--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">B.3  </span> <a 
+ id="x1-25000B.3"></a>The Retired Renter’s second-to-last period</h4>
+<!--l. 232--><p class="noindent" >We can now consider the second-to-last period, although the same analysis will apply
+recursively to any period with a non-zero continuation value. Normalizing as above, where
+<img 
+src="PortfolioChoiceWithRiskyHousing80x.svg" alt="xt = Xt ∕Pt  " class="math";align="absmiddle">, we obtain
+  <table 
+class="equation"><tr><td><a 
+ id="x1-25001r13"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing81x.svg" alt="VRT− 1(MT  −1,PT− 1) =     maxR      u (CT −1,HT − 1) + β 𝔼t[VRT (MT ,PT )]
+                      CT−1,HT−1,ςT−1
+                    =   max   A˜u (x    P    ) + β 𝔼 [P1− ρΓ 1−ρ˜AvR (m )]
+                      xT−1,ςT−1     T −1 T− 1      t  T− 1 T     T   T
+                             {                                    }
+                    = A˜P T1−− ρ1    max   u(xT− 1) + β 𝔼t[Γ 1T−ρvRT (mT )]
+                               xT−1,ςT−1
+" class="math-display" ></center></td><td class="equation-label">(13)</td></tr></table>
+<!--l. 240--><p class="nopar" >
+<!--l. 242--><p class="indent" >  We can again deﬁne the normalized value function as <img 
+src="PortfolioChoiceWithRiskyHousing82x.svg" alt="                  1−ρ
+vRT −1 = VRT −1∕( ˜AP T−1)  " class="math";align="absmiddle"> and re-write
+the problem as
+  <table 
+class="equation"><tr><td><a 
+ id="x1-25002r14"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing83x.svg" alt="vRT−1(mT −1) =   max   u(xT −1) + β 𝔼t [Γ 1−T ρvRT(mT )]
+               xT−1,ςT−1
+                                                                                     
+                                                                                     
+" class="math-display" ></center></td><td class="equation-label">(14)</td></tr></table>
+<!--l. 246--><p class="nopar" >
+<!--l. 248--><p class="indent" >  The generalized renter’s problem with non-zero continuation value then simpliﬁes to a
+simple consumption and portfolio choice problem with additionally deﬁned control variables as
+presented below.
+  <table 
+class="equation"><tr><td><a 
+ id="x1-25003r15"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing84x.svg" alt=" R                           1−ρ R
+vt (mt ) = maxxt,ςt u(xt) + β 𝔼t[Γ t+1 vt+1 (mt+1)]
+
+      s.t.
+
+     at = mt −  xt,   xt,at ≥ 0
+     ct = (1 − α)xt,
+
+     ht = αxt
+
+  mt+1  = 𝜃t+1 + at(ςtRt+1 + (1 − ςt)R )∕Γ t+1
+" class="math-display" ></center></td><td class="equation-label">(15)</td></tr></table>
+<!--l. 259--><p class="nopar" >
+<!--l. 261--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">B.4  </span> <a 
+ id="x1-26000B.4"></a>The Retired Homeowner’s last period of life</h4>
+<!--l. 263--><p class="noindent" >We assume homeowners deterministically become renters before their last period of
+life.
+                                                                                     
+                                                                                     
+<!--l. 265--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">B.5  </span> <a 
+ id="x1-27000B.5"></a>The Retired Homeowner’s second-to-last period of life</h4>
+<!--l. 267--><p class="noindent" >In their second-to-last period of life, a homeowner will become a renter in the next period with
+certainty. Note that by this stage of life the household has no outstanding mortgage debt.
+Their problem is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-27001r16"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing85x.svg" alt="VHT−1(MT −1,HT − 1,PT −1) =      max      u(CT− 1,HT −1) + β 𝔼t[VRT(M RT ,PT)]
+                            CT−1,AT−1,ςT−1
+                           s.t.
+
+           CT −1 + AT −1 = MT  −1 − [Γ HT−1 − (1 − δ )]Q0HT −1,  CT −1,AT −1 ≥ 0
+                       R                                            H
+                    M  T = YT +  AT− 1(ςT− 1RT + (1 − ςT−1)R ) + QT Γ T−1HT −1
+
+                     PT  = Γ TPT− 1
+                      YT = 𝜃T PT
+" class="math-display" ></center></td><td class="equation-label">(16)</td></tr></table>
+<!--l. 278--><p class="nopar" >
+<!--l. 280--><p class="indent" >  A similar normalization procedure as above yields the following equivalent problem
+  <table 
+class="equation"><tr><td><a 
+ id="x1-27002r17"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing86x.svg" alt="vH  (m     ,h   ) =     max      u(c   ,h    ) + A˜β 𝔼[Γ 1−ρvR (mR )]
+ T−1   T− 1  T−1     cT−1,aT− 1,ςT− 1   T−1  T −1          T    T   T
+
+                    s.t.
+                              H
+     cT −1 + aT−1 = mT − 1 − [ΓT− 1 − (1 − δ)]Q0hT −1, cT− 1,aT−1 ≥ 0
+              mR  = 𝜃T + aT −1(ςT −1RT + (1 − ςT−1)R )∕Γ T + QT Γ H hT− 1∕ Γ T
+                T                                               T−1
+" class="math-display" ></center></td><td class="equation-label">(17)</td></tr></table>
+<!--l. 289--><p class="nopar" >
+<!--l. 291--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">B.6  </span> <a 
+ id="x1-28000B.6"></a>The Retired Homeowner’s general problem</h4>
+<!--l. 293--><p class="noindent" >A retired homeowner has no mortgage debt or payments, but does experience house
+liquidation and house price risk. With probability <img 
+src="PortfolioChoiceWithRiskyHousing87x.svg" alt="1 − st  " class="math";align="absmiddle">, the homeowner will be forced to
+sell their house and become a renter next period, in which case they obtain the value of their
+home as a liquid asset.
+  <table 
+class="equation"><tr><td><a 
+ id="x1-28001r18"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing88x.svg" alt="VH  (M  ,H  ,P ) =  max  u (C ,H ) + βs  𝔼 [VH   (M    ,H   ,P   )]
+  t    t  t  t    Ct,At,ςt    t   t     t  t  t+1   t+1   t+1   t+1
+                                  R     R
+                  +  β(1 − st)𝔼t[Vt+1(M t+1,Pt+1)]
+                  s.t.
+
+       Ct + At =  Mt −  [Ht+1 −  (1 − δ)Ht ]Q0,   Ct, At ≥ 0
+
+          Mt+1 =  Yt+1 + At(ςtRt+1  + (1 − ςt)R)
+            R
+          M t+1 = Mt+1 +  Qt+1Ht+1
+                   H
+          Ht+1 =  Γt+1Ht
+           Pt+1 = Γ t+1Pt
+
+           Yt+1 = 𝜃t+1Pt+1
+" class="math-display" ></center></td><td class="equation-label">(18)</td></tr></table>
+<!--l. 307--><p class="nopar" >
+<!--l. 309--><p class="indent" >  The normalized version of their problem is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-28002r19"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing89x.svg" alt=" H                                [ 1−ρ (   H                        ˜ R     R  ) ]
+vt (mt,ht) =  mcat,xat,ςtu(ct,ht) + β 𝔼t Γt+1  stvt+1(mt+1,ht+1) + (1 − st)Av t+1(m t+1 )
+
+             s.t.
+                     H
+    ct + at = mt − [Γ t+1 − (1 − δ)]Q0ht,   ct,at ≥ 0
+      m    = 𝜃    + a (ςR    +  (1 − ς )R)∕Γ   ,   0 ≤ ς ≤ 1
+        t+1    t+1    t  t t+1        t      t+1         t
+      ht+1 = Γ Ht+1ht ∕Γ t+1
+
+      mRt+1 = mt+1  + Qt+1ht+1
+" class="math-display" ></center></td><td class="equation-label">(19)</td></tr></table>
+<!--l. 320--><p class="nopar" >
+                                                                                     
+                                                                                     
+<!--l. 322--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">B.7  </span> <a 
+ id="x1-29000B.7"></a>The Working Homeowner that has mortgage debt</h4>
+<!--l. 324--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">B.8  </span> <a 
+ id="x1-30000B.8"></a>The borrowing constraint</h4>
+<!--l. 326--><p class="noindent" >Every household arrives at the last period of the model as a retired renter. Because they will
+die with certainty by the end of the period, there is a strict no-borrowing constraint imposed
+for these households (<img 
+src="PortfolioChoiceWithRiskyHousing90x.svg" alt="aT ≥ 0  " class="math";align="absmiddle">). This implies that the minimum allowable level of market
+resources is also <img 
+src="PortfolioChoiceWithRiskyHousing91x.svg" alt=" R      R
+mT &#x003E;  m-T = 0  " class="math";align="absmiddle">. If the household arrived to the last period with a negative
+level of market resources, it would have to consume a negative amount, yielding <img 
+src="PortfolioChoiceWithRiskyHousing92x.svg" alt="− ∞ " class="math";align="absmiddle">
+utility.
+<!--l. 328--><p class="indent" >  This strict borrowing constraint in the last period leads to a self imposed borrowing
+constraint in the second to last period, as the precautionary savings motive induces households
+to meet a minimum allowable level of market resources next period in order to avoid <img 
+src="PortfolioChoiceWithRiskyHousing93x.svg" alt="− ∞ " class="math";align="absmiddle">
+utility.
+<!--l. 330--><p class="indent" >  For the retired renter household, that means
+  <table 
+class="equation"><tr><td><a 
+ id="x1-30001r20"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing94x.svg" alt="  R                                            R
+m T = 𝜃T + aT− 1(ςT− 1RT + (1 − ςT− 1)R )∕Γ T &#x003E; m-T = 0.
+" class="math-display" ></center></td><td class="equation-label">(20)</td></tr></table>
+<!--l. 334--><p class="nopar" >
+                                                                                     
+                                                                                     
+<!--l. 336--><p class="indent" >  Because renting households have no collateral (a home), we can assume an artiﬁcial
+no-borrowing constraint. The minimum allowable level of market resources next period is met
+as long as <img 
+src="PortfolioChoiceWithRiskyHousing95x.svg" alt="𝜃T &#x003E; 0  " class="math";align="absmiddle">, which is true by construction. The no-borrowing constraint, in turn,
+induces a minimum allowable level of market resources in the second to last period as
+<img 
+src="PortfolioChoiceWithRiskyHousing96x.svg" alt="mRT− 1 = 0  " class="math";align="absmiddle">. Recursively, we can continue to assume a no-borrowing constraint for every period
+imposed on the retired renter household, which implies <img 
+src="PortfolioChoiceWithRiskyHousing97x.svg" alt="aR = 0
+-t  " class="math";align="absmiddle"> and <img 
+src="PortfolioChoiceWithRiskyHousing98x.svg" alt="m R = 0
+--t  " class="math";align="absmiddle"> for all <img 
+src="PortfolioChoiceWithRiskyHousing99x.svg" alt="t  " class="math";align="absmiddle">
+during retirement.
+<!--l. 338--><p class="indent" >  The retired homeowner in their second to last period will become a renter with certainty
+by the next period, at which point they receive the cash value of their liquidated
+house.
+  <table 
+class="equation"><tr><td><a 
+ id="x1-30002r21"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing100x.svg" alt="mRT =  mT +  QT hT &#x003E; mRT =  0
+" class="math-display" ></center></td><td class="equation-label">(21)</td></tr></table>
+<!--l. 342--><p class="nopar" >
+<!--l. 344--><p class="indent" >  which implies a natural minimum allowable level of market resources for homeowners
+of
+  <table 
+class="equation"><tr><td><a 
+ id="x1-30003r22"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing101x.svg" alt="mT  (hT ) = − QT hT.
+" class="math-display" ></center></td><td class="equation-label">(22)</td></tr></table>
+<!--l. 348--><p class="nopar" >
+<!--l. 350--><p class="indent" >  The last period market resources for homeowners is ruled by the transition equation
+  <table 
+class="equation"><tr><td><a 
+ id="x1-30004r23"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing102x.svg" alt="mT  = 𝜃T + aT− 1(ςT− 1RT +  (1 − ςT− 1)R )∕Γ T &#x003E; m  .
+                                               T
+" class="math-display" ></center></td><td class="equation-label">(23)</td></tr></table>
+<!--l. 354--><p class="nopar" >
+<!--l. 356--><p class="indent" >  Given a household’s decision on asset level <img 
+src="PortfolioChoiceWithRiskyHousing103x.svg" alt="aT−1   " class="math";align="absmiddle">, the lowest possible realization of next
+period market resources occurs when the household receives the lowest possible return, along
+with the lowest realizations of income shocks next period. For each <img 
+src="PortfolioChoiceWithRiskyHousing104x.svg" alt="aT −1   " class="math";align="absmiddle">, then, there is an
+upper bound on the risky share <img 
+src="PortfolioChoiceWithRiskyHousing105x.svg" alt="-
+ςT−1   " class="math";align="absmiddle"> such that the minimum allowable level of future market
+resources is met.
+  <table 
+class="equation"><tr><td><a 
+ id="x1-30005r24"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing106x.svg" alt="                    (mT  − 𝜃T )Γ T
+ςT −1(R − RT ) &#x003C; R − -----a-------
+                          T−1
+                                                                                     
+                                                                                     
+" class="math-display" ></center></td><td class="equation-label">(24)</td></tr></table>
+<!--l. 360--><p class="nopar" >
+<!--l. 362--><p class="indent" >  which implies a natural risky share constraint of
+  <table 
+class="equation"><tr><td><a 
+ id="x1-30006r25"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing107x.svg" alt="-                      1   (      (m-  (Γ H hT −1∕Γ- ) − 𝜃 )Γ-)
+ςT−1(aT −1,hT−1) = --------  R −  --T---T−1-------T-----T---T-
+                   R −  RT                   aT− 1
+" class="math-display" ></center></td><td class="equation-label">(25)</td></tr></table>
+<!--l. 366--><p class="nopar" >
+<!--l. 368--><p class="indent" >  The natural borrowing constraint, then, occurs when the implied natural risky share
+constraint is <img 
+src="PortfolioChoiceWithRiskyHousing108x.svg" alt="ς   (a    ,h   ) = 0
+ T−1 -T −1  T−1  " class="math";align="absmiddle">, which is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-30007r26"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing109x.svg" alt="aT−1(hT− 1) = (mT (Γ HT−1hT −1∕Γ T) − 𝜃T )Γ-T∕R
+" class="math-display" ></center></td><td class="equation-label">(26)</td></tr></table>
+<!--l. 372--><p class="nopar" >
+<!--l. 374--><p class="indent" >  The minimum allowable level of market resources constraint is once again derived from the
+precautionary motive <img 
+src="PortfolioChoiceWithRiskyHousing110x.svg" alt="c    &#x003E; 0
+ T−1  " class="math";align="absmiddle">, which results in
+                                                                                     
+                                                                                     
+  <table 
+class="equation"><tr><td><a 
+ id="x1-30008r27"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing111x.svg" alt="                              H
+mT −1(hT− 1) = aT −1(hT−1) + [ΓT−1 − (1 − δ)]Q0hT  −1.
+" class="math-display" ></center></td><td class="equation-label">(27)</td></tr></table>
+<!--l. 378--><p class="nopar" >
+<!--l. 380--><p class="indent" >  An important issue arises in the third-to-last period. Households who will become renters
+next period only have to meet the minimum allowable level of market resources for rental
+households next period <img 
+src="PortfolioChoiceWithRiskyHousing112x.svg" alt=" R
+mT −1 = 0  " class="math";align="absmiddle"> or equivalently <img 
+src="PortfolioChoiceWithRiskyHousing113x.svg" alt="mT − 1(hT −1) = − QT −1hT−1   " class="math";align="absmiddle">. Households
+who will remain homeowners instead have to meet the minimum allowable level of market
+resources for home-owning households next period (determined above). However, unlike in
+the second-to-last period, households in the third-to-last period do not know what
+type they will be in the next period, so they must meet both constraints, and thus
+must meet the stricter constraint. The eﬀective minimum allowable level of market
+resources for the second to-last-period <img 
+src="PortfolioChoiceWithRiskyHousing114x.svg" alt="t = T −  1  " class="math";align="absmiddle"> and recursively for periods before it
+is:
+  <table 
+class="equation"><tr><td><a 
+ id="x1-30009r28"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing115x.svg" alt="m-∗t(ht) = max {at(ht) + [Γ Ht − (1 − δ)]Q0ht,− Qtht}
+" class="math-display" ></center></td><td class="equation-label">(28)</td></tr></table>
+                                                                                     
+                                                                                     
+<!--l. 384--><p class="nopar" >
+<!--l. 386--><p class="indent" >  and the general natural borrowing constraint for period <img 
+src="PortfolioChoiceWithRiskyHousing116x.svg" alt="t = T −  2  " class="math";align="absmiddle"> and recursively for every
+period before it is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-30010r29"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing117x.svg" alt="at(ht) = (m∗t+1(Γ Ht ht∕Γ-t+1) − 𝜃t+1)Γ t+1∕R.
+" class="math-display" ></center></td><td class="equation-label">(29)</td></tr></table>
+<!--l. 390--><p class="nopar" >
+<!--l. 392--><p class="noindent" >
+  <h3 class="sectionHead"><span class="titlemark">C  </span> <a 
+ id="x1-31000C"></a>Backsolving the problem</h3>
+<!--l. 394--><p class="noindent" >The overall return on the consumer’s portfolio is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-31001r30"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing118x.svg" alt="Rt+1 (ςt) = R (1 − ςt) + Rt+1ςt
+
+         = R +  (Rt+1 − R)ςt
+                                                                                     
+                                                                                     
+" class="math-display" ></center></td><td class="equation-label">(30)</td></tr></table>
+<!--l. 401--><p class="nopar" >
+<!--l. 403--><p class="indent" >  The ﬁrst order condition with respect to <img 
+src="PortfolioChoiceWithRiskyHousing119x.svg" alt="c
+ t  " class="math";align="absmiddle"> is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-31002r31"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing120x.svg" alt="                [  −ρ     (                                             ) ]
+u ′1(ct,ht) = β 𝔼t Γ t+1Rt+1   st∂mvHt+1(mt+1, ht+1 ) + (1 − st) ˜A∂mvRt+1(mRt+1)
+" class="math-display" ></center></td><td class="equation-label">(31)</td></tr></table>
+<!--l. 407--><p class="nopar" >
+<!--l. 409--><p class="indent" >  The ﬁrst order condition with respect to <img 
+src="PortfolioChoiceWithRiskyHousing121x.svg" alt="ςt  " class="math";align="absmiddle"> is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-31003r32"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing122x.svg" alt="        [                (                                             )]
+0 = β 𝔼  Γ −ρ(R     − R)  s ∂ vH  (m    ,h   ) + (1 − s ) ˜A ∂ vR (mR  )  a
+       t   t+1   t+1        t m  t+1   t+1  t+1         t    m t+1   t+1     t
+" class="math-display" ></center></td><td class="equation-label">(32)</td></tr></table>
+<!--l. 413--><p class="nopar" >
+<!--l. 415--><p class="indent" >  A useful function to deﬁne is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-31004r33"></a>
+                                                                                     
+                                                                                     
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing123x.svg" alt="                [ 1−ρ (   H                          R     R  ) ]
+𝔳t(at,ςt) = β 𝔼t  Γt+1  stvt+1 (mt+1, ht+1) + (1 − st)A˜v t+1(m t+1)
+" class="math-display" ></center></td><td class="equation-label">(33)</td></tr></table>
+<!--l. 419--><p class="nopar" >
+<!--l. 421--><p class="indent" >  with ﬁrst order conditions
+<!--l. 423--><p class="indent" >  <div class="eqnarray">
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing124x.svg" alt="              [         (                                             )]
+𝔳a   =   β 𝔼t  Γ − ρRt+1 st∂mvH   (mt+1, ht+1) + (1 − st)A˜∂mvR  (mR   )         (34)
+ t            [ t+1           (t+1                            t+1   t+1       ) ]
+𝔳 ς  =   β 𝔼   Γ − ρ(R   − R ) s ∂  vH  (m   ,h   ) + (1 − s )A ˜∂ vR  (mR  )   a(35)
+  t          t  t+1   t+1        t m  t+1   t+1   t+1          t   m  t+1   t+1     t
+" class="math-display" ></center>
+</div>
+<!--l. 428--><p class="indent" >  which implies ﬁrst order conditions for the problem
+<!--l. 430--><p class="indent" >  <div class="eqnarray">
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing125x.svg" alt=" ′               a
+u1(ct,ht)  =    𝔳t(mt − ct,ςt)                        (36)
+                 ς
+       0   =    𝔳t(at,ςt)                             (37)
+" class="math-display" ></center>
+</div>
+<!--l. 435--><p class="indent" >  We can deﬁne the problem
+  <table 
+class="equation"><tr><td><a 
+ id="x1-31007r38"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing126x.svg" alt="˜𝔳t(at) =  maςxt 𝔳t(at,ςt)
+
+        s.t.
+
+    0 ≤ ςt ≤ 1
+" class="math-display" ></center></td><td class="equation-label">(38)</td></tr></table>
+<!--l. 443--><p class="nopar" >
+<!--l. 445--><p class="indent" >  which leads to solution
+  <table 
+class="equation"><tr><td><a 
+ id="x1-31008r39"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing127x.svg" alt="(c1−αhα)−ρ(1 − α )c− αhα = `˜𝔳a(m  −  c)
+  t   t           t   t    t   t    t
+" class="math-display" ></center></td><td class="equation-label">(39)</td></tr></table>
+                                                                                     
+                                                                                     
+<!--l. 449--><p class="nopar" >
+<!--l. 451--><p class="indent" >  we can solve for consumption function as
+  <table 
+class="equation"><tr><td><a 
+ id="x1-31009r40"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing128x.svg" alt="     (               ) ---1----
+        `˜𝔳a(m  −  c)    −ρ(1−α)−α
+ct =   --t---t-α(1t−ρ)
+       (1 − α)h
+" class="math-display" ></center></td><td class="equation-label">(40)</td></tr></table>
+<!--l. 455--><p class="nopar" >
+<!--l. 457--><p class="indent" >  Similarly, as before, the Envelope condition is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-31010r41"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing129x.svg" alt="  1−α α − ρ        −α α       H
+(ct  ht ) (1 − α )ct ht = ∂mv t (mt,ht)
+" class="math-display" ></center></td><td class="equation-label">(41)</td></tr></table>
+<!--l. 461--><p class="nopar" >
+                                                                                     
+                                                                                     
+<!--l. 463--><p class="noindent" >
+  <h3 class="sectionHead"><span class="titlemark">D  </span> <a 
+ id="x1-32000D"></a>Portfolio Choice after retirement</h3>
+<!--l. 465--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">D.1  </span> <a 
+ id="x1-33000D.1"></a>The solution of risky share</h4>
+<!--l. 467--><p class="noindent" >Let <img 
+src="PortfolioChoiceWithRiskyHousing130x.svg" alt="Rt+1   " class="math";align="absmiddle"> be log-normally distributed such that <img 
+src="PortfolioChoiceWithRiskyHousing131x.svg" alt="log Rt+1 =  rt+1 ∼ 𝒩  (r,σ2)
+                        r  " class="math";align="absmiddle">, then it is true
+that
+  <table 
+class="equation"><tr><td><a 
+ id="x1-33001r42"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing132x.svg" alt="𝔼 [R   ] = er+σ2r∕2   and  Var  [R   ] = (eσ2r − 1)e2r+ σr2
+ t  t+1                      t   t+1
+" class="math-display" ></center></td><td class="equation-label">(42)</td></tr></table>
+<!--l. 471--><p class="nopar" >
+<!--l. 473--><p class="indent" >  Thus, if we want to produce a log-normal distribution with mean <img 
+src="PortfolioChoiceWithRiskyHousing133x.svg" alt="μR  " class="math";align="absmiddle"> and variance <img 
+src="PortfolioChoiceWithRiskyHousing134x.svg" alt="σ2
+ R  " class="math";align="absmiddle">, we
+can use a normal distribution with
+  <table 
+class="equation"><tr><td><a 
+ id="x1-33002r43"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing135x.svg" alt="       (           )
+              2                       (      2 )
+r = log   ∘---μR-----    and   σ2r = log  1 + σR-  .
+           μ2R + σ2R                         μ2R
+" class="math-display" ></center></td><td class="equation-label">(43)</td></tr></table>
+<!--l. 477--><p class="nopar" >
+<!--l. 479--><p class="indent" >  According to Campbell and Viceira, the optimal share of stocks in ﬁnancial wealth for an
+agent that is not facing income uncertainty is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-33003r44"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing136x.svg" alt="    r + σ2∕2 − r (     H  )
+α = -----r------   1 + --t
+         γσ2r           Wt
+" class="math-display" ></center></td><td class="equation-label">(44)</td></tr></table>
+<!--l. 483--><p class="nopar" >
+<!--l. 485--><p class="indent" >  Using the above relations, we know that
+  <table 
+class="equation"><tr><td><a 
+ id="x1-33004r45"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing137x.svg" alt="                   (   )    (       )
+             ---log--μRR------     Ht-
+α (μR, σR ) =      (    σ2R-)  1 + W    .
+             γ log 1 + μ2R          t
+" class="math-display" ></center></td><td class="equation-label">(45)</td></tr></table>
+                                                                                     
+                                                                                     
+<!--l. 489--><p class="nopar" >
+<!--l. 491--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">D.2  </span> <a 
+ id="x1-34000D.2"></a>Exogenous Risky Share</h4>
+<!--l. 493--><p class="noindent" >Given the solution of portfolio choice after retirement, if we want to target a particular risky
+share <img 
+src="PortfolioChoiceWithRiskyHousing138x.svg" alt="α  " class="math";align="absmiddle"> (for example, one that ﬁts the observed data on portfolio choice after retirement), we
+can back out the agent’s beliefs on the risky asset return that would rationalize such an <img 
+src="PortfolioChoiceWithRiskyHousing139x.svg" alt="α  " class="math";align="absmiddle">.
+Assuming we know an agent’s ﬁnancial wealth (human and non-human), we can ﬁx <img 
+src="PortfolioChoiceWithRiskyHousing140x.svg" alt="  ∗
+μ R = μR  " class="math";align="absmiddle">
+to ﬁnd an ex-ante belief on the variance of the risky distribution that rationalizes an
+exogenous risky share <img 
+src="PortfolioChoiceWithRiskyHousing141x.svg" alt="α  " class="math";align="absmiddle"> as
+  <table 
+class="equation"><tr><td><a 
+ id="x1-34001r46"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing142x.svg" alt="         ( (  ∗) W+H-    )
+  ∗∗ 2       μR-  γαW          ∗ 2
+(σR )  =     R        − 1   (μR)
+" class="math-display" ></center></td><td class="equation-label">(46)</td></tr></table>
+<!--l. 497--><p class="nopar" >
+<!--l. 499--><p class="indent" >  Fixing <img 
+src="PortfolioChoiceWithRiskyHousing143x.svg" alt="σ∗
+ R  " class="math";align="absmiddle"> and ﬁnding a <img 
+src="PortfolioChoiceWithRiskyHousing144x.svg" alt="μ∗∗(σ∗ )
+ R   R  " class="math";align="absmiddle"> that rationalizes an exogenous risky share <img 
+src="PortfolioChoiceWithRiskyHousing145x.svg" alt="α  " class="math";align="absmiddle">
+has no analytical solution, although a numerical solution might exist under some
+conditions.
+<!--l. 501--><p class="indent" >  Of course, if instead we ﬁx <img 
+src="PortfolioChoiceWithRiskyHousing146x.svg" alt="r∗ = r(μR, σR)  " class="math";align="absmiddle"> or <img 
+src="PortfolioChoiceWithRiskyHousing147x.svg" alt="σ∗r = σr(μR, σR )  " class="math";align="absmiddle">, we can obtain rationalized
+beliefs as
+  <table 
+class="equation"><tr><td><a 
+ id="x1-34002r47"></a>
+                                                                                     
+                                                                                     
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing148x.svg" alt="  ∗∗   αWt  γ(σ∗r)2         ∗2
+r   = ----------- + r − (σ r)∕2
+        W  + H
+" class="math-display" ></center></td><td class="equation-label">(47)</td></tr></table>
+<!--l. 505--><p class="nopar" >
+<!--l. 507--><p class="indent" >  and
+  <table 
+class="equation"><tr><td><a 
+ id="x1-34003r48"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing149x.svg" alt="               (        ) (              )−1
+  ∗∗ 2               H--         W--+-H--
+(σr ) = (r − r)  1 + W     α γ −   2W        .
+" class="math-display" ></center></td><td class="equation-label">(48)</td></tr></table>
+<!--l. 511--><p class="nopar" >
+<!--l. 513--><p class="indent" >  It’s important to note that these beliefs will result in diﬀerent risky distribution parameters
+than those that pegged the log-normal distribution parameter.
+<!--l. 8--><p class="noindent" >
+  <h3 class="sectionHead"><span class="titlemark">E  </span> <a 
+ id="x1-35000E"></a>The Portfolio Choice Problem for Rental Households</h3>
+<!--l. 10--><p class="noindent" >Households that do not own and instead rent their homes have to decide how much to
+consume, how much to spend on rent, and how much to save. Their normalized problem can
+                                                                                     
+                                                                                     
+be stated as:
+  <table 
+class="equation"><tr><td><a 
+ id="x1-35001r49"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing150x.svg" alt="                                [               ]
+ wt(mt) =   max   u(ct,ht) + β 𝔼t Γ 1−t+1ρwt+1(mt+1 )
+          {at,ht,ςt}
+       s.t.
+
+     at = mt −  ct − ht
+
+Rt+1(ςt) = R +  (Rt+1  − R)ςt
+
+   mt+1 = atRt+1 (ςt)∕Γ t+1 + 𝜃t+1
+" class="math-display" ></center></td><td class="equation-label">(49)</td></tr></table>
+<!--l. 20--><p class="nopar" >
+<!--l. 22--><p class="indent" >  Consider the problem of a consumer that has <img 
+src="PortfolioChoiceWithRiskyHousing151x.svg" alt="xt  " class="math";align="absmiddle"> to spend on consumption and housing.
+Their problem is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-35002r50"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing152x.svg" alt="u(x) = m{acx,h} u (c,h )
+
+    s.t.
+
+   x = c + h
+" class="math-display" ></center></td><td class="equation-label">(50)</td></tr></table>
+                                                                                     
+                                                                                     
+<!--l. 30--><p class="nopar" >
+<!--l. 38--><p class="indent" >  Given the functional form of utility we are using (CRRA with paramter <img 
+src="PortfolioChoiceWithRiskyHousing153x.svg" alt="ρ  " class="math";align="absmiddle">), the well known
+solution to this simple problem is <img 
+src="PortfolioChoiceWithRiskyHousing154x.svg" alt="c =  (1 − α )x
+ ∗  " class="math";align="absmiddle"> and <img 
+src="PortfolioChoiceWithRiskyHousing155x.svg" alt="h  =  αx
+  ∗  " class="math";align="absmiddle">. Restating the problem in
+terms of <img 
+src="PortfolioChoiceWithRiskyHousing156x.svg" alt="x  " class="math";align="absmiddle">, we obtain:
+  <table 
+class="equation"><tr><td><a 
+ id="x1-35003r51"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing157x.svg" alt="                    1−α α 1−ρ       1−ρ
+u(x) = u(c ,h ) = (c∗--h∗-)---=  χ-x----
+          ∗  ∗       1 − ρ        1 − ρ
+" class="math-display" ></center></td><td class="equation-label">(51)</td></tr></table>
+<!--l. 42--><p class="nopar" >
+<!--l. 44--><p class="indent" >  where <img 
+src="PortfolioChoiceWithRiskyHousing158x.svg" alt="χ = ((1 − α)1−αα α)1−ρ  " class="math";align="absmiddle">. Because both consumption and housing are non-durable in
+the case of a rental household, the consumer can ﬁrst decide how much to spend on both
+goods (<img 
+src="PortfolioChoiceWithRiskyHousing159x.svg" alt="xt  " class="math";align="absmiddle">) and then decide how much to spend on each of the goods without changing the
+problem. A further step to simplify the problem is to use iterated expectations to split up the
+problem into subperiods. We can deﬁne
+  <table 
+class="equation"><tr><td><a 
+ id="x1-35004r52"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing160x.svg" alt="              [ 1−ρ           ]
+wt (bt+1) = 𝔼t  Γt+1wt+1(mt+1 )
+        where
+
+   mt+1  = bt+1∕Γ t+1 + 𝜃t+1
+                                                                                     
+                                                                                     
+" class="math-display" ></center></td><td class="equation-label">(52)</td></tr></table>
+<!--l. 52--><p class="nopar" >
+<!--l. 54--><p class="indent" >  Now, we can rewrite our original problem as
+  <table 
+class="equation"><tr><td><a 
+ id="x1-35005r53"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing161x.svg" alt=" wt(mt ) = m{aatx,ςt}u(xt) + β 𝔼t [wt(bt+1)]
+
+        s.t.
+
+      at = mt − xt
+R    (ς ) = R + (R    − R )ς
+  t+1  t           t+1      t
+    bt+1 = atRt+1(ςt)
+" class="math-display" ></center></td><td class="equation-label">(53)</td></tr></table>
+<!--l. 64--><p class="nopar" >
+<!--l. 66--><p class="indent" >  which embeds the simple subproblem and our deﬁned iterated expectation.
+<!--l. 68--><p class="indent" >  We can rewrite the problem as
+  <table 
+class="equation"><tr><td><a 
+ id="x1-35006r54"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing162x.svg" alt="wt (mt) = m{aaxt,ςt}u (mt  − at) + β 𝔼t [wt (at(R + (Rt+1 − R )ςt))]
+" class="math-display" ></center></td><td class="equation-label">(54)</td></tr></table>
+                                                                                     
+                                                                                     
+<!--l. 72--><p class="nopar" >
+<!--l. 74--><p class="indent" >  First order condition with respect to <img 
+src="PortfolioChoiceWithRiskyHousing163x.svg" alt="a  " class="math";align="absmiddle"> provides the Euler equation
+  <table 
+class="equation"><tr><td><a 
+ id="x1-35007r55"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing164x.svg" alt="u′(x ) = β 𝔼  [w ′(b   )R   (ς )]
+    t       t  t t+1   t+1  t
+" class="math-display" ></center></td><td class="equation-label">(55)</td></tr></table>
+<!--l. 78--><p class="nopar" >
+<!--l. 80--><p class="indent" >  and the ﬁrst order condition with respect to <img 
+src="PortfolioChoiceWithRiskyHousing165x.svg" alt="ςt  " class="math";align="absmiddle"> is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-35008r56"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing166x.svg" alt="      ′
+β 𝔼t [wt(bt+1)at(Rt+1 − R )] = 0
+" class="math-display" ></center></td><td class="equation-label">(56)</td></tr></table>
+<!--l. 84--><p class="nopar" >
+<!--l. 86--><p class="indent" >  The envelope condition is given by
+  <table 
+class="equation"><tr><td><a 
+ id="x1-35009r57"></a>
+                                                                                     
+                                                                                     
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing167x.svg" alt="  ′        ′
+w t(mt ) = u(xt)
+" class="math-display" ></center></td><td class="equation-label">(57)</td></tr></table>
+<!--l. 90--><p class="nopar" >
+<!--l. 92--><p class="indent" >  And ﬁnally,
+  <table 
+class="equation"><tr><td><a 
+ id="x1-35010r58"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing168x.svg" alt="w ′(bt+1) = 𝔼t [Γ 1−ρw ′ (mt+1 )∕Γ t+1] = 𝔼t [Γ −ρ w ′ (mt+1 )]
+  t             t+1  t+1                     t+1 t+1
+" class="math-display" ></center></td><td class="equation-label">(58)</td></tr></table>
+<!--l. 96--><p class="nopar" >
+<!--l. 98--><p class="noindent" >
+  <h3 class="sectionHead"><span class="titlemark">F  </span> <a 
+ id="x1-36000F"></a>The portfolio problem of a homeowner with no mortgage</h3>
+<!--l. 100--><p class="noindent" >A homeowner with no mortgage debt is allowed to invest more on their house to increase its
+size (or they can let it depreciate). In doing so, they choose home investment, consumption,
+and savings. Their problem is summarized as follows:
+  <table 
+class="equation"><tr><td><a 
+ id="x1-36001r59"></a>
+                                                                                     
+                                                                                     
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing169x.svg" alt="                                   [ 1−ρ(                                  w   )]
+vt(mt, ht−1) = maat,xςt,itu(ct,ht) + β 𝔼t Γt+1 (1 − 𝜗 )vt+1(mt+1, ht+1) + 𝜗wt+1(m t+1)
+
+                            s.t.
+
+                          ht = (1 − δ)ht−1 + it∕ ϙ0
+                       ht+1 =  ht∕ Γ t+1
+
+                          at = mt − ct − it
+
+                    Rt+1(ςt) = R + (Rt+1 − R)ςt
+
+                       mt+1 =  atRt+1 (ςt)∕Γ t+1 + 𝜃t+1
+                       mw   =  mt+1 + ϙ   ht+1
+                         t+1            t+1
+" class="math-display" ></center></td><td class="equation-label">(59)</td></tr></table>
+<!--l. 113--><p class="nopar" >
+<!--l. 129--><p class="indent" >  To facilitate the solution method, we can split the above problem into diﬀerent
+subperiods.
+<!--l. 131--><p class="indent" >  In the ﬁrst subperiod, the household arrives with cash on hand and their previous housing
+size. They then pick their current size by investing <img 
+src="PortfolioChoiceWithRiskyHousing170x.svg" alt="it  " class="math";align="absmiddle"> where housing costs are <img 
+src="PortfolioChoiceWithRiskyHousing171x.svg" alt="ϙ0   " class="math";align="absmiddle">. After
+investing, they are left with net cash on hand after housing costs, and a new housing
+size.
+  <table 
+class="equation"><tr><td><a 
+ id="x1-36002r60"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing172x.svg" alt="v (m  ,h   ) = max ˜𝔳 (n ,h )
+ t   t  t−1     it  t  t  t
+
+            s.t.
+          n =  m  − i
+           t     t   t
+          ht = (1 − δ)ht−1 + it∕ϙ0
+" class="math-display" ></center></td><td class="equation-label">(60)</td></tr></table>
+<!--l. 140--><p class="nopar" >
+<!--l. 142--><p class="indent" >  In the second subperiod, the household arrives with net cash on hand and their current
+housing size. This subperiod is a standard portfolio choice problem, indexed by their house
+size. The agent must then choose a level of savings <img 
+src="PortfolioChoiceWithRiskyHousing173x.svg" alt="at  " class="math";align="absmiddle"> and the proportion of their savings
+that will go into the risky asset <img 
+src="PortfolioChoiceWithRiskyHousing174x.svg" alt="ςt  " class="math";align="absmiddle"> versus the safe asset <img 
+src="PortfolioChoiceWithRiskyHousing175x.svg" alt="(1 − ςt)  " class="math";align="absmiddle">.
+  <table 
+class="equation"><tr><td><a 
+ id="x1-36003r61"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing176x.svg" alt="                               [          ]
+˜𝔳t(nt,ht) =  max u (ct,ht) + β 𝔼t `˜𝔳t(bt+1, ht)
+           {at,ςt}
+
+      at = nt − ct
+ R   (ς) = R + (R    −  R)ς
+  t+1  t          t+1      t
+    bt+1 = atRt+1(ςt)
+" class="math-display" ></center></td><td class="equation-label">(61)</td></tr></table>
+<!--l. 151--><p class="nopar" >
+<!--l. 153--><p class="indent" >  Finally in the last subperiod, the household’s uncertainty is realized. Simultaneously, they
+observe their permanent and transitory income shocks, whether they will become renters in
+the next period (function <img 
+src="PortfolioChoiceWithRiskyHousing177x.svg" alt="wt+1   " class="math";align="absmiddle"> with probability <img 
+src="PortfolioChoiceWithRiskyHousing178x.svg" alt="𝜗  " class="math";align="absmiddle">), and if they do become renters, the
+liquidation price of their house per unit of housing.
+  <table 
+class="equation"><tr><td><a 
+ id="x1-36004r62"></a>
+                                                                                     
+                                                                                     
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing179x.svg" alt="`˜              [  1−ρ(                                  w   )]
+𝔳t(bt+1,ht) = 𝔼t Γ t+1  (1 − 𝜗)vt+1(mt+1, ht+1) + 𝜗wt+1 (m t+1 )
+          where
+
+      ht+1 = ht∕Γ t+1
+
+     mt+1 =  bt+1 ∕Γ t+1 + 𝜃t+1
+       w
+     m t+1 = mt+1 + ht+1ϙt+1
+" class="math-display" ></center></td><td class="equation-label">(62)</td></tr></table>
+<!--l. 163--><p class="nopar" >
+<!--l. 165--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">F.1  </span> <a 
+ id="x1-37000F.1"></a>First order conditions: Choosing home investment</h4>
+<!--l. 167--><p class="noindent" >The problem is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-37001r63"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing180x.svg" alt="vt(mt, ht−1) = maixt ˜𝔳t(mt − it,(1 − δ)ht− 1 + it∕ϙ0)
+" class="math-display" ></center></td><td class="equation-label">(63)</td></tr></table>
+<!--l. 171--><p class="nopar" >
+<!--l. 173--><p class="indent" >  The ﬁrst order condition with respect to <img 
+src="PortfolioChoiceWithRiskyHousing181x.svg" alt="i
+ t  " class="math";align="absmiddle"> is
+                                                                                     
+                                                                                     
+  <table 
+class="equation"><tr><td><a 
+ id="x1-37002r64"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing182x.svg" alt="  n           h
+𝔳˜t(nt,ht) = ˜𝔳 t(nt,ht)∕ ϙ0
+" class="math-display" ></center></td><td class="equation-label">(64)</td></tr></table>
+<!--l. 177--><p class="nopar" >
+<!--l. 179--><p class="indent" >  which equalizes the marginal beneﬁt of additional net cash-on-hand (cash-on-hand net of
+home investment) with the marginal cost of a larger house. The envelope conditions
+are
+  <table 
+class="equation"><tr><td><a 
+ id="x1-37003r65"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing183x.svg" alt="vmt (mt,ht− 1) = ˜𝔳nt (nt,ht)
+  h             h
+ vt(mt,ht− 1) = ˜𝔳t (nt,ht)(1 − δ)
+" class="math-display" ></center></td><td class="equation-label">(65)</td></tr></table>
+<!--l. 186--><p class="nopar" >
+<!--l. 188--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">F.2  </span> <a 
+ id="x1-38000F.2"></a>First order conditions: Choosing consumption and portfolio investment</h4>
+                                                                                     
+                                                                                     
+<!--l. 190--><p class="noindent" >Once again, let’s reduce the problem to 1 line.
+  <table 
+class="equation"><tr><td><a 
+ id="x1-38001r66"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing184x.svg" alt="                                    [                           ]
+˜𝔳 (n ,h ) = max  u(n −  a ,h) + β 𝔼   `˜𝔳(a (R + (R    −  R)ς),h )
+ t  t  t    {at,ςt}   t    t  t      t   t t        t+1      t  t
+" class="math-display" ></center></td><td class="equation-label">(66)</td></tr></table>
+<!--l. 194--><p class="nopar" >
+<!--l. 196--><p class="indent" >  Notice that <img 
+src="PortfolioChoiceWithRiskyHousing185x.svg" alt="ht  " class="math";align="absmiddle"> passes through this problem unaltered. Indeed, in this subproblem, the
+house size indexes the portfolio choice (and may aﬀect marginal utility) but does not need
+further addressing beyond a simple portfolio choice model.
+<!--l. 198--><p class="indent" >  The ﬁrst order condition with respect to <img 
+src="PortfolioChoiceWithRiskyHousing186x.svg" alt="at  " class="math";align="absmiddle"> is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-38002r67"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing187x.svg" alt="               [                  ]
+uc(c,h ) = β 𝔼  `˜𝔳b(b   ,h )R   (ς )
+   t  t       t   t t+1  t  t+1  t
+" class="math-display" ></center></td><td class="equation-label">(67)</td></tr></table>
+<!--l. 202--><p class="nopar" >
+<!--l. 204--><p class="indent" >  The ﬁrst order condition with respect to <img 
+src="PortfolioChoiceWithRiskyHousing188x.svg" alt="ςt  " class="math";align="absmiddle"> is
+  <table 
+class="equation"><tr><td><a 
+ id="x1-38003r68"></a>
+                                                                                     
+                                                                                     
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing189x.svg" alt="    [ b                     ]
+β 𝔼t `˜𝔳t(bt+1,ht)at(Rt+1  − R)  = 0
+" class="math-display" ></center></td><td class="equation-label">(68)</td></tr></table>
+<!--l. 208--><p class="nopar" >
+<!--l. 210--><p class="indent" >  Finally, the envelope conditions are
+  <table 
+class="equation"><tr><td><a 
+ id="x1-38004r69"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing190x.svg" alt="˜𝔳nt (nt,ht) = uc(ct,ht)
+  h           h             [ h         ]
+˜𝔳 t(nt,ht) = u  (ct,ht) + β 𝔼t `˜𝔳t(bt+1,ht)
+" class="math-display" ></center></td><td class="equation-label">(69)</td></tr></table>
+<!--l. 217--><p class="nopar" >
+<!--l. 219--><p class="indent" >  The second envelope condition is due to the nature of the <img 
+src="PortfolioChoiceWithRiskyHousing191x.svg" alt="h
+ t  " class="math";align="absmiddle"> pass-through.
+<!--l. 221--><p class="noindent" >
+  <h4 class="subsectionHead"><span class="titlemark">F.3  </span> <a 
+ id="x1-39000F.3"></a>Envelope conditions: Uncertainty is realized</h4>
+<!--l. 223--><p class="noindent" >The last subperiod is harder to re-write in one line, but because there is no maximization it is
+straight forward to calculate the derivatives.
+  <table 
+class="equation"><tr><td><a 
+ id="x1-39001r70"></a>
+                                                                                     
+                                                                                     
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing192x.svg" alt="`˜b              [ −ρ (        m                   m     w   )]
+𝔳t(bt+1,ht) = 𝔼t [Γt+1((1 − 𝜗)vt+1(mt+1, ht+1) + 𝜗w t+1(m t+1)   )]
+`˜𝔳h(bt+1,ht) = 𝔼t  Γ −ρ (1 − 𝜗)vh  (mt+1, ht+1) + 𝜗wm  (mw   )ϙ
+ t                t+1         t+1                 t+1   t+1  t+1
+" class="math-display" ></center></td><td class="equation-label">(70)</td></tr></table>
+<!--l. 230--><p class="nopar" >
+<!--l. 232--><p class="noindent" >
+  <h3 class="sectionHead"><span class="titlemark">G  </span> <a 
+ id="x1-40000G"></a>Solving the homeowner with mortgage problem</h3>
+  <table 
+class="equation"><tr><td><a 
+ id="x1-40001r71"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing193x.svg" alt="v (m  ,h ,d   ) = max  u(c ,h ) + β 𝔼 [Γ 1−ρv  (m    ,h   ,d   )]
+ t  t  t  t−1    at,ςt,it   t  t       t  t+1 t+1   t+1   t+1   t+1
+
+              s.t.
+            d =  d   +  (1 − δ)h  − i
+             t    t−1           t   t
+            at = mt − ct − it
+
+      Rt+1 (ςt) = R + (Rt+1 − R )ςt
+
+         mt+1 =  atRt+1(ςt)∕Γ t+1 + 𝜃t+1
+          h   =  h ∕Γ
+           t+1    t  t+1
+         mwt+1 = mt+1 + ϙt+1ht+1
+                                                                                     
+                                                                                     
+" class="math-display" ></center></td><td class="equation-label">(71)</td></tr></table>
+<!--l. 245--><p class="nopar" >
+<!--l. 247--><p class="noindent" >Can also be split up into subparts
+  <table 
+class="equation"><tr><td><a 
+ id="x1-40002r72"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing194x.svg" alt="                      ˜
+vt(mt, ht,dt− 1) = maxit  𝔳t(nt,ht,dt)
+
+            nt = mt −  it
+
+            dt = dt−1 + (1 − δ)ht − it
+" class="math-display" ></center></td><td class="equation-label">(72)</td></tr></table>
+<!--l. 255--><p class="nopar" >
+  <table 
+class="equation"><tr><td><a 
+ id="x1-40003r73"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing195x.svg" alt="                                  [             ]
+                                   `
+˜𝔳t(nt,ht,dt) = {maat,xςt}u (ct,ht) + β 𝔼t ˜𝔳t(bt+1, ht,dt)
+
+         at = nt − ct
+
+    Rt+1(ςt) = R + (Rt+1 −  R)ςt
+       b    = a R   (ς )
+        t+1    t  t+1  t
+" class="math-display" ></center></td><td class="equation-label">(73)</td></tr></table>
+                                                                                     
+                                                                                     
+<!--l. 264--><p class="nopar" >
+  <table 
+class="equation"><tr><td><a 
+ id="x1-40004r74"></a>
+  <center class="math-display" >
+<img 
+src="PortfolioChoiceWithRiskyHousing196x.svg" alt="`˜                  [ 1−ρ                    ]
+𝔳t(bt+1,ht,dt) = 𝔼t  Γt+1vt+1(mt+1,ht+1,dt+1)
+             where
+
+         ht+1 = ht∕Γ t+1
+
+         dt+1 = dtRD ∕Γ t+1
+
+        mt+1  = bt+1∕Γ t+1 + 𝜃t+1
+        mw    = m    + h    ϙ
+          t+1     t+1    t+1  t+1
+" class="math-display" ></center></td><td class="equation-label">(74)</td></tr></table>
+<!--l. 275--><p class="nopar" >
+<!--l. 6--><p class="noindent" >
+  <h3 class="likesectionHead"><a 
+ id="x1-41000G"></a>References</h3>
+<!--l. 6--><p class="noindent" >
+  <div class="thebibliography">
+  <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XBrandsaas2021"></a><span class="bibsp">   </span></span><span 
+class="eccc1200-"><span 
+class="small-caps">B</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">d</span><span 
+class="small-caps">s</span><span 
+class="small-caps">a</span><span 
+class="small-caps">a</span><span 
+class="small-caps">s</span><span 
+class="small-caps">,</span> <span 
+class="small-caps">E</span><span 
+class="small-caps">i</span><span 
+class="small-caps">r</span><span 
+class="small-caps">i</span><span 
+class="small-caps">k</span> </span>(2018): “Household Stock Market Participation: The Role of
+  Homeownership,” <span 
+class="ecti-1200">SSRN Electronic Journal</span>.
+  </p>
+                                                                                     
+                                                                                     
+  <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XCampbell2003"></a><span class="bibsp">   </span></span><span 
+class="eccc1200-"><span 
+class="small-caps">C</span><span 
+class="small-caps">a</span><span 
+class="small-caps">m</span><span 
+class="small-caps">p</span><span 
+class="small-caps">b</span><span 
+class="small-caps">e</span><span 
+class="small-caps">l</span><span 
+class="small-caps">l</span><span 
+class="small-caps">,</span>   <span 
+class="small-caps">J</span><span 
+class="small-caps">o</span><span 
+class="small-caps">h</span><span 
+class="small-caps">n</span></span><span 
+class="eccc1200-"> <span 
+class="small-caps">Y</span><span 
+class="small-caps">.</span><span 
+class="small-caps">,</span>   <span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">d</span>   <span 
+class="small-caps">J</span><span 
+class="small-caps">o</span></span><span 
+class="eccc1200-">ã</span><span 
+class="eccc1200-"><span 
+class="small-caps">o</span></span><span 
+class="eccc1200-"> <span 
+class="small-caps">F</span><span 
+class="small-caps">.</span>   <span 
+class="small-caps">C</span><span 
+class="small-caps">o</span><span 
+class="small-caps">c</span><span 
+class="small-caps">c</span><span 
+class="small-caps">o</span>   </span>(2003):   “Household   risk
+  management and optimal mortgage choice,” <span 
+class="ecti-1200">Quarterly Journal of Economics</span>, 118(4),
+  1449–1494.
+  </p>
+  <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XccMortgageDefault2013"></a><span class="bibsp">   </span></span>__________<span 
+class="eccc1200-">   </span>(2015):  “A  Model  of  Mortgage  Default,”  <span 
+class="ecti-1200">Journal  of  Finance</span>,  70(4),
+  1495–1554.
+  </p>
+  <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XCarroll2020"></a><span class="bibsp">   </span></span><span 
+class="eccc1200-"><span 
+class="small-caps">C</span><span 
+class="small-caps">a</span><span 
+class="small-caps">r</span><span 
+class="small-caps">r</span><span 
+class="small-caps">o</span><span 
+class="small-caps">l</span><span 
+class="small-caps">l</span><span 
+class="small-caps">,</span>          <span 
+class="small-caps">C</span><span 
+class="small-caps">h</span><span 
+class="small-caps">r</span><span 
+class="small-caps">i</span><span 
+class="small-caps">s</span><span 
+class="small-caps">t</span><span 
+class="small-caps">o</span><span 
+class="small-caps">p</span><span 
+class="small-caps">h</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span>          </span>(2020):           “Optimal           Financial
+  Investments      Over      the      Life      Cycle,”      <span 
+class="ecti-1200">Think     Forward     Initiative</span>,
+  (https://www.thinkforwardinitiative.com/stories/optimal-ﬁnancial-investments-over-the-life-cycle).
+  </p>
+  <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XChetty2017"></a><span class="bibsp">   </span></span><span 
+class="eccc1200-"><span 
+class="small-caps">C</span><span 
+class="small-caps">H</span><span 
+class="small-caps">E</span><span 
+class="small-caps">T</span><span 
+class="small-caps">T</span><span 
+class="small-caps">Y</span><span 
+class="small-caps">,</span> <span 
+class="small-caps">R</span><span 
+class="small-caps">A</span><span 
+class="small-caps">J</span><span 
+class="small-caps">,</span> <span 
+class="small-caps">L</span></span><span 
+class="eccc1200-">Á</span><span 
+class="eccc1200-"><span 
+class="small-caps">S</span><span 
+class="small-caps">Z</span><span 
+class="small-caps">L</span></span><span 
+class="eccc1200-">Ó</span> <span 
+class="eccc1200-"><span 
+class="small-caps">S</span></span><span 
+class="eccc1200-">Á</span><span 
+class="eccc1200-"><span 
+class="small-caps">N</span><span 
+class="small-caps">D</span><span 
+class="small-caps">O</span><span 
+class="small-caps">R</span><span 
+class="small-caps">,</span> <span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">d</span> <span 
+class="small-caps">A</span><span 
+class="small-caps">D</span><span 
+class="small-caps">A</span><span 
+class="small-caps">M</span> <span 
+class="small-caps">S</span><span 
+class="small-caps">Z</span><span 
+class="small-caps">E</span><span 
+class="small-caps">I</span><span 
+class="small-caps">D</span><span 
+class="small-caps">L</span> </span>(2017): “The
+  Eﬀect of Housing on Portfolio Choice,” <span 
+class="ecti-1200">The Journal of Finance</span>, 72(3), 1171–1212.
+  </p>
+  <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XCocco2004rfs"></a><span class="bibsp">   </span></span><span 
+class="eccc1200-"><span 
+class="small-caps">C</span><span 
+class="small-caps">o</span><span 
+class="small-caps">c</span><span 
+class="small-caps">c</span><span 
+class="small-caps">o</span><span 
+class="small-caps">,</span> <span 
+class="small-caps">J</span><span 
+class="small-caps">o</span></span><span 
+class="eccc1200-">ã</span><span 
+class="eccc1200-"><span 
+class="small-caps">o</span></span><span 
+class="eccc1200-"> <span 
+class="small-caps">F</span><span 
+class="small-caps">.</span> </span>(2005): “Portfolio choice in the presence of housing,” <span 
+class="ecti-1200">Review of</span>
+  <span 
+class="ecti-1200">Financial Studies</span>, 18(2), 535–567.
+  </p>
+  <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XCocco2005"></a><span class="bibsp">   </span></span><span 
+class="eccc1200-"><span 
+class="small-caps">C</span><span 
+class="small-caps">o</span><span 
+class="small-caps">c</span><span 
+class="small-caps">c</span><span 
+class="small-caps">o</span><span 
+class="small-caps">,</span>  <span 
+class="small-caps">J</span><span 
+class="small-caps">o</span></span><span 
+class="eccc1200-">ã</span><span 
+class="eccc1200-"><span 
+class="small-caps">o</span></span><span 
+class="eccc1200-"> <span 
+class="small-caps">F</span><span 
+class="small-caps">.</span><span 
+class="small-caps">,</span>  <span 
+class="small-caps">F</span><span 
+class="small-caps">.</span></span><span 
+class="eccc1200-"> <span 
+class="small-caps">J</span><span 
+class="small-caps">.</span>  <span 
+class="small-caps">G</span><span 
+class="small-caps">o</span><span 
+class="small-caps">m</span><span 
+class="small-caps">e</span><span 
+class="small-caps">s</span><span 
+class="small-caps">,</span>  <span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">d</span>  <span 
+class="small-caps">P</span><span 
+class="small-caps">a</span><span 
+class="small-caps">s</span><span 
+class="small-caps">c</span><span 
+class="small-caps">a</span><span 
+class="small-caps">l</span></span><span 
+class="eccc1200-"> <span 
+class="small-caps">J</span><span 
+class="small-caps">.</span>  <span 
+class="small-caps">M</span><span 
+class="small-caps">a</span><span 
+class="small-caps">e</span><span 
+class="small-caps">n</span><span 
+class="small-caps">h</span><span 
+class="small-caps">o</span><span 
+class="small-caps">u</span><span 
+class="small-caps">t</span>  </span>(2005):
+  “Consumption and portfolio choice over the life cycle,” <span 
+class="ecti-1200">Review of Financial Studies</span>,
+  18(2), 491–533.
+  </p>
+  <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XGomes2020a"></a><span class="bibsp">   </span></span><span 
+class="eccc1200-"><span 
+class="small-caps">G</span><span 
+class="small-caps">o</span><span 
+class="small-caps">m</span><span 
+class="small-caps">e</span><span 
+class="small-caps">s</span><span 
+class="small-caps">,</span>  <span 
+class="small-caps">F</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">c</span><span 
+class="small-caps">i</span><span 
+class="small-caps">s</span><span 
+class="small-caps">c</span><span 
+class="small-caps">o</span> </span>(2020):  “Portfolio  Choice  over  the  Life  Cycle:  A  Survey,”
+  <span 
+class="ecti-1200">Annual Review of Financial Economics</span>, 12(1), 277–304.
+  </p>
+                                                                                     
+                                                                                     
+  <p class="bibitem" ><span class="biblabel">
+<a 
+ id="Xgomes2005optimal"></a><span class="bibsp">   </span></span><span 
+class="eccc1200-"><span 
+class="small-caps">G</span><span 
+class="small-caps">o</span><span 
+class="small-caps">m</span><span 
+class="small-caps">e</span><span 
+class="small-caps">s</span><span 
+class="small-caps">,</span> <span 
+class="small-caps">F</span><span 
+class="small-caps">r</span><span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">c</span><span 
+class="small-caps">i</span><span 
+class="small-caps">s</span><span 
+class="small-caps">c</span><span 
+class="small-caps">o</span><span 
+class="small-caps">,</span> <span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">d</span> <span 
+class="small-caps">A</span><span 
+class="small-caps">l</span><span 
+class="small-caps">e</span><span 
+class="small-caps">x</span><span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">d</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span> <span 
+class="small-caps">M</span><span 
+class="small-caps">i</span><span 
+class="small-caps">c</span><span 
+class="small-caps">h</span><span 
+class="small-caps">a</span><span 
+class="small-caps">e</span><span 
+class="small-caps">l</span><span 
+class="small-caps">i</span><span 
+class="small-caps">d</span><span 
+class="small-caps">e</span><span 
+class="small-caps">s</span> </span>(2005): “Optimal life-cycle
+  asset allocation: Understanding the empirical evidence,”  <span 
+class="ecti-1200">Journal of Finance</span>, 60(2),
+  869–904.
+  </p>
+  <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XMerton1969"></a><span class="bibsp">   </span></span><span 
+class="eccc1200-"><span 
+class="small-caps">M</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span><span 
+class="small-caps">t</span><span 
+class="small-caps">o</span><span 
+class="small-caps">n</span><span 
+class="small-caps">,</span> <span 
+class="small-caps">R</span><span 
+class="small-caps">o</span><span 
+class="small-caps">b</span><span 
+class="small-caps">e</span><span 
+class="small-caps">r</span><span 
+class="small-caps">t</span></span><span 
+class="eccc1200-"> <span 
+class="small-caps">C</span><span 
+class="small-caps">.</span> </span>(1969): “Lifetime Portfolio Selection under Uncertainty: The
+  Continuous-Time Case,” <span 
+class="ecti-1200">The Review of Economics and Statistics</span>, 51(3), 247.
+  </p>
+  <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XPaz2021"></a><span class="bibsp">   </span></span><span 
+class="eccc1200-"><span 
+class="small-caps">P</span><span 
+class="small-caps">a</span><span 
+class="small-caps">z</span><span 
+class="small-caps">-</span><span 
+class="small-caps">P</span><span 
+class="small-caps">a</span><span 
+class="small-caps">r</span><span 
+class="small-caps">d</span><span 
+class="small-caps">o</span><span 
+class="small-caps">,</span>  <span 
+class="small-caps">G</span><span 
+class="small-caps">o</span><span 
+class="small-caps">n</span><span 
+class="small-caps">z</span><span 
+class="small-caps">a</span><span 
+class="small-caps">l</span><span 
+class="small-caps">o</span>  </span>(2021):  “Homeownership  and  Portfolio  Choice  over  the
+  Generations,” <span 
+class="ecti-1200">Ssrn</span>, pp. 1–87.
+  </p>
+  <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XSamuelson1969"></a><span class="bibsp">   </span></span><span 
+class="eccc1200-"><span 
+class="small-caps">S</span><span 
+class="small-caps">a</span><span 
+class="small-caps">m</span><span 
+class="small-caps">u</span><span 
+class="small-caps">e</span><span 
+class="small-caps">l</span><span 
+class="small-caps">s</span><span 
+class="small-caps">o</span><span 
+class="small-caps">n</span><span 
+class="small-caps">,</span> <span 
+class="small-caps">P</span><span 
+class="small-caps">a</span><span 
+class="small-caps">u</span><span 
+class="small-caps">l</span></span><span 
+class="eccc1200-"> <span 
+class="small-caps">A</span><span 
+class="small-caps">.</span> </span>(1969): “Lifetime Portfolio Selection By Dynamic Stochastic
+  Programming,” <span 
+class="ecti-1200">The Review of Economics and Statistics</span>, 51(3), 239.
+  </p>
+  <p class="bibitem" ><span class="biblabel">
+<a 
+ id="Xyao2005optimal"></a><span class="bibsp">   </span></span><span 
+class="eccc1200-"><span 
+class="small-caps">Y</span><span 
+class="small-caps">a</span><span 
+class="small-caps">o</span><span 
+class="small-caps">,</span> <span 
+class="small-caps">R</span><span 
+class="small-caps">u</span><span 
+class="small-caps">i</span><span 
+class="small-caps">,</span> <span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">d</span> <span 
+class="small-caps">H</span><span 
+class="small-caps">a</span><span 
+class="small-caps">r</span><span 
+class="small-caps">o</span><span 
+class="small-caps">l</span><span 
+class="small-caps">d</span></span><span 
+class="eccc1200-"> <span 
+class="small-caps">H</span><span 
+class="small-caps">.</span> <span 
+class="small-caps">Z</span><span 
+class="small-caps">h</span><span 
+class="small-caps">a</span><span 
+class="small-caps">n</span><span 
+class="small-caps">g</span> </span>(2005): “Optimal consumption and portfolio
+  choices with risky housing and borrowing constraints,” <span 
+class="ecti-1200">Review of Financial Studies</span>,
+  18(1), 197–239.
+</p>
+  </div>
+   
+</body> 
+</html>
+                                                                                     
+
+

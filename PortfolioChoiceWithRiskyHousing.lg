@@ -1,0 +1,526 @@
+htfcss: eccc1000 font-variant: small-caps;
+htfcss: cmss   font-family: sans-serif;
+htfcss: cmssbx  font-family: sans-serif; font-weight: bold;
+htfcss: cmssbxo  font-family: sans-serif; font-style: oblique; font-weight: bold;
+htfcss: cmssdc  font-family: sans-serif;
+htfcss: cmssi  font-family: sans-serif; font-style: oblique;
+htfcss: cmss   font-family: sans-serif;
+htfcss: cmssbx  font-family: sans-serif; font-weight: bold;
+htfcss: cmssbxo  font-family: sans-serif; font-style: oblique; font-weight: bold;
+htfcss: cmssdc  font-family: sans-serif;
+htfcss: cmssi  font-family: sans-serif; font-style: oblique;
+htfcss: cmbx  font-weight: bold;
+htfcss: cmbxsl  font-weight: bold; font-style: oblique;
+htfcss: cmbx  font-weight: bold;
+htfcss: cmbxsl  font-weight: bold; font-style: oblique;
+htfcss: cmbx  font-weight: bold;
+htfcss: cmbxsl  font-weight: bold; font-style: oblique;
+htfcss: cmmi font-style: italic;
+htfcss: cmmib font-style: italic; font-weight: bold;
+htfcss: ecbx  font-weight: bold;
+htfcss: ecsx  font-weight: bold;
+htfcss: ecbi  font-weight: bold;   font-style: italic;
+htfcss: ecit  font-style: italic; font-family: monospace,monospace;
+htfcss: ecss  font-family: sans-serif;
+htfcss: ecff  font-family: fantasy;
+htfcss: ecti  font-style: italic;
+htfcss: ectt  font-family: monospace,monospace;
+htfcss: ecbx  font-weight: bold;
+htfcss: ecsx  font-weight: bold;
+htfcss: ecbi  font-weight: bold;   font-style: italic;
+htfcss: ecit  font-style: italic; font-family: monospace,monospace;
+htfcss: ecss  font-family: sans-serif;
+htfcss: ecff  font-family: fantasy;
+htfcss: ecti  font-style: italic;
+htfcss: ectt  font-family: monospace,monospace;
+htfcss: ecbx  font-weight: bold;
+htfcss: ecsx  font-weight: bold;
+htfcss: ecbi  font-weight: bold;   font-style: italic;
+htfcss: ecit  font-style: italic; font-family: monospace,monospace;
+htfcss: ecss  font-family: sans-serif;
+htfcss: ecff  font-family: fantasy;
+htfcss: ecti  font-style: italic;
+htfcss: ectt  font-family: monospace,monospace;
+htfcss: ecbx  font-weight: bold;
+htfcss: ecsx  font-weight: bold;
+htfcss: ecbi  font-weight: bold;   font-style: italic;
+htfcss: ecit  font-style: italic; font-family: monospace,monospace;
+htfcss: ecss  font-family: sans-serif;
+htfcss: ecff  font-family: fantasy;
+htfcss: ecti  font-style: italic;
+htfcss: ectt  font-family: monospace,monospace;
+htfcss: ecbx  font-weight: bold;
+htfcss: ecsx  font-weight: bold;
+htfcss: ecbi  font-weight: bold;   font-style: italic;
+htfcss: ecit  font-style: italic; font-family: monospace,monospace;
+htfcss: ecss  font-family: sans-serif;
+htfcss: ecff  font-family: fantasy;
+htfcss: ecti  font-style: italic;
+htfcss: ectt  font-family: monospace,monospace;
+htfcss: ecbx  font-weight: bold;
+htfcss: ecsx  font-weight: bold;
+htfcss: ecbi  font-weight: bold;   font-style: italic;
+htfcss: ecit  font-style: italic; font-family: monospace,monospace;
+htfcss: ecss  font-family: sans-serif;
+htfcss: ecff  font-family: fantasy;
+htfcss: ecti  font-style: italic;
+htfcss: ectt  font-family: monospace,monospace;
+htfcss: ecbx  font-weight: bold;
+htfcss: ecsx  font-weight: bold;
+htfcss: ecbi  font-weight: bold;   font-style: italic;
+htfcss: ecit  font-style: italic; font-family: monospace,monospace;
+htfcss: ecss  font-family: sans-serif;
+htfcss: ecff  font-family: fantasy;
+htfcss: ecti  font-style: italic;
+htfcss: ectt  font-family: monospace,monospace;
+htfcss: ecbx  font-weight: bold;
+htfcss: ecsx  font-weight: bold;
+htfcss: ecbi  font-weight: bold;   font-style: italic;
+htfcss: ecit  font-style: italic; font-family: monospace,monospace;
+htfcss: ecss  font-family: sans-serif;
+htfcss: ecff  font-family: fantasy;
+htfcss: ecti  font-style: italic;
+htfcss: ectt  font-family: monospace,monospace;
+htfcss: ecbx  font-weight: bold;
+htfcss: ecsx  font-weight: bold;
+htfcss: ecbi  font-weight: bold;   font-style: italic;
+htfcss: ecit  font-style: italic; font-family: monospace,monospace;
+htfcss: ecss  font-family: sans-serif;
+htfcss: ecff  font-family: fantasy;
+htfcss: ecti  font-style: italic;
+htfcss: ectt  font-family: monospace,monospace;
+htfcss: ecbx  font-weight: bold;
+htfcss: ecsx  font-weight: bold;
+htfcss: ecbi  font-weight: bold;   font-style: italic;
+htfcss: ecit  font-style: italic; font-family: monospace,monospace;
+htfcss: ecss  font-family: sans-serif;
+htfcss: ecff  font-family: fantasy;
+htfcss: ecti  font-style: italic;
+htfcss: ectt  font-family: monospace,monospace;
+File: PortfolioChoiceWithRiskyHousing.html
+File: PortfolioChoiceWithRiskyHousing.css
+File: PortfolioChoiceWithRiskyHousing.tmp
+File: PortfolioChoiceWithRiskyHousing2.html
+File: PortfolioChoiceWithRiskyHousing3.html
+File: PortfolioChoiceWithRiskyHousing4.html
+File: PortfolioChoiceWithRiskyHousing5.html
+File: PortfolioChoiceWithRiskyHousing6.html
+File: PortfolioChoiceWithRiskyHousing7.html
+File: PortfolioChoiceWithRiskyHousing8.html
+Font_Class(4,"4"): <span  class="small-caps"></span>
+Css: p{margin-top:0;margin-bottom:0}
+Css: p.indent{text-indent:0;}
+Css: p + p{margin-top:1em;}
+Css: p + div, p + pre {margin-top:1em;}
+Css: div + p, pre + p {margin-top:1em;}
+Css: @media print {div.crosslinks {visibility:hidden;}}
+Css: a img { border-top: 0; border-left: 0; border-right: 0; }
+Font_Css("4"): .small-caps{font-variant: small-caps; }
+Font_Css("10"): .htf-cmbx {font-weight: bold; font-style:normal;}
+Font_Css("12"): .htf-calligraphy {font-family:cursive}
+Font_Css("14"): .htf-italic {font-style: italic;}
+Font_Css("16"): .htf-bold {font-weight: bold;}
+Font_Css("12"): .htf-calligraphy-bold {font-family:cursive ; font-weight: bold; }
+Css: center { margin-top:1em; margin-bottom:1em; }
+Css: td center { margin-top:0em; margin-bottom:0em; }
+Css: .Canvas { position:relative; }
+Css: img.math{vertical-align:middle;}
+Css: li p.indent { text-indent: 0em }
+Css: li p:first-child{ margin-top:0em; }
+Css: li p:last-child, li div:last-child { margin-bottom:0.5em; }
+Css: li p~ul:last-child, li p~ol:last-child{ margin-bottom:0.5em; }
+Css: .enumerate1 {list-style-type:decimal;}
+Css: .enumerate2 {list-style-type:lower-alpha;}
+Css: .enumerate3 {list-style-type:lower-roman;}
+Css: .enumerate4 {list-style-type:upper-alpha;}
+Css: div.newtheorem { margin-bottom: 2em; margin-top: 2em;}
+Css: .obeylines-h,.obeylines-v {white-space: nowrap; }
+Css: div.obeylines-v p { margin-top:0; margin-bottom:0; }
+Css: .overline{ text-decoration:overline; }
+Css: .overline img{ border-top: 1px solid black; }
+Css: td.displaylines {text-align:center; white-space:nowrap;}
+Css: .centerline {text-align:center;}
+Css: .rightline {text-align:right;}
+Css: div.pic-tabular {text-align:center;}
+Css: div.verbatim {font-family: monospace,monospace; white-space: nowrap; text-align:left; clear:both; }
+Css: .fbox {padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
+Css: div.fbox {display:table}
+Css: div.center div.fbox {text-align:center; clear:both; padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
+Css: div.minipage{width:100%;}
+Css: div.center, div.center div.center {text-align: center; margin-left:1em; margin-right:1em;}
+Css: div.center div {text-align: left;}
+Css: div.flushright, div.flushright div.flushright {text-align: right;}
+Css: div.flushright div {text-align: left;}
+Css: div.flushleft {text-align: left;}
+Css: .underline{ text-decoration:underline; }
+Css: .underline img{ border-bottom: 1px solid black; margin-bottom:1pt; }
+Css: .framebox-c, .framebox-l, .framebox-r { padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
+Css: .framebox-c {text-align:center;}
+Css: .framebox-l {text-align:left;}
+Css: .framebox-r {text-align:right;}
+Css: span.thank-mark{ vertical-align: super }
+Css: span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80%; }
+Css: td p:first-child{ margin-top:0em; }
+Css: td p:last-child{ margin-bottom:0em; }
+Css: div.td00{ margin-left:0pt; margin-right:0pt; }
+Css: div.td01{ margin-left:0pt; margin-right:5pt; }
+Css: div.td10{ margin-left:5pt; margin-right:0pt; }
+Css: div.td11{ margin-left:5pt; margin-right:5pt; }
+Css: table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+Css: td.td00{ padding-left:0pt; padding-right:0pt; }
+Css: td.td01{ padding-left:0pt; padding-right:5pt; }
+Css: td.td10{ padding-left:5pt; padding-right:0pt; }
+Css: td.td11{ padding-left:5pt; padding-right:5pt; }
+Css: table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+Css: .hline hr, .cline hr{ height : 0px; margin:0px; }
+Css: .hline td, .cline td{ padding: 0; }
+Css: .hline hr, .cline hr{border:none;border-top:1px solid black;}
+Css: .tabbing-right {text-align:right;}
+Css: div.float, div.figure {margin-left: auto; margin-right: auto;}
+Css: div.float img {text-align:center;}
+Css: div.figure img {text-align:center;}
+Css: .marginpar,.reversemarginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}
+Css: .marginpar p,.reversemarginpar p{margin-top:0.4em; margin-bottom:0.4em;}
+Css: .reversemarginpar{float:left;}
+Css: table.equation {width:100%;}
+Css: .equation td{text-align:center; }
+Css: td.equation { margin-top:1em; margin-bottom:1em; } 
+Css: td.equation-label { width:5%; text-align:center; }
+Css: td.eqnarray4 { width:5%; white-space: normal; }
+Css: td.eqnarray2 { width:5%; }
+Css: table.eqnarray-star, table.eqnarray {width:100%;}
+Css: div.eqnarray{text-align:center;}
+Css: div.array {text-align:center;}
+Css: div.pmatrix {text-align:center;}
+Css: table.pmatrix {width:100%;}
+Css: span.pmatrix img{vertical-align:middle;}
+Css: div.pmatrix {text-align:center;}
+Css: table.pmatrix {width:100%;}
+Css: span.bar-css {text-decoration:overline;}
+Css: table.tabular{border-collapse: collapse; border-spacing: 0;}
+Css: img.cdots{vertical-align:middle;}
+Css: .partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}
+Css: .index-item, .index-subitem, .index-subsubitem {display:block}
+Css: div.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:left;}
+Css: div.caption span.id{font-weight: bold; white-space: nowrap; }
+Css: h1.partHead{text-align: center}
+Css: p.bibitem { text-indent: -2em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }
+Css: p.bibitem-p { text-indent: 0em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }
+Css: .paragraphHead, .likeparagraphHead { margin-top:2em; font-weight: bold;}
+Css: .subparagraphHead, .likesubparagraphHead { font-weight: bold;}
+Css: .quote {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; margin-right:1em; text-align:justify;}
+Css: .verse{white-space:nowrap; margin-left:2em}
+Css: div.maketitle {text-align:center;}
+Css: h2.titleHead{text-align:center;}
+Css: div.maketitle{ margin-bottom: 2em; }
+Css: div.author, div.date {text-align:center;}
+Css: div.thanks{text-align:left; margin-left:10%; font-size:85%; font-style:italic; }
+Css: div.author{white-space: nowrap;}
+Font_Size: 12
+Css: .quotation {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; }
+Css: .abstract p {margin-left:5%; margin-right:5%;}
+Css: div.abstract {width:100%;}
+Css: figure.float, div.figure {margin-left: auto; margin-right: auto;}
+Css: figure.float img {text-align:center;}
+Css: figure.figure img {text-align:center;}
+Css: figure.figure > p {text-align:center;}
+Css: figcaption.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:center;}
+Css: figcaption.caption span.id{font-weight: bold; white-space: nowrap; }
+Css: span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80%; }
+Css: figure.float, div.figure {margin-left: auto; margin-right: auto;}
+Css: figure.float img {text-align:center;}
+Css: figure.figure img {text-align:center;}
+Css: figure.figure > p {text-align:center;}
+Css: figcaption.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:center;}
+Css: figcaption.caption span.id{font-weight: bold; white-space: nowrap; }
+Css: div.verbatiminput {font-family: monospace,monospace; white-space: nowrap; }
+Css: .equation td{text-align:center; }
+Css: .equation-star td{text-align:center; }
+Css: table.equation-star { width:100%; }
+Css: table.equation { width:100%; }
+Css: div.align {text-align: center;}
+Css: table.multline, table.multline-star {width:100%;}
+Css: td.gather {text-align:center; }
+Css: table.gather {width:100%;}
+Css: div.gather-star {text-align:center;}
+Css: td p:first-child{ margin-top:0em; }
+Css: td p:last-child{ margin-bottom:0em; }
+Css: div.td00{ margin-left:0pt; margin-right:0pt; }
+Css: div.td01{ margin-left:0pt; margin-right:5pt; }
+Css: div.td10{ margin-left:5pt; margin-right:0pt; }
+Css: div.td11{ margin-left:5pt; margin-right:5pt; }
+Css: table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+Css: td.td00{ padding-left:0pt; padding-right:0pt; }
+Css: td.td01{ padding-left:0pt; padding-right:5pt; }
+Css: td.td10{ padding-left:5pt; padding-right:0pt; }
+Css: td.td11{ padding-left:5pt; padding-right:5pt; }
+Css: table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+Css: .hline hr, .cline hr{ height : 0px; margin:0px; }
+Css: .hline td, .cline td{ padding: 0; }
+Css: .hline hr, .cline hr{border:none;border-top:1px solid black;}
+Css: div.array {text-align:center;}
+Css: table.boxedverbatim {width:100%;}
+Css:  pre.boxedverbatim{border:solid 1px; padding-right:1em;} 
+Css: table.boxedverbatim {text-align:center;}
+Css: .listinginput p{ margin-bottom:0em; margin-top:0em; }
+Css: span.accentset span.accent{font-size:80%; position:relative; top:-1.7ex; left:-0.6em;}
+Css: span.underaccent span.accent{font-size:80%; position:relative; top:1.6ex; left:-0.6em;}
+Css: .uline{ text-decoration:underline; }
+Css: .uuline{ text-decoration:underline; }
+Css: span.sout {text-decoration: line-through }
+Css: span.xout {text-decoration: line-through }
+Css: span.uwave {text-decoration:underline }
+Css: .underline-d{ border-bottom: 3px double black; margin-bottom:1pt; }
+Css: .rotatebox{display: inline-block;}
+Css: .figure img.graphics {margin-left:10%;}
+Css: .subfigcaption {margin-top:1em; margin-left:1em; text-align:center;}
+Css: div.subfigure {text-align:center;display:inline-block;}
+Css: div.caption {text-align:left;font-size:83%;text-indent:0em; margin-left:2em; margin-right:2em; }
+Css: div.caption span.id{font-variant: small-caps; white-space: nowrap; }
+Css: .figure div.caption{text-align: center;}
+Css: .table div.caption{text-align: center;}
+Css: .table div.pic-tabular{text-align:center;clear:both;overflow:auto;width:100%;margin-bottom:1em;margin-left:auto;margin-right:auto}
+Css: div.figure{text-align:center;clear:both;overflow:auto;width:100%;margin-bottom:1em;margin-left:auto;margin-right:auto}
+Css: div.table{text-align:center;clear:both;overflow:auto;width:100%;margin-bottom:1em;margin-left:auto;margin-right:auto}
+Css: div.float{text-align:center;clear:both;overflow:auto;width:100%;margin-bottom:1em;margin-left:auto;margin-right:auto}
+Css: .subfigure img{display:block; margin-left:auto; margin-right:auto}
+Css: .equation td{text-align:center; }
+Css: td.equation { margin-top:5em; margin-bottom:5em; }
+File: ./Resources/PoweredByEconARK.png
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[2] ==> PortfolioChoiceWithRiskyHousing0x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[3] ==> PortfolioChoiceWithRiskyHousing1x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[4] ==> PortfolioChoiceWithRiskyHousing2x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[5] ==> PortfolioChoiceWithRiskyHousing3x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[6] ==> PortfolioChoiceWithRiskyHousing4x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[8] ==> PortfolioChoiceWithRiskyHousing5x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[9] ==> PortfolioChoiceWithRiskyHousing6x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[10] ==> PortfolioChoiceWithRiskyHousing7x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[11] ==> PortfolioChoiceWithRiskyHousing8x.svg ---
+File: ./LaTeX/Inputs/Figures/shareFuncByHouse.png
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[13] ==> PortfolioChoiceWithRiskyHousing9x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[14] ==> PortfolioChoiceWithRiskyHousing10x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[15] ==> PortfolioChoiceWithRiskyHousing11x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[16] ==> PortfolioChoiceWithRiskyHousing12x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[17] ==> PortfolioChoiceWithRiskyHousing13x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[18] ==> PortfolioChoiceWithRiskyHousing14x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[19] ==> PortfolioChoiceWithRiskyHousing15x.svg ---
+File: ./LaTeX/Inputs/Figures/shareFuncByNetWealth.png
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[21] ==> PortfolioChoiceWithRiskyHousing16x.svg ---
+File: ./LaTeX/Inputs/Figures/shareFuncByEquity.png
+File: ./LaTeX/Inputs/Figures/shareFuncByRisk.png
+File: ./LaTeX/Inputs/Figures/liquidAssetsByHouse.png
+File: ./LaTeX/Inputs/Figures/liquidAssetsByEquity.png
+File: ./LaTeX/Inputs/Figures/shareFuncByRetirement.png
+File: ./LaTeX/Inputs/Figures/cFuncByRetirement.png
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[23] ==> PortfolioChoiceWithRiskyHousing17x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[24] ==> PortfolioChoiceWithRiskyHousing18x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[25] ==> PortfolioChoiceWithRiskyHousing19x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[26] ==> PortfolioChoiceWithRiskyHousing20x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[27] ==> PortfolioChoiceWithRiskyHousing21x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[28] ==> PortfolioChoiceWithRiskyHousing22x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[30] ==> PortfolioChoiceWithRiskyHousing23x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[31] ==> PortfolioChoiceWithRiskyHousing24x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[33] ==> PortfolioChoiceWithRiskyHousing25x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[34] ==> PortfolioChoiceWithRiskyHousing26x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[35] ==> PortfolioChoiceWithRiskyHousing27x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[36] ==> PortfolioChoiceWithRiskyHousing28x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[37] ==> PortfolioChoiceWithRiskyHousing29x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[38] ==> PortfolioChoiceWithRiskyHousing30x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[39] ==> PortfolioChoiceWithRiskyHousing31x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[41] ==> PortfolioChoiceWithRiskyHousing32x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[42] ==> PortfolioChoiceWithRiskyHousing33x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[44] ==> PortfolioChoiceWithRiskyHousing34x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[46] ==> PortfolioChoiceWithRiskyHousing35x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[47] ==> PortfolioChoiceWithRiskyHousing36x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[48] ==> PortfolioChoiceWithRiskyHousing37x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[49] ==> PortfolioChoiceWithRiskyHousing38x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[50] ==> PortfolioChoiceWithRiskyHousing39x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[52] ==> PortfolioChoiceWithRiskyHousing40x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[53] ==> PortfolioChoiceWithRiskyHousing41x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[54] ==> PortfolioChoiceWithRiskyHousing42x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[55] ==> PortfolioChoiceWithRiskyHousing43x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[56] ==> PortfolioChoiceWithRiskyHousing44x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[57] ==> PortfolioChoiceWithRiskyHousing45x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[58] ==> PortfolioChoiceWithRiskyHousing46x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[59] ==> PortfolioChoiceWithRiskyHousing47x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[60] ==> PortfolioChoiceWithRiskyHousing48x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[61] ==> PortfolioChoiceWithRiskyHousing49x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[62] ==> PortfolioChoiceWithRiskyHousing50x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[63] ==> PortfolioChoiceWithRiskyHousing51x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[64] ==> PortfolioChoiceWithRiskyHousing52x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[66] ==> PortfolioChoiceWithRiskyHousing53x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[68] ==> PortfolioChoiceWithRiskyHousing54x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[69] ==> PortfolioChoiceWithRiskyHousing55x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[71] ==> PortfolioChoiceWithRiskyHousing56x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[73] ==> PortfolioChoiceWithRiskyHousing57x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[75] ==> PortfolioChoiceWithRiskyHousing58x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[77] ==> PortfolioChoiceWithRiskyHousing59x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[79] ==> PortfolioChoiceWithRiskyHousing60x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[80] ==> PortfolioChoiceWithRiskyHousing61x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[81] ==> PortfolioChoiceWithRiskyHousing62x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[82] ==> PortfolioChoiceWithRiskyHousing63x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[83] ==> PortfolioChoiceWithRiskyHousing64x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[85] ==> PortfolioChoiceWithRiskyHousing65x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[86] ==> PortfolioChoiceWithRiskyHousing66x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[87] ==> PortfolioChoiceWithRiskyHousing67x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[89] ==> PortfolioChoiceWithRiskyHousing68x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[90] ==> PortfolioChoiceWithRiskyHousing69x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[92] ==> PortfolioChoiceWithRiskyHousing70x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[93] ==> PortfolioChoiceWithRiskyHousing71x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[94] ==> PortfolioChoiceWithRiskyHousing72x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[96] ==> PortfolioChoiceWithRiskyHousing73x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[97] ==> PortfolioChoiceWithRiskyHousing74x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[98] ==> PortfolioChoiceWithRiskyHousing75x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[99] ==> PortfolioChoiceWithRiskyHousing76x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[100] ==> PortfolioChoiceWithRiskyHousing77x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[102] ==> PortfolioChoiceWithRiskyHousing78x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[103] ==> PortfolioChoiceWithRiskyHousing79x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[105] ==> PortfolioChoiceWithRiskyHousing80x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[106] ==> PortfolioChoiceWithRiskyHousing81x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[108] ==> PortfolioChoiceWithRiskyHousing82x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[109] ==> PortfolioChoiceWithRiskyHousing83x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[111] ==> PortfolioChoiceWithRiskyHousing84x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[113] ==> PortfolioChoiceWithRiskyHousing85x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[115] ==> PortfolioChoiceWithRiskyHousing86x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[117] ==> PortfolioChoiceWithRiskyHousing87x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[119] ==> PortfolioChoiceWithRiskyHousing88x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[121] ==> PortfolioChoiceWithRiskyHousing89x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[123] ==> PortfolioChoiceWithRiskyHousing90x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[124] ==> PortfolioChoiceWithRiskyHousing91x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[125] ==> PortfolioChoiceWithRiskyHousing92x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[126] ==> PortfolioChoiceWithRiskyHousing93x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[127] ==> PortfolioChoiceWithRiskyHousing94x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[129] ==> PortfolioChoiceWithRiskyHousing95x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[130] ==> PortfolioChoiceWithRiskyHousing96x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[131] ==> PortfolioChoiceWithRiskyHousing97x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[132] ==> PortfolioChoiceWithRiskyHousing98x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[133] ==> PortfolioChoiceWithRiskyHousing99x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[134] ==> PortfolioChoiceWithRiskyHousing100x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[136] ==> PortfolioChoiceWithRiskyHousing101x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[138] ==> PortfolioChoiceWithRiskyHousing102x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[140] ==> PortfolioChoiceWithRiskyHousing103x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[141] ==> PortfolioChoiceWithRiskyHousing104x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[142] ==> PortfolioChoiceWithRiskyHousing105x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[143] ==> PortfolioChoiceWithRiskyHousing106x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[145] ==> PortfolioChoiceWithRiskyHousing107x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[147] ==> PortfolioChoiceWithRiskyHousing108x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[148] ==> PortfolioChoiceWithRiskyHousing109x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[150] ==> PortfolioChoiceWithRiskyHousing110x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[152] ==> PortfolioChoiceWithRiskyHousing111x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[154] ==> PortfolioChoiceWithRiskyHousing112x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[155] ==> PortfolioChoiceWithRiskyHousing113x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[156] ==> PortfolioChoiceWithRiskyHousing114x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[157] ==> PortfolioChoiceWithRiskyHousing115x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[159] ==> PortfolioChoiceWithRiskyHousing116x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[160] ==> PortfolioChoiceWithRiskyHousing117x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[162] ==> PortfolioChoiceWithRiskyHousing118x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[164] ==> PortfolioChoiceWithRiskyHousing119x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[165] ==> PortfolioChoiceWithRiskyHousing120x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[167] ==> PortfolioChoiceWithRiskyHousing121x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[168] ==> PortfolioChoiceWithRiskyHousing122x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[170] ==> PortfolioChoiceWithRiskyHousing123x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[172] ==> PortfolioChoiceWithRiskyHousing124x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[174] ==> PortfolioChoiceWithRiskyHousing125x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[175] ==> PortfolioChoiceWithRiskyHousing126x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[177] ==> PortfolioChoiceWithRiskyHousing127x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[179] ==> PortfolioChoiceWithRiskyHousing128x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[181] ==> PortfolioChoiceWithRiskyHousing129x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[183] ==> PortfolioChoiceWithRiskyHousing130x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[184] ==> PortfolioChoiceWithRiskyHousing131x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[185] ==> PortfolioChoiceWithRiskyHousing132x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[187] ==> PortfolioChoiceWithRiskyHousing133x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[188] ==> PortfolioChoiceWithRiskyHousing134x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[190] ==> PortfolioChoiceWithRiskyHousing135x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[192] ==> PortfolioChoiceWithRiskyHousing136x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[194] ==> PortfolioChoiceWithRiskyHousing137x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[196] ==> PortfolioChoiceWithRiskyHousing138x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[197] ==> PortfolioChoiceWithRiskyHousing139x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[198] ==> PortfolioChoiceWithRiskyHousing140x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[199] ==> PortfolioChoiceWithRiskyHousing141x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[200] ==> PortfolioChoiceWithRiskyHousing142x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[202] ==> PortfolioChoiceWithRiskyHousing143x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[203] ==> PortfolioChoiceWithRiskyHousing144x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[204] ==> PortfolioChoiceWithRiskyHousing145x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[205] ==> PortfolioChoiceWithRiskyHousing146x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[206] ==> PortfolioChoiceWithRiskyHousing147x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[208] ==> PortfolioChoiceWithRiskyHousing148x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[210] ==> PortfolioChoiceWithRiskyHousing149x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[212] ==> PortfolioChoiceWithRiskyHousing150x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[214] ==> PortfolioChoiceWithRiskyHousing151x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[215] ==> PortfolioChoiceWithRiskyHousing152x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[217] ==> PortfolioChoiceWithRiskyHousing153x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[218] ==> PortfolioChoiceWithRiskyHousing154x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[219] ==> PortfolioChoiceWithRiskyHousing155x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[220] ==> PortfolioChoiceWithRiskyHousing156x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[221] ==> PortfolioChoiceWithRiskyHousing157x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[223] ==> PortfolioChoiceWithRiskyHousing158x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[224] ==> PortfolioChoiceWithRiskyHousing159x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[225] ==> PortfolioChoiceWithRiskyHousing160x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[227] ==> PortfolioChoiceWithRiskyHousing161x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[229] ==> PortfolioChoiceWithRiskyHousing162x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[231] ==> PortfolioChoiceWithRiskyHousing163x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[232] ==> PortfolioChoiceWithRiskyHousing164x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[234] ==> PortfolioChoiceWithRiskyHousing165x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[235] ==> PortfolioChoiceWithRiskyHousing166x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[237] ==> PortfolioChoiceWithRiskyHousing167x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[239] ==> PortfolioChoiceWithRiskyHousing168x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[241] ==> PortfolioChoiceWithRiskyHousing169x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[243] ==> PortfolioChoiceWithRiskyHousing170x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[244] ==> PortfolioChoiceWithRiskyHousing171x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[246] ==> PortfolioChoiceWithRiskyHousing172x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[248] ==> PortfolioChoiceWithRiskyHousing173x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[249] ==> PortfolioChoiceWithRiskyHousing174x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[250] ==> PortfolioChoiceWithRiskyHousing175x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[251] ==> PortfolioChoiceWithRiskyHousing176x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[253] ==> PortfolioChoiceWithRiskyHousing177x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[254] ==> PortfolioChoiceWithRiskyHousing178x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[256] ==> PortfolioChoiceWithRiskyHousing179x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[258] ==> PortfolioChoiceWithRiskyHousing180x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[260] ==> PortfolioChoiceWithRiskyHousing181x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[262] ==> PortfolioChoiceWithRiskyHousing182x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[264] ==> PortfolioChoiceWithRiskyHousing183x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[266] ==> PortfolioChoiceWithRiskyHousing184x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[268] ==> PortfolioChoiceWithRiskyHousing185x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[269] ==> PortfolioChoiceWithRiskyHousing186x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[270] ==> PortfolioChoiceWithRiskyHousing187x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[272] ==> PortfolioChoiceWithRiskyHousing188x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[274] ==> PortfolioChoiceWithRiskyHousing189x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[276] ==> PortfolioChoiceWithRiskyHousing190x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[278] ==> PortfolioChoiceWithRiskyHousing191x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[280] ==> PortfolioChoiceWithRiskyHousing192x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[282] ==> PortfolioChoiceWithRiskyHousing193x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[284] ==> PortfolioChoiceWithRiskyHousing194x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[286] ==> PortfolioChoiceWithRiskyHousing195x.svg ---
+--- needs --- PortfolioChoiceWithRiskyHousing.idv[288] ==> PortfolioChoiceWithRiskyHousing196x.svg ---
+tex4ht.c error: 21
+--- characters ---
+Font("cmr","12","12","100")
+Font("ecrm","1200","12","100")
+Font("ecti","1200","12","100")
+Font("ecbx","1200","12","100")
+Font("ecrm","2074","20","100")
+Font("ecbx","2074","20","100")
+Font("ecrm","0600","6","100")
+Font("ecrm","1095","10","100")
+Font("ecrm","1000","10","100")
+Font("ectt","1000","10","100")
+Font("ectt","1200","12","100")
+Font("cmr","8","8","100")
+Font("cmr","6","6","100")
+Font("cmmi","12","12","100")
+Font("cmmi","8","8","100")
+Font("cmmi","6","6","100")
+Font("cmsy","10","10","120")
+Font("cmsy","8","8","100")
+Font("cmsy","6","6","100")
+Font("cmex","10","10","120")
+Font("msbm","10","10","120")
+Font("cmbx","12","12","100")
+Font("cmbx","8","8","100")
+Font("cmbx","6","6","100")
+Font("cmss","12","12","100")
+Font("cmss","8","8","100")
+Font("bbmss","12","12","100")
+Font("eufm","10","10","120")
+Font("fibr","84","10","120")
+Font("eccc1200","","12","100")

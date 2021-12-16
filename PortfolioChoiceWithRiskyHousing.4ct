@@ -1,0 +1,51 @@
+\expandafter\ifx\csname doTocEntry\endcsname\relax \expandafter\endinput\fi 
+\doTocEntry\tocsection{1}{\csname a:TocLink\endcsname{1}{x1-10001}{QQ2-1-1}{Introduction}}{3}\relax 
+\doTocEntry\tocsection{2}{\csname a:TocLink\endcsname{1}{x1-20002}{QQ2-1-2}{Literature Review}}{5}\relax 
+\doTocEntry\tocsubsection{2.1}{\csname a:TocLink\endcsname{1}{x1-30002.1}{QQ2-1-3}{The House-Size Problem}}{6}\relax 
+\doTocEntry\tocsection{3}{\csname a:TocLink\endcsname{1}{x1-40003}{QQ2-1-4}{Theoretical Framework}}{8}\relax 
+\doTocEntry\tocsection{4}{\csname a:TocLink\endcsname{1}{x1-50004}{QQ2-1-5}{Methodology}}{9}\relax 
+\doTocEntry\tocsubsection{4.1}{\csname a:TocLink\endcsname{1}{x1-60004.1}{QQ2-1-6}{Young Households}}{9}\relax 
+\doTocEntry\tocsubsection{4.2}{\csname a:TocLink\endcsname{1}{x1-70004.2}{QQ2-1-7}{Mortgage payments}}{10}\relax 
+\doTocEntry\tocsubsection{4.3}{\csname a:TocLink\endcsname{1}{x1-80004.3}{QQ2-1-8}{Retired homeowners}}{10}\relax 
+\doTocEntry\tocsubsection{4.4}{\csname a:TocLink\endcsname{1}{x1-90004.4}{QQ2-1-9}{Retired renters}}{10}\relax 
+\doTocEntry\tocsection{5}{\csname a:TocLink\endcsname{1}{x1-100005}{QQ2-1-10}{Results}}{11}\relax 
+\doTocEntry\tocsubsection{5.1}{\csname a:TocLink\endcsname{1}{x1-110005.1}{QQ2-1-11}{Homeownership increases intensive margin of stock market participation}}{11}\relax 
+\doTocEntry\toclof{1}{\csname a:TocLink\endcsname{1}{x1-110021}{}{\ignorespaces House size increases risky portfolio share}}{figure}\relax 
+\doTocEntry\toclof{2}{\csname a:TocLink\endcsname{1}{x1-110042}{}{\ignorespaces Risky Share conditional on net worth}}{figure}\relax 
+\doTocEntry\toclof{3}{\csname a:TocLink\endcsname{1}{x1-110053}{}{\ignorespaces Risky share conditional on liquid assets net of home equity}}{figure}\relax 
+\doTocEntry\tocsubsection{5.2}{\csname a:TocLink\endcsname{1}{x1-120005.2}{QQ2-1-15}{Increasing house price risk decreases risky share}}{21}\relax 
+\doTocEntry\toclof{4}{\csname a:TocLink\endcsname{1}{x1-120014}{}{\ignorespaces Increasing house price risk decreases risky share}}{figure}\relax 
+\doTocEntry\tocsubsection{5.3}{\csname a:TocLink\endcsname{1}{x1-130005.3}{QQ2-1-17}{Larger houses increase households' absolute risk taking}}{24}\relax 
+\doTocEntry\toclof{5}{\csname a:TocLink\endcsname{1}{x1-130015}{}{\ignorespaces House size increases household's absolute risk taking}}{figure}\relax 
+\doTocEntry\tocsubsection{5.4}{\csname a:TocLink\endcsname{1}{x1-140005.4}{QQ2-1-19}{House size crowds out investment}}{27}\relax 
+\doTocEntry\toclof{6}{\csname a:TocLink\endcsname{1}{x1-140016}{}{\ignorespaces House size crowds out investment}}{figure}\relax 
+\doTocEntry\tocsubsection{5.5}{\csname a:TocLink\endcsname{1}{x1-150005.5}{QQ2-1-21}{Optimal Portfolio Choice over the Lifecycle}}{31}\relax 
+\doTocEntry\toclof{7}{\csname a:TocLink\endcsname{1}{x1-150017}{}{\ignorespaces Risky Portfolio Share during Retirement}}{figure}\relax 
+\doTocEntry\toclof{8}{\csname a:TocLink\endcsname{1}{x1-150028}{}{\ignorespaces Consumption during retirement}}{figure}\relax 
+\doTocEntry\tocsection{6}{\csname a:TocLink\endcsname{1}{x1-160006}{QQ2-1-24}{Conclusions}}{37}\relax 
+\doTocEntry\tocsection{A}{\csname a:TocLink\endcsname{1}{x1-17000A}{QQ2-1-25}{The base model}}{39}\relax 
+\doTocEntry\tocsubsection{A.1}{\csname a:TocLink\endcsname{1}{x1-18000A.1}{QQ2-1-26}{Fixed-Rate Mortgage payments}}{40}\relax 
+\doTocEntry\tocsubsection{A.2}{\csname a:TocLink\endcsname{1}{x1-19000A.2}{QQ2-1-27}{The Investor's problem in the presence of housing risk}}{41}\relax 
+\doTocEntry\tocsubsubsection{A.2.1}{\csname a:TocLink\endcsname{1}{x1-20000A.2.1}{QQ2-1-28}{Investing before Retirement}}{41}\relax 
+\doTocEntry\tocsubsubsection{A.2.2}{\csname a:TocLink\endcsname{1}{x1-21000A.2.2}{QQ2-1-29}{Investing after Retirement}}{42}\relax 
+\doTocEntry\tocsection{B}{\csname a:TocLink\endcsname{1}{x1-22000B}{QQ2-1-30}{Normalization}}{44}\relax 
+\doTocEntry\tocsubsection{B.1}{\csname a:TocLink\endcsname{1}{x1-23000B.1}{QQ2-1-31}{Rental Housing in the Utility}}{45}\relax 
+\doTocEntry\tocsubsection{B.2}{\csname a:TocLink\endcsname{1}{x1-24000B.2}{QQ2-1-32}{The Retired Renter's last period of life}}{45}\relax 
+\doTocEntry\tocsubsection{B.3}{\csname a:TocLink\endcsname{1}{x1-25000B.3}{QQ2-1-33}{The Retired Renter's second-to-last period}}{48}\relax 
+\doTocEntry\tocsubsection{B.4}{\csname a:TocLink\endcsname{1}{x1-26000B.4}{QQ2-1-34}{The Retired Homeowner's last period of life}}{49}\relax 
+\doTocEntry\tocsubsection{B.5}{\csname a:TocLink\endcsname{1}{x1-27000B.5}{QQ2-1-35}{The Retired Homeowner's second-to-last period of life}}{50}\relax 
+\doTocEntry\tocsubsection{B.6}{\csname a:TocLink\endcsname{1}{x1-28000B.6}{QQ2-1-36}{The Retired Homeowner's general problem}}{51}\relax 
+\doTocEntry\tocsubsection{B.7}{\csname a:TocLink\endcsname{1}{x1-29000B.7}{QQ2-1-37}{The Working Homeowner that has mortgage debt}}{53}\relax 
+\doTocEntry\tocsubsection{B.8}{\csname a:TocLink\endcsname{1}{x1-30000B.8}{QQ2-1-38}{The borrowing constraint}}{53}\relax 
+\doTocEntry\tocsection{C}{\csname a:TocLink\endcsname{1}{x1-31000C}{QQ2-1-39}{Backsolving the problem}}{58}\relax 
+\doTocEntry\tocsection{D}{\csname a:TocLink\endcsname{1}{x1-32000D}{QQ2-1-40}{Portfolio Choice after retirement}}{63}\relax 
+\doTocEntry\tocsubsection{D.1}{\csname a:TocLink\endcsname{1}{x1-33000D.1}{QQ2-1-41}{The solution of risky share}}{63}\relax 
+\doTocEntry\tocsubsection{D.2}{\csname a:TocLink\endcsname{1}{x1-34000D.2}{QQ2-1-42}{Exogenous Risky Share}}{65}\relax 
+\doTocEntry\tocsection{E}{\csname a:TocLink\endcsname{1}{x1-35000E}{QQ2-1-43}{The Portfolio Choice Problem for Rental Households}}{66}\relax 
+\doTocEntry\tocsection{F}{\csname a:TocLink\endcsname{1}{x1-36000F}{QQ2-1-44}{The portfolio problem of a homeowner with no mortgage}}{71}\relax 
+\doTocEntry\tocsubsection{F.1}{\csname a:TocLink\endcsname{1}{x1-37000F.1}{QQ2-1-45}{First order conditions: Choosing home investment}}{74}\relax 
+\doTocEntry\tocsubsection{F.2}{\csname a:TocLink\endcsname{1}{x1-38000F.2}{QQ2-1-46}{First order conditions: Choosing consumption and portfolio investment}}{75}\relax 
+\doTocEntry\tocsubsection{F.3}{\csname a:TocLink\endcsname{1}{x1-39000F.3}{QQ2-1-47}{Envelope conditions: Uncertainty is realized}}{77}\relax 
+\doTocEntry\tocsection{G}{\csname a:TocLink\endcsname{1}{x1-40000G}{QQ2-1-48}{Solving the homeowner with mortgage problem}}{78}\relax 
+\doTocEntry\toclikesection{}{\csname a:TocLink\endcsname{1}{x1-41000G}{QQ2-1-49}{References}}{80}\relax 
+\par 
