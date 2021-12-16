@@ -1,0 +1,518 @@
+% -*- mode: LaTeX; TeX-PDF-mode: t; -*-
+\input{./econtexRoot}\documentclass[PortfolioChoiceWithRiskyHousing]{subfiles}
+\input{./econtexRoot}\input{\LaTeXInputs/econtex_onlyinsubfile}
+\onlyinsubfile{\externaldocument{PortfolioChoiceWithRiskyHousing}} % Get xrefs -- esp to appendix -- from main file; only works properly if main file has already been compiled;
+
+\begin{document}
+
+%\hypertarget{Introduction}{}
+%\section{Introduction}
+%
+%Quantitative models of portfolio choice can provide insights into optimal savings and investment decisions over the life-cyle. However, predictions from state of the art models still differ significantly from portfolio allocations observed in the data. Although these models account for different types of uncertainty (labor income risk, mortality risk, and stock market risk), perhaps the largest missing feature in these models is homeownership. Homeownership for most households is the biggest financial decision in their lives, and it has implications for a household's optimal portfolio choice, as it often increases their leverage and exposes them to housing price risk. However, homeownership decisions substantially increase the computational complexity of life-cycle portfolio models and are therefore not often explored in the literature.
+%
+%The purpose of this project is to develop a quantitative model of housing and portfolio choice that is consistent with homeownership and stockholdings data found in the Survey of Consumer Finances. A similar model is presented by Cocco (2004) where households choose between consumption, housing, and the proportion of savings in risky assets. The author finds that homeownership affects the portfolio choices of younger and poorer investors, and in particular, that housing price risk crowds out stockholdings for low-wealth households. Nevertheless, this model leaves out an important piece of the homeownership decision, which is the process of getting and paying off a mortgage. A mortgage has important implications for the portfolio composition of households and as such, this project aims to reconcile this gap in the literature.
+
+%\hypertarget{The-base-model}{}
+%\section{The base model}
+%
+%\subsection{Mortgage Loans}
+%
+%At date 0, the household finances the purchase of a house with a mortgage loan. Given cash-on-hand at date 0 $\MLev_{0}$, which may come from previous savings or bequests, the household simultaneously chooses a house size (continuous) and a mortgage loan that meets the down-payment or Loan-to-Value requirement $\DLev_{1} \le (1-d)Q_{0}\HRat_{1}$, where $d$ is the proportional down-payment, $Q_{0}$ is the unit-price of housing, and $\HRat_{1}$ is the chosen house size. Coincidentally, the household leaves some cash-on-hand $\MLev_{1}$ to start next period with some liquidity.
+%
+%\begin{equation}
+%	\begin{split}
+%		\VFunc_{0}(\MLev_{0}) = \max_{\DLev_{t}, \HRat_{t}} \Ex_{t} \VFunc_{1}(\MLev_{1}, \HRat_{1}, \DLev_{1}, \PLev_{1}) \\
+%		Q_{0} \HRat_{1} + \MLev_{1} = \MLev_{0} + \DLev_{1} \\
+%		\DLev_{1} \le (1-d)Q_{0} \HRat_{1}
+%	\end{split}
+%\end{equation}
+%
+%An additional mortgage origination requirement observed in the literature is the Loan-to-Income ratio $\DLev_{1} \le \lambda \PLev_{1}$, which reflects initial mortgage affordability (\cite{ccMortgageDefault2013}).
+%
+%\begin{equation}
+%	\begin{split}
+%		\VFunc_{0}(\MLev_{0}, \PLev_{1}) = \max_{\DLev_{t}, \HRat_{t}} \Ex_{t} \VFunc_{1}(\MLev_{1}, \HRat_{1}, \DLev_{1}, \PLev_{1}) \\
+%		Q_{0} \HRat_{1} + \MLev_{1} = \MLev_{0} + \DLev_{1} \\
+%		\DLev_{1} \le (1-d)Q_{0} \HRat_{1} \qquad \text{(LTV)} \\
+%		\DLev_{1} \le \lambda \PLev_{1} \qquad \text{(LTI)} \\
+%	\end{split}
+%\end{equation}
+%
+%\subsection{The Investor's problem in the presence of housing risk}
+%
+%A household begins period $t>0$ with cash-on-hand $\MLev_{t}$, housing size $\HRat_{t}$, mortgage debt $\DLev_{t}$, and permanent income $\PLev_{t}$. It must then choose a level of consumption $\CLev_{t}$, mortgage payment $\ILev_{t}$, and savings $\ALev_{t}$ of which a fraction $\riskyshare_{t}$ is invested into a risky asset and the rest into a safe asset.
+%
+%The mortgage payment must be at least the interest accrued on the loan plus some additional premium payment in order to ensure payoff within an expected maturity of $J$ years.
+%
+%Although the model does not allow for housing adjustments, the household must nevertheless exogenously pay maintenance and upkeep costs due to housing depreciation at a cost of $\depr Q_{0} \HRat_{t}$. Additionally, the household must exogenously expand (or contract) their housing size in proportion to changes in its permanent income. \textbf{Wouldn't we need to track 2 permanent incomes? As it stands now, net cash on hand is risky.}
+%
+%\begin{comment}
+%Price of house has 2 components: 1) price of land underneath 2) housing stock. House price fluctuations come from land price; changes in quantity of house are priced at the original price by hiring someone at same cost. To make explicit would need to add separate state var for land price vs housing quantity (don't want to do that).
+%
+%Data house price = mixture of price of land and price of house.
+%\end{comment}
+%
+%\begin{equation}
+%	\begin{split}
+%		\VFunc_{t}(\MLev_{t}, \HRat_{t}, \DLev_{t}, \PLev_{t}) = \max_{\CLev_{t}, \ALev_{t}, \riskyshare_{t}} \utilFunc(\CLev_{t}, \HRat_{t}) + \Discount \Ex_{t} \VFunc_{t+1}(\MLev_{t+1}, \HRat_{t+1}, \DLev_{t+1}, \PLev_{t+1}) \\
+%		\text{s.t.} \\
+%		\CLev_{t} + \ALev_{t} + \ILev_{t} = \MLev_{t} - (\depr + \zeta * (\PLev_{t+1}-\PLev_{t})) Q_{0} \HRat_{t}\\
+%		\CLev_{t} \ge 0, \quad \ALev_{t}\ge 0 \\
+%		\ILev_{t} \ge (R_D-1 + premium)\DLev_{t} \\
+%		\MLev_{t+1} = \YLev_{t+1} + \ALev_{t}(\riskyshare_{t} \Risky_{t+1} + (1-\riskyshare_{t})\Rfree)\\
+%		(\HRat_{t+1} - \HRat_{t})Q_{0} = \zeta (\PLev_{t+1} - \PLev_{t})\\
+%		\DLev_{t+1} = R_D(\DLev_{t} - \ILev_{t}) \\
+%		\PLev_{t+1} = \PGro_{t+1} \psi_{t+1} \PLev_{t} \\
+%		\YLev_{t+1} = \tShkEmp_{t+1}\PLev_{t+1}
+%	\end{split}
+%\end{equation}
+%
+%\begin{outline}
+%	\0 Discussion
+%	\1 Loan to Income ratio requirement
+%	\1 Proportional mortgage payment: $premium$
+%	\2 payments are high early in life and small in middle to old age
+%	\2 mortgage debt \textit{approaches} 0
+%	\1 Other types of mortgage payment?
+%	\2 Fixed rate mortgage? fixed payments and duration, \textbf{what needs to be tracked as state variable?}
+%	\1 Exogenous housing adjustment due to permanent income shock
+%	\2 $\PLev_{t+1}$ is risky, so net cash on hand is also risky?
+%	\2 $\HRat_{t+1}$ also risky?
+%	\2 Use $\Ex_{t}(\PLev_{t+1}) = \PGro_{t+1}\PLev_{t}$ instead?
+%\end{outline}
+
+\section{The base model}
+
+At date 0, the household finances the purchase of a house with a mortgage loan. Given cash-on-hand at date 0 $\MLev_{0}$, which may come from previous savings or bequests, the household simultaneously chooses a house size (among a set of discrete house sizes) and a mortgage loan that meets the down-payment or Loan-to-Value requirement $\DLev_{1} \le (1-d)Q_{0}\HRat_{1}$, where $d$ is the proportional down-payment, $Q_{0}$ is the unit-price of housing, and $\HRat_{1}$ is the chosen house size. An additional mortgage origination requirement observed in the literature is the Loan-to-Income ratio $\DLev_{1} \le \lambda \PLev_{1}$, which reflects initial mortgage affordability (\cite{ccMortgageDefault2013}). Coincidentally, the household leaves some cash-on-hand $\MLev_{1}$ to start next period with some liquidity.
+
+\begin{equation}
+	\begin{split}
+		\VFunc_{0}(\MLev_{0}, \PLev_{1}) = &~ \max_{\DLev_{1}, \HRat_{1}} \Ex_{t} [\VFunc_{1}(\MLev_{1}, \HRat_{1}, \DLev_{1}, \PLev_{1}) ]\\
+		&~ \text{s.t.} \\
+		Q_{0} \HRat_{1} + &~ \MLev_{1} = \MLev_{0} + \DLev_{1} \\
+		\HRat_{1} \in &~ \mathbb{H} = \{\hRat_{1}, \cdots, \hRat_{n}\} \\
+		\DLev_{1} \le &~ (1-d)Q_{0} \HRat_{1} \qquad \text{(LTV)} \\
+		\DLev_{1} \le &~ \lambda \PLev_{1} \qquad \text{(LTI)} \\
+	\end{split}
+\end{equation}
+
+\subsection{Fixed-Rate Mortgage payments}
+
+When a household chooses a house size and mortgage loan, they also commit to a fixed payment amount and a loan duration of, for example, 30 years. To calculate the fixed rate mortgage payment ($\text{FRM}_{t}$), we can start with the amount owed at the beginning of each period $\DLev_{t}$ and subtract a fixed payment, which is then multiplied by a fixed mortgage interest rate $R_D$. The limiting condition that ensures repayment at time $T$ is $\DLev_{T}=0$, which leads to $\text{FRM}_{t}$ as shown below:
+
+\begin{equation}
+	\begin{split}
+		\DLev_{t}                                                                                                                      \\
+		\DLev_{t+1} &~ = (\DLev_{t} - \text{FRM}_{t})R_D = \DLev_{t} R_D - \text{FRM}_{t} R_D                                                   \\
+		\DLev_{t+2} &~ = (\DLev_{t+1} - \text{FRM}_{t}) R_D = (\DLev_{t} R_D - \text{FRM}_{t} R_D - \text{FRM}_{t}) R_D                         \\
+		&~ = \DLev_{t} R_D^2 - \text{FRM}_{t} R_D^2 - \text{FRM}_{t} R_D                                                        \\
+		\vdots                                                                                                                     \\
+		\DLev_{T}     &~ = (\DLev_{T-1}-\text{FRM}_{t}) R_D = (\DLev_{T-2}R_D - \text{FRM}_{t} R_D - \text{FRM}_{t})R_D                           \\
+		&~ = \DLev_{t} R_D^{T-t} - \text{FRM}_{t}(R_D^{T-t} + R_D^{T-t-1} + \cdots + R_D) = \DLev_{t} R_D^{T-t} - \text{FRM}_{t}(S)
+	\end{split}
+\end{equation}
+
+where $S=\frac{R_D(R_D^{T-t}-1)}{R_D-1}$. Setting $\DLev_{T}=0$ as a repayment requirement, the fixed rate mortgage payment is
+
+\begin{equation}
+	\text{FRM}_{t}(\DLev_{t}) = \frac{R_D^{T-t-1}(R_D-1)}{R_D^{T-t} -1} \DLev_{t}
+\end{equation}
+
+The household is allowed to pay more than its required mortgage payment, which in this model leads to a decrease in the future minimum required payment $\text{FRM}_{t}$ to maintain the mortgage duration. If the household continually pays more than the minimum payment, $\text{FRM}_{t}$ becomes $0$ when the mortgage debt is fully paid off. This flexibility allows for the fixed rate mortgage payment to depend only on current mortgage debt $\DLev_{t}$ and time to mortgage maturity, which is tracked by the age of the household $t$.
+
+\subsection{The Investor's problem in the presence of housing risk}
+
+\subsubsection{Investing before Retirement}
+
+A working household begins period $30\le t \le 60$ with cash-on-hand $\MLev_{t}$, housing size $\HRat_{t}$, mortgage debt $\DLev_{t}$, and permanent income $\PLev_{t}$. It must then choose a level of consumption $\CLev_{t}$, mortgage payment $\ILev_{t}$, and savings $\ALev_{t}$ of which a fraction $\riskyshare_{t}$ is invested into a risky asset and the rest into a safe asset.
+
+The mortgage payment must be at least the fixed rate mortgage payment $\text{FRM}_{t}(\DLev_{t})$ in order to ensure payoff within an expected maturity of $J=30$ years.
+
+Although the model does not allow for explicit choices over housing adjustments, the household must nevertheless pay maintenance and upkeep costs due to housing depreciation at a cost of $\depr Q_{0} \HRat_{t}$. Additionally, the household must also exogenously expand or contract their housing size given a life-cycle path of housing size $\PGro^{\HRat}_{t+1}$. This parameter is intended to represent the observed path of the housing size component of portfolio compositions over the life-cycle.
+
+\begin{equation}
+	\begin{split}
+		\VFunc_{t}(\MLev_{t}, \HRat_{t}, \DLev_{t}, \PLev_{t}) = &~ \max_{\ALev_{t}, \ILev_{t}, \riskyshare_{t}} \utilFunc(\CLev_{t}, \HRat_{t}) + \Discount \Ex_{t} [\VFunc_{t+1}(\MLev_{t+1}, \HRat_{t+1}, \DLev_{t+1}, \PLev_{t+1})] \\
+		&~ \text{s.t.} \\
+		\ALev_{t} = &~ \MLev_{t} - \CLev_{t} - \ILev_{t} \\
+		\ALev_{t}\ge &~  0 \\
+		\ILev_{t} \ge &~ \text{FRM}_{t} + [\HRat_{t+1} - (1-\depr)\HRat_{t} ]Q_{0}\\
+		\PLev_{t+1} = &~ \PGro_{t+1} \PLev_{t} \\
+		\YLev_{t+1} = &~ \tShkEmp_{t+1}\PLev_{t+1} \\
+		\MLev_{t+1} = &~ \YLev_{t+1} + \ALev_{t}(\riskyshare_{t} \Risky_{t+1} + (1-\riskyshare_{t})\Rfree)\\
+		\HRat_{t+1} = &~  \PGro^{\HRat}_{t+1} \HRat_{t}\\
+		\DLev_{t+1} = &~ R_D(\DLev_{t} - \ILev_{t}) \\
+	\end{split}
+\end{equation}
+
+\subsubsection{Investing after Retirement}
+
+Households deterministically retire at age $t=60$, and begin to experience exogenous risk of housing liquidation. By this time, the household has finished paying their mortgage debt, and so we lose the $\DLev_{t}$ state variable. If the household is exogenously forced to liquidate their house, they receive their home equity at the beginning of next period and become renters until death. The problem of a household which faces housing risk is
+
+\begin{equation}
+	\begin{split}
+		\VFunc_{t}^{\HRat}(\MLev_{t}, \HRat_{t}, \PLev_{t}) = &~ \max_{\CLev_{t}, \ALev_{t}, \riskyshare_{t}} \utilFunc(\CLev_{t}, \HRat_{t})  + \Discount s_{t} \Ex_{t} [\VFunc_{t+1}^{\HRat}(\MLev_{t+1}, \HRat_{t+1}, \PLev_{t+1})] \\
+		&~+ \Discount (1-s_{t}) \Ex_{t} [\VFunc_{t+1}^R(\MLev^R_{t+1}, \PLev_{t+1})] \\
+		&~ \text{s.t.} \\
+		\ALev_{t} = &~ \MLev_{t} - \CLev_{t} - \ILev_{t}, \qquad \ALev_{t}\ge 0 \\
+		\ILev_{t} \ge &~ [\HRat_{t+1} - (1-\depr)\HRat_{t} ]Q_{0} \\
+		\PLev_{t+1} = &~ \PGro_{t+1} \PLev_{t} \\
+		\YLev_{t+1} = &~ \tShkEmp_{t+1}\PLev_{t+1} \\
+		\MLev_{t+1} = &~ \YLev_{t+1} + \ALev_{t}(\riskyshare_{t}\Risky_{t+1} + (1-\riskyshare_{t})\Rfree)\\
+		\MLev^R_{t+1} = &~ \MLev_{t+1} + Q_{t+1}\HRat_{t+1} \\
+		\HRat_{t+1} = &~ \PGro^{\HRat}_{t+1} \HRat_{t}\\
+	\end{split}
+\end{equation}
+
+The renter's problem then becomes a simple portfolio problem where the household additionally pays for rental housing.
+
+\begin{equation}
+	\begin{split}
+		\VFunc^R_{t}(\MLev_{t}, \PLev_{t}) = &~ \max_{\CLev_{t}, \HRat^R_{t}, \ALev_{t}, \riskyshare_{t}} \utilFunc(\CLev_{t}, \HRat^R_{t}) + \Discount \Ex_{t} [\VFunc^R_{t+1}(\MLev_{t+1},\PLev_{t+1}) ]\\
+		&~ \text{s.t.} \\
+		\ALev_{t} = &~ \MLev_{t} - \CLev_{t} - \HRat^R_{t} , \quad \CLev_{t}, \HRat^R_{t}, \ALev_{t}\ge   0 \\
+		\MLev_{t+1} = &~ \YLev_{t+1} + \ALev_{t}(\riskyshare_{t}\Risky_{t+1} + (1-\riskyshare_{t})\Rfree)\\
+		\PLev_{t+1} = &~ \PGro_{t+1} \PLev_{t} \\
+		\YLev_{t+1} = &~ \tShkEmp_{t+1}\PLev_{t+1}
+	\end{split}
+\end{equation}
+
+\section{Normalization}
+
+A useful strategy to facilitate finding the solution of these types of problems is normalization by permanent income. Throughout this section we assume
+
+\begin{equation}
+	\utilFunc(C, H) = \frac{(C^{1-\kapShare} \HRat^\kapShare)^{1-\CRRA}}{1-\CRRA}
+\end{equation}
+
+which is a Cobb-Douglas function nested inside a CRRA utility function. The model parameter $\kapShare$ determines the relative preference between non-durable consumption and housing size. In a simple rental housing problem, it also determines directly the rental housing share of total expenditures, as we'll see below.
+
+\subsection{Rental Housing in the Utility}
+
+A renter pays for rental housing every period until death. Rental housing enters the utility as a non-durable expenditure and, like consumption, it has no impact on the continuation value. Using the utility function described above, and representing non-durable total expenditures as $\XLev = C + H$, utility maximization implies that $\frac{H}{C} = \frac{\kapShare}{1-\kapShare}$, $C = (1-\kapShare)\XLev$, and $ H = \kapShare \XLev$. Substituting these results into the utility function, it becomes:
+
+\begin{equation}
+	\utilFunc(C,H) = \frac{((1-\kapShare)^{1-\kapShare} \kapShare^\kapShare \XLev)^{1-\CRRA}}{1-\CRRA} = \tilde{A} \frac{\XLev^{1-\CRRA}}{1-\CRRA}
+\end{equation}
+
+Thus, we can represent the problem of total expenditures between consumption and rental housing as $\utilFunc(C,H) = \tilde{A} \utilFunc(\XLev)$, where $\utilFunc(\cdot)$ is a CRRA utility function with $\CRRA$ coefficient.
+
+\subsection{The Retired Renter's last period of life}
+
+In the last period of life, a renter has no need to save and thus has to decide to spend all of his cash-on-hand ($\MLev_{T}$) between non-durable consumption and rental housing.
+
+\begin{equation}
+	\begin{split}
+		\VFunc^R_{T}(\MLev_{T}, \PLev_{T}) = &~ \max_{\CLev_{T}, \HRat^R_{T}} \utilFunc(\CLev_{T}, \HRat^R_{T}) \\
+		&~ \text{s.t.} \\
+		\MLev_{T} = &~ \CLev_{T} + \HRat_{t}
+	\end{split}
+\end{equation}
+
+Again, utility maximization implies that $C = (1-\kapShare)M$ and $H = \kapShare M$. Substituting into the previous equation we obtain:
+
+\begin{equation}
+	\VFunc^R_{T}(\MLev_{T}, \PLev_{T}) = \tilde{A} \frac{\MLev_{T}^{1-\CRRA}}{1-\CRRA}
+\end{equation}
+
+where $\tilde{A} = \left( (1-\kapShare)^{1-\kapShare} \kapShare^\kapShare \right)^{1-\CRRA}$. We can now normalize by permanent income $\PLev_{t}$ such that lowercase variables are $\xRat_{t} = \XLev_{t} / \PLev_{t}$. Substituting $\PLev_{T} = \PLev_{T-1} \PGro_{T}$, the expression becomes
+
+\begin{equation}
+	\VFunc^R_{T}(\MLev_{t}, \PLev_{T}) = \PLev_{T}^{1-\CRRA} \tilde{A} \frac{ \mRat_{T}^{1-\CRRA}}{1-\CRRA} = \PLev_{T-1}^{1-\CRRA} \PGro_{T}^{1-\CRRA} \tilde{A} \frac{\mRat_{T}^{1-\CRRA}}{1-\CRRA}
+\end{equation}
+
+If we define a normalized equation as $\vFunc^R_{T}(\mRat_{T}) = \frac{\mRat_{T}^{1-\CRRA}}{1-\CRRA}$ then the original problem can be rewritten as
+
+\begin{equation}
+	\VFunc^R_{T}(\MLev_{T}, \PLev_{T}) = \PLev_{T-1}^{1-\CRRA} \PGro_{T}^{1-\CRRA} \tilde{A} \vFunc^R_{T}(\mRat_{T})
+\end{equation}
+
+\subsection{The Retired Renter's second-to-last period}
+
+We can now consider the second-to-last period, although the same analysis will apply recursively to any period with a non-zero continuation value. Normalizing as above, where $\xRat_{t} = \XLev_{t} / \PLev_{t}$, we obtain
+
+\begin{equation}
+	\begin{split}
+		\VFunc^R_{T-1}(\MLev_{T-1}, \PLev_{T-1}) &~= \max_{\CLev_{T-1}, \HRat^R_{T-1}, \riskyshare_{T-1}} \utilFunc(\CLev_{T-1}, \HRat_{T-1}) + \Discount \Ex_{t} [\VFunc^R_{T}(\MLev_{T}, \PLev_{T})] \\
+		&~= \max_{\xRat_{T-1}, \riskyshare_{T-1}} \tilde{A} \utilFunc(\xRat_{T-1} \PLev_{T-1}) + \Discount \Ex_{t} [\PLev_{T-1}^{1-\CRRA} \PGro_{T}^{1-\CRRA} \tilde{A} \vFunc^R_{T}(\mRat_{T})] \\
+		&~= \tilde{A} \PLev_{T-1}^{1-\CRRA} \left\{ \max_{\xRat_{T-1}, \riskyshare_{T-1}} \utilFunc(\xRat_{T-1} ) + \Discount \Ex_{t} [\PGro_{T}^{1-\CRRA} \vFunc^R_{T}(\mRat_{T})] \right\}
+	\end{split}
+\end{equation}
+
+We can again define the normalized value function as $\vFunc^R_{T-1} = \VFunc^R_{T-1}/(\tilde{A}\PLev_{T-1}^{1-\CRRA})$ and re-write the problem as
+
+\begin{equation}
+	\vFunc^R_{T-1}(\mRat_{T-1}) = \max_{\xRat_{T-1}, \riskyshare_{T-1}} \utilFunc(\xRat_{T-1} ) + \Discount \Ex_{t} [\PGro_{T}^{1-\CRRA} \vFunc^R_{T}(\mRat_{T})]
+\end{equation}
+
+The generalized renter's problem with non-zero continuation value then simplifies to a simple consumption and portfolio choice problem with additionally defined control variables as presented below.
+
+\begin{equation}
+	\begin{split}
+		\vFunc^R_{t}(\mRat_{t}) = &~ \max_{\xRat_{t}, \riskyshare_{t}}\utilFunc(\xRat_{t}) + \Discount \Ex_{t} [\PGro_{t+1}^{1-\CRRA} \vFunc^R_{t+1}(\mRat_{t+1})] \\
+		\text{s.t.} &~ \\
+		\aRat_{t} = &~ \mRat_{t} - \xRat_{t}, \quad \xRat_{t}, \aRat_{t} \ge 0 \\
+		\cRat_{t} = &~ (1-\kapShare) \xRat_{t}, \\
+		\hRat_{t} = &~ \kapShare \xRat_{t} \\
+		\mRat_{t+1} = &~ \tShkEmp_{t+1} + \aRat_{t}(\riskyshare_{t} \Risky_{t+1} + (1-\riskyshare_{t})\Rfree)/\PGro_{t+1}
+	\end{split}
+\end{equation}
+
+\subsection{The Retired Homeowner's last period of life}
+
+We assume homeowners deterministically become renters before their last period of life.
+
+\subsection{The Retired Homeowner's second-to-last period of life}
+
+In their second-to-last period of life, a homeowner will become a renter in the next period with certainty. Note that by this stage of life the household has no outstanding mortgage debt. Their problem is
+
+\begin{equation}
+	\begin{split}
+		\VFunc_{T-1}^{\HRat}(\MLev_{T-1}, \HRat_{T-1}, \PLev_{T-1}) = &~ \max_{\CLev_{T-1}, \ALev_{T-1}, \riskyshare_{T-1}} \utilFunc(\CLev_{T-1}, \HRat_{T-1}) + \Discount \Ex_{t} [\VFunc_{T}^R(\MLev^R_{T}, \PLev_{T})] \\
+		&~ \text{s.t.} \\
+		\CLev_{T-1} + \ALev_{T-1} = &~ \MLev_{T-1} - [\PGro^{\HRat}_{T-1} - (1-\depr) ]Q_{0} \HRat_{T-1}, \quad \CLev_{T-1} , \ALev_{T-1}\ge 0 \\
+		\MLev^R_{T} = &~ \YLev_{T} + \ALev_{T-1}(\riskyshare_{T-1}R_{T} + (1-\riskyshare_{T-1})\Rfree) + Q_{T}\PGro^{\HRat}_{T-1}\HRat_{T-1} \\
+		\PLev_{T} = &~ \PGro_{T} \PLev_{T-1} \\
+		\YLev_{T} = &~ \tShkEmp_{T}\PLev_{T}
+	\end{split}
+\end{equation}
+
+A similar normalization procedure as above yields the following equivalent problem
+
+\begin{equation}
+	\begin{split}
+		\vFunc^{\HRat}_{T-1}(\mRat_{T-1}, \hRat_{T-1}) = &~ \max_{\cRat_{T-1}, \aRat_{T-1}, \riskyshare_{T-1}} \utilFunc(\cRat_{T-1}, \hRat_{T-1}) + \tilde{A} \Discount\Ex[\PGro_{T}^{1-\CRRA}\vFunc^R_{T}(\mRat^R_{T})] \\
+		&~ \text{s.t.} \\
+		\cRat_{T-1} + \aRat_{T-1} = &~ \mRat_{T-1} -[\PGro^{\HRat}_{T-1} - (1-\depr) ] Q_{0} \hRat_{T-1}, \quad \cRat_{T-1}, \aRat_{T-1} \ge 0 \\
+		\mRat_{T}^R = &~ \tShkEmp_{T} + \aRat_{T-1}(\riskyshare_{T-1}R_{T} + (1-\riskyshare_{T-1})\Rfree)/\PGro_{T} + Q_{T}\PGro^{\HRat}_{T-1}\hRat_{T-1}/\PGro_{T}
+	\end{split}
+\end{equation}
+
+\subsection{The Retired Homeowner's general problem}
+
+A retired homeowner has no mortgage debt or payments, but does experience house liquidation and house price risk. With probability $1-s_{t}$, the homeowner will be forced to sell their house and become a renter next period, in which case they obtain the value of their home as a liquid asset.
+
+\begin{equation}
+	\begin{split}
+		\VFunc_{t}^{\HRat}(\MLev_{t}, \HRat_{t}, \PLev_{t}) = &~ \max_{\CLev_{t}, \ALev_{t}, \riskyshare_{t}} \utilFunc(\CLev_{t}, \HRat_{t}) + \Discount s_{t} \Ex_{t} [\VFunc_{t+1}^{\HRat}(\MLev_{t+1}, \HRat_{t+1}, \PLev_{t+1})] \\
+		&~ + \Discount (1-s_{t}) \Ex_{t} [\VFunc_{t+1}^R(\MLev^R_{t+1}, \PLev_{t+1})] \\
+		&~ \text{s.t.} \\
+		\CLev_{t} + \ALev_{t} = &~ \MLev_{t} - [\HRat_{t+1} - (1-\depr)\HRat_{t} ]Q_{0}, \quad \CLev_{t} , \ALev_{t}\ge 0 \\
+		\MLev_{t+1} = &~ \YLev_{t+1} + \ALev_{t}(\riskyshare_{t}\Risky_{t+1} + (1-\riskyshare_{t})\Rfree)\\
+		\MLev^R_{t+1} = &~ \MLev_{t+1} + Q_{t+1}\HRat_{t+1} \\
+		\HRat_{t+1} = &~ \PGro^{\HRat}_{t+1} \HRat_{t}\\
+		\PLev_{t+1} = &~ \PGro_{t+1} \PLev_{t} \\
+		\YLev_{t+1} = &~ \tShkEmp_{t+1}\PLev_{t+1}
+	\end{split}
+\end{equation}
+
+The normalized version of their problem is
+
+\begin{equation}
+	\begin{split}
+		\vFunc^{\HRat}_{t}(\mRat_{t}, \hRat_{t}) = &~ \max_{\cRat_{t}, \aRat_{t}, \riskyshare_{t}} \utilFunc(\cRat_{t}, \hRat_{t}) + \Discount\Ex_{t} \left[ \PGro_{t+1}^{1-\CRRA} \left(s_{t} \vFunc^{\HRat}_{t+1}(\mRat_{t+1}, \hRat_{t+1}) + (1-s_{t}) \tilde{A} \vFunc^R_{t+1}(\mRat^R_{t+1})\right)\right] \\
+		&~ \text{s.t.} \\
+		\cRat_{t} + \aRat_{t} = &~ \mRat_{t} -[\PGro^{\HRat}_{t+1} - (1-\depr) ] Q_{0} \hRat_{t}, \quad \cRat_{t}, \aRat_{t} \ge 0 \\
+		\mRat_{t+1} = &~ \tShkEmp_{t+1} + \aRat_{t}(\riskyshare_{t}\Risky_{t+1} + (1-\riskyshare_{t})\Rfree)/\PGro_{t+1}, \quad 0 \le \riskyshare_{t} \le 1 \\
+		\hRat_{t+1} = &~ \PGro^{\HRat}_{t+1} \hRat_{t} / \PGro_{t+1} \\
+		\mRat^R_{t+1} = &~ \mRat_{t+1} + Q_{t+1}\hRat_{t+1}
+	\end{split}
+\end{equation}
+
+\subsection{The Working Homeowner that has mortgage debt}
+
+\subsection{The borrowing constraint}
+
+Every household arrives at the last period of the model as a retired renter. Because they will die with certainty by the end of the period, there is a strict no-borrowing constraint imposed for these households ($\underline{\aRat}_{T} \ge 0$). This implies that the minimum allowable level of market resources is also $m^R_{T} > \underline{\mRat}^R_{T} = 0$. If the household arrived to the last period with a negative level of market resources, it would have to consume a negative amount, yielding $-\infty$ utility.
+
+This strict borrowing constraint in the last period leads to a self imposed borrowing constraint in the second to last period, as the precautionary savings motive induces households to meet a minimum allowable level of market resources next period in order to avoid $-\infty$ utility.
+
+For the retired renter household, that means
+
+\begin{equation}
+	\mRat_{T}^R = \tShkEmp_{T} + \aRat_{T-1}(\riskyshare_{T-1}\Risky_{T} + (1-\riskyshare_{T-1})\Rfree)/\PGro_{T} > \underline{\mRat}^R_{T} = 0.
+\end{equation}
+
+Because renting households have no collateral (a home), we can assume an artificial no-borrowing constraint. The minimum allowable level of market resources next period is met as long as $\tShkEmp_{T} > 0$, which is true by construction. The no-borrowing constraint, in turn, induces a minimum allowable level of market resources in the second to last period as $\underline{\mRat}^R_{T-1} = 0$. Recursively, we can continue to assume a no-borrowing constraint for every period imposed on the retired renter household, which implies $\underline{\aRat}^R_{t}= 0$ and $\underline{\mRat}^R_{t} = 0$ for all $t$ during retirement.
+
+The retired homeowner in their second to last period will become a renter with certainty by the next period, at which point they receive the cash value of their liquidated house.
+
+\begin{equation}
+	m_{T}^R = m_{T} + Q_{T} \hRat_{T} > \underline{\mRat}^R_{T} = 0
+\end{equation}
+
+which implies a natural minimum allowable level of market resources for homeowners of
+
+\begin{equation}
+	\underline{\mRat}_{T}(\hRat_{T}) = - \underline{Q}_{T} \hRat_{T}.
+\end{equation}
+
+The last period market resources for homeowners is ruled by the transition equation
+
+\begin{equation}
+	\mRat_{T} = \tShkEmp_{T} + \aRat_{T-1}(\riskyshare_{T-1}\Risky_{T} + (1-\riskyshare_{T-1})\Rfree)/\PGro_{T} > \underline{\mRat}_{T} .
+\end{equation}
+
+Given a household's decision on asset level $\aRat_{T-1}$, the lowest possible realization of next period market resources occurs when the household receives the lowest possible return, along with the lowest realizations of income shocks next period. For each $\aRat_{T-1}$, then, there is an upper bound on the risky share $\overline{\riskyshare}_{T-1}$ such that the minimum allowable level of future market resources is met.
+
+\begin{equation}
+	\riskyshare_{T-1}( \Rfree - \underline{\Risky}_{T}) < \Rfree - \frac{(\underline{\mRat}_{T} - \underline{\tShkEmp}_{T})\underline{\PGro}_{T} }{\aRat_{T-1}}
+\end{equation}
+
+which implies a natural risky share constraint of
+
+\begin{equation}
+	\overline{\riskyshare}_{T-1}(\aRat_{T-1}, \hRat_{T-1}) = \frac{1}{\Rfree - \underline{\Risky}_{T}} \left( \Rfree - \frac{(\underline{\mRat}_{T}(\PGro^{\HRat}_{T-1}\hRat_{T-1}/\underline{\PGro}_{T}) - \underline{\tShkEmp}_{T})\underline{\PGro}_{T} }{\aRat_{T-1}} \right)
+\end{equation}
+
+The natural borrowing constraint, then, occurs when the implied natural risky share constraint is $\overline{\riskyshare}_{T-1}(\underline{\aRat}_{T-1}, \hRat_{T-1}) =0$, which is
+
+\begin{equation}
+	\underline{\aRat}_{T-1}(\hRat_{T-1}) = (\underline{\mRat}_{T}(\PGro^{\HRat}_{T-1}\hRat_{T-1}/\underline{\PGro}_{T}) - \underline{\tShkEmp}_{T})\underline{\PGro}_{T} / \Rfree
+\end{equation}
+
+The minimum allowable level of market resources constraint is once again derived from the precautionary motive $\cRat_{T-1} > 0$, which results in
+
+\begin{equation}
+	\underline{\mRat}_{T-1}(\hRat_{T-1}) = \underline{\aRat}_{T-1}( \hRat_{T-1}) + [\PGro^{\HRat}_{T-1} - (1-\depr) ] Q_{0} \hRat_{T-1}.
+\end{equation}
+
+An important issue arises in the third-to-last period. Households who will become renters next period only have to meet the minimum allowable level of market resources for rental households next period $\underline{\mRat}^R_{T-1} = 0$ or equivalently $\underline{\mRat}_{T-1}(\hRat_{T-1}) = - \underline{Q}_{T-1} \hRat_{T-1}$. Households who will remain homeowners instead have to meet the minimum allowable level of market resources for home-owning households next period (determined above). However, unlike in the second-to-last period, households in the third-to-last period do not know what type they will be in the next period, so they must meet both constraints, and thus must meet the stricter constraint. The effective minimum allowable level of market resources for the second to-last-period $t=T-1$ and recursively for periods before it is:
+
+\begin{equation}
+	\underline{\mRat}_{t}^*(\hRat_{t}) = \max \{ \underline{\aRat}_{t}( \hRat_{t}) + [\PGro^{\HRat}_{t} - (1-\depr) ] Q_{0} \hRat_{t}, - \underline{Q}_{t} \hRat_{t} \}
+\end{equation}
+
+and the general natural borrowing constraint for period $t=T-2$ and recursively for every period before it is
+
+\begin{equation}
+	\underline{\aRat}_{t}(\hRat_{t}) = (\underline{\mRat}^*_{t+1}(\PGro_{t}^{\HRat} \hRat_{t} / \underline{\PGro}_{t+1}) - \underline{\tShkEmp}_{t+1} ) \underline{\PGro}_{t+1}/ \Rfree.
+\end{equation}
+
+\section{Backsolving the problem}
+
+The overall return on the consumer's portfolio is
+
+\begin{equation}
+	\begin{split}
+		\Rport_{t+1}(\riskyshare_{t}) &~ = \Rfree(1-\riskyshare_{t}) + \Risky_{t+1} \riskyshare_{t} \\
+		&~ = \Rfree + (\Risky_{t+1} - \Rfree)\riskyshare_{t}
+	\end{split}
+\end{equation}
+
+The first order condition with respect to $\cRat_{t}$ is
+
+\begin{equation}
+	\utilFunc_{1}'(\cRat_{t}, \hRat_{t}) = \Discount \Ex_{t} \left[ \PGro^{-\CRRA}_{t+1} \Rport_{t+1} \left(s_{t} \partial_m \vFunc^{\HRat}_{t+1}(\mRat_{t+1}, \hRat_{t+1}) + (1-s_{t}) \tilde{A} \partial_m \vFunc_{t+1}^R(\mRat^R_{t+1}) \right) \right]
+\end{equation}
+
+The first order condition with respect to $\riskyshare_{t}$ is
+
+\begin{equation}
+	0 = \Discount \Ex_{t} \left[ \PGro^{-\CRRA}_{t+1} (\Risky_{t+1} - \Rfree) \left(s_{t} \partial_m \vFunc^{\HRat}_{t+1}(\mRat_{t+1}, \hRat_{t+1}) + (1-s_{t}) \tilde{A} \partial_m \vFunc_{t+1}^R(\mRat^R_{t+1}) \right) \right] \aRat_{t}
+\end{equation}
+
+A useful function to define is
+
+\begin{equation}
+	\vEnd_{t}(\aRat_{t}, \riskyshare_{t}) = \Discount\Ex_{t} \left[ \PGro_{t+1}^{1-\CRRA} \left(s_{t} \vFunc^{\HRat}_{t+1}(\mRat_{t+1}, \hRat_{t+1}) + (1-s_{t}) \tilde{A} \vFunc^R_{t+1}(\mRat^R_{t+1})\right)\right]
+\end{equation}
+
+with first order conditions
+
+\begin{eqnarray}
+	\vEnd_{t}^a &~ = &~ \Discount \Ex_{t} \left[ \PGro_{t+1}^{-\CRRA} \Rport_{t+1} \left(s_{t} \partial_m \vFunc^{\HRat}_{t+1}(\mRat_{t+1}, \hRat_{t+1}) + (1-s_{t}) \tilde{A} \partial_m \vFunc_{t+1}^R(\mRat^R_{t+1}) \right) \right] \\
+	\vEnd_{t}^\riskyshare &~ = &~ \Discount \Ex_{t} \left[ \PGro_{t+1}^{-\CRRA} (\Risky_{t+1}-\Rfree) \left(s_{t} \partial_m \vFunc^{\HRat}_{t+1}(\mRat_{t+1}, \hRat_{t+1}) + (1-s_{t}) \tilde{A} \partial_m \vFunc_{t+1}^R(\mRat^R_{t+1}) \right) \right]\aRat_{t}
+\end{eqnarray}
+
+which implies first order conditions for the problem
+
+\begin{eqnarray}
+	\utilFunc_{1}'(\cRat_{t}, \hRat_{t}) &~ = &~ \vEnd_{t}^a(\mRat_{t}-\cRat_{t},\riskyshare_{t}) \\
+	0 &~ = &~ \vEnd_{t}^\riskyshare(\aRat_{t}, \riskyshare_{t})
+\end{eqnarray}
+
+We can define the problem
+
+\begin{equation}
+	\begin{split}
+		\vOpt_{t}({\aRat}_{t}) = &~ \max_{\riskyshare_{t}} \vEnd_{t}({\aRat}_{t},\riskyshare_{t}) \\
+		&~ \text{s.t.} \\
+		0 \leq &~ \riskyshare_{t} \leq 1
+	\end{split}
+\end{equation}
+
+which leads to solution
+
+\begin{equation}
+	(\cRat_{t}^{1-\kapShare} \hRat_{t}^\kapShare)^{-\CRRA} (1-\kapShare) \cRat_{t}^{-\kapShare} \hRat_{t}^\kapShare = \vOptAlt_{t}^{{\aRat}}({\mRat}_{t}-{\cRat}_{t})
+\end{equation}
+
+we can solve for consumption function as
+
+\begin{equation}
+	\cRat_{t} = \left(\frac{\vOptAlt_{t}^{{\aRat}}({\mRat}_{t}-{\cRat}_{t})}{(1-\kapShare) h^{\kapShare(1-\CRRA)}} \right)^\frac{1}{-\CRRA(1-\kapShare) - \kapShare}
+\end{equation}
+
+Similarly, as before, the Envelope condition is
+
+\begin{equation}
+	(\cRat_{t}^{1-\kapShare} \hRat_{t}^\kapShare)^{-\CRRA} (1-\kapShare) \cRat_{t}^{-\kapShare} \hRat_{t}^\kapShare = \partial_m \vFunc_{t}^{\HRat}(m_{t}, \hRat_{t})
+\end{equation}
+
+\section{Portfolio Choice after retirement}
+
+\subsection{The solution of risky share}
+
+Let $\Risky_{t+1}$ be log-normally distributed such that $\log \Risky_{t+1} = \risky_{t+1} \sim \mathcal{N}(\risky, \sigma_\risky^2)$, then it is true that
+
+\begin{equation}
+	\Ex_{t} [\Risky_{t+1}] = e^{\risky + \sigma_\risky^2/2} \quad \text{and} \quad \textbf{Var}_{t} [\Risky_{t+1}] = (e^{\sigma_\risky^2} - 1)e^{2\risky + \sigma_\risky^2}
+\end{equation}
+
+Thus, if we want to produce a log-normal distribution with mean $\mu_R$ and variance $\sigma_R^2$, we can use a normal distribution with
+
+\begin{equation}
+	\risky = \log \left( \frac{\mu_R^2}{\sqrt{\mu_R^2 + \sigma_R^2}} \right) \quad \text{and} \quad \sigma_\risky^2 = \log \left(1 + \frac{\sigma_R^2}{\mu_R^2} \right).
+\end{equation}
+
+According to Campbell and Viceira, the optimal share of stocks in financial wealth for an agent that is not facing income uncertainty is
+
+\begin{equation}
+	\kapShare = \frac{\risky + \sigma_\risky^2/2 - \rfree}{\gamma \sigma_\risky^2}\left( 1 + \frac{\HRat_{t}}{W_{t}} \right)
+\end{equation}
+
+Using the above relations, we know that
+
+\begin{equation}
+	\kapShare(\mu_R, \sigma_R) = \frac{\log \left(\frac{\mu_R}{\Rfree}\right)}{\gamma \log \left(1 + \frac{\sigma_R^2}{\mu_R^2} \right)} \left( 1 + \frac{\HRat_{t}}{W_{t}} \right).
+\end{equation}
+
+\subsection{Exogenous Risky Share}
+
+Given the solution of portfolio choice after retirement, if we want to target a particular risky share $\kapShare$ (for example, one that fits the observed data on portfolio choice after retirement), we can back out the agent's beliefs on the risky asset return that would rationalize such an $\kapShare$. Assuming we know an agent's financial wealth (human and non-human), we can fix $\mu_R^* = \mu_R$ to find an ex-ante belief on the variance of the risky distribution that rationalizes an exogenous risky share $\kapShare$ as
+
+\begin{equation}
+	(\sigma_R^{**})^2 = \left( \left(\frac{\mu_R^*}{\Rfree}\right)^{\frac{W + H}{\gamma \kapShare W}} -1 \right) (\mu_R^{*})^2
+\end{equation}
+
+Fixing $\sigma_R^*$ and finding a $\mu_R^{**}(\sigma_R^*)$ that rationalizes an exogenous risky share $\kapShare$ has no analytical solution, although a numerical solution might exist under some conditions.
+
+Of course, if instead we fix $\risky^* =\risky(\mu_R, \sigma_R)$ or $\sigma_\risky^* = \sigma_\risky(\mu_R, \sigma_R)$, we can obtain rationalized beliefs as
+
+\begin{equation}
+	\risky^{**} = \frac{\kapShare W_{t} \gamma (\sigma_\risky^*)^2}{W + H} + \rfree - (\sigma_\risky^*)^2/2
+\end{equation}
+
+and
+
+\begin{equation}
+	(\sigma_\risky^{**})^2 = (\risky-\rfree)\left( 1 + \frac{H}{W}\right) \left(\kapShare \gamma - \frac{W + H }{2W}\right)^{-1}.
+\end{equation}
+
+It's important to note that these beliefs will result in different risky distribution parameters than those that pegged the log-normal distribution parameter.
+
+
+\end{document}
+\endinput
+

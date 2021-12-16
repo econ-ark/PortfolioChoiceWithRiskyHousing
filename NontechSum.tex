@@ -1,0 +1,47 @@
+% -*- mode: LaTeX; TeX-PDF-mode: t; -*-
+\input{./econtexRoot}\documentclass[PortfolioChoiceWithRiskyHousing]{subfiles}
+\input{./econtexRoot}
+\externaldocument{PortfolioChoiceWithRiskyHousing} % Get xrefs -- esp to appendix -- from main file; only works properly if main file has already been compiled;
+
+\begin{document}
+\renewcommand{\texname}{NontechSum}
+	\author{
+		{\small Christopher Carroll} \\ {\small JHU}
+		\and
+		{\small Alan Lujan} \\ {\small OSU}
+		\and
+		{\small Mateo Vel\'asquez-Giraldo} \\ {\small JHU}
+	}
+
+\keywords{Life-cycle, Portfolio Choice, Housing, Mortgage, Financial Risk}
+
+\title{Portfolio Choice with Risky Housing \\ Non-technical Summary}
+\renewcommand{\forcedate}{December 15, 2021}\date{\forcedate}
+
+\renewcommand{\onlyinsubfile}[1]{}\renewcommand{\notinsubfile}[1]{#1}
+
+\hypertarget{Non-technical Summary}{}
+\maketitle
+
+\begin{abstract}
+	The open source computational tools we developed with generous support from TFI are the first accessible framework for analyzing consumer financial choices when the consumer has both a house and a mortgage and investments in risky assets (for retirement saving, for example). The model indicates that appropriate choices depend substantially on consumers' degree of risk aversion. For example, a consumer with substantial housing wealth who was risk tolerant might be inclined to invest heavily in the stock market. But another consumer in similar circumstances might be daunted by the combined risks of housing price fluctuations and stock market risk. The model is capable of giving the appropriate advice to each consumer based on their circumstances and preferences.
+\end{abstract}
+
+\subfile{\LaTeXOutput/\texname/intro-start}
+\subfile{\LaTeXOutput/\texname/intro-rest}
+\subfile{\LaTeXOutput/\texname/lit-review}
+\subfile{\LaTeXOutput/\texname/theory}
+\subfile{\LaTeXOutput/\texname/results-1}
+\subfile{\LaTeXOutput/\texname/results-2}
+\subfile{\LaTeXOutput/\texname/results-3}
+\subfile{\LaTeXOutput/\texname/conclusion}
+
+\clearpage\vfill\eject
+
+\normalsize
+
+\pagebreak
+\input{\LaTeXInputs/bibliography_blend}
+
+\end{document}
+\endinput
