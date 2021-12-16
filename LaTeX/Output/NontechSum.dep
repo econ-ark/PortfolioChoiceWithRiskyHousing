@@ -144,6 +144,8 @@
   *{package}{soul}        {2003/11/17 v2.4}
   *{package}{nameref}     {2019/09/16 v2.46}
   *{package}{gettitlestring}{2019/12/15 v1.6}
+  *{file}   {NontechSum.out}{0000/00/00 v0.0}
+  *{file}   {NontechSum.out}{0000/00/00 v0.0}
   *{package}{bookmark}    {2019/12/03 v1.28}
   *{file}   {bkm-pdftex.def}{2019/12/03 v1.28}
   *{file}   {umsa.fd}     {2013/01/14 v3.01}
@@ -167,4 +169,6 @@
   *{file}   {./LaTeX/Inputs/Figures/liquidAssetsByEquity.pdf}{0000/00/00 v0.0}
   *{file}   {./LaTeX/Output/NontechSum/conclusion.tex}{0000/00/00 v0.0}
   *{file}   {./LaTeX/Inputs/bibliography_blend.tex}{0000/00/00 v0.0}
+  *{file}   {NontechSum.bbl}{0000/00/00 v0.0}
+  *{file}   {NontechSum.upa}{0000/00/00 v0.0}
 }
