@@ -1,7 +1,7 @@
 ---
 title: "Distribution of Income, Wealth, and Mortgage in SCF"
 author: "Alan Lujan"
-date: "6/14/2021"
+date: "2021-06-14"
 output:
   pdf_document: default
   html_document:

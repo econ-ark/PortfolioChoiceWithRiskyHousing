@@ -29,6 +29,7 @@
 \providecommand{\versn}{pdf} % Version; like, web or pdf or journal submission
 \ifthenelse{\boolean{Web}}{ % {Web}
   \renewcommand{\versn}{Web} % Too hard to figure out passing -output-directory through make4ht through htlatex, so web version is compiled with junk files in main directory
+  \providecommand{\rootFromOut}{}
   \renewcommand{\rootFromOut}{.} % {Web}
 }{} % {Web}
 
